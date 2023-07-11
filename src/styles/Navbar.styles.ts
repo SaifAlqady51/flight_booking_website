@@ -9,15 +9,35 @@ export const NavContainer = styled.div`
 `
 
 export const LeftNavbar = styled.div`
-    width:10%;
+    width:15%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+
+    @media (max-width:1000px){
+        width:30%;
+    }
+    @media (max-width:500px) {
+        width:50%;
+    }
 
     
 `
 
 export const RightNavbar = styled.div`
-    width:88%;
+    height:inherit;
+    width:85%;
     display: flex;
+    align-items: center;
+    justify-content: end;
+
+    @media (max-width:1000px){
+        width:70%;
+    }
+    @media (max-width:500px) {
+        width:50%;
+        display:flex;
+        justify-content: space-between;
+    }
 `
+
