@@ -1,9 +1,9 @@
 'use client'
 import { NavContainer, LeftNavbar,RightNavbar } from '@/styles/Navbar.styles'
-import {Name} from '../styles/CompanyName.styles'
+import {Name} from '../styles/CompanyName.styles';
 import { FC } from 'react'
 import Image from 'next/image'
-import Logo from '../../../public/icons8-paper-plane-94.png'
+import Logo from '../../public/icons8-paper-plane-94.png'
 import { StyledLink } from '@/styles/Link.styles'
 import { NavLinks } from '@/styles/NavLinks.styles'
 import { SignupButton } from '@/styles/SignupButton.styles'

@@ -1,19 +1,24 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { BsList } from "react-icons/bs";
-import { IconContainer } from '@/styles/IconContainer.styles'
+import { ListIconContainer } from '@/styles/ListIconContainer';
+import { AppDispatch, useAppSelector } from '@/redux/store';
+import {toggleSwitch} from '../redux/features/toggleSideNav-slice'
+import { useDispatch } from 'react-redux';
 
-interface ListIconProps {
-  
-}
 
-const ListIcon: FC<ListIconProps> = ({}) => {
-    const [open,setOpen] = useState(false)
-    console.log(open)
+
+
+const ListIcon: FC = ({}) => {
+    // active state from redux
+    const active = useAppSelector((state) => state.toggleSideNav.active)
+    // dispatch is called to import toggleSwitch from redux
+    const dispatch = useDispatch<AppDispatch>();
+
 
   return (
-    <IconContainer open={open} >
-        <BsList onClick={() => setOpen(prevState => !prevState)}/>
-    </IconContainer>
+    <ListIconContainer toggle={active} >
+        <BsList onClick={() => dispatch(toggleSwitch())}/>
+    </ListIconContainer>
   )
 }
 
