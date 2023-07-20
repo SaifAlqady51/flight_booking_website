@@ -23,11 +23,10 @@ export const NavLinks = styled.ul<{toggle: Boolean}>`
 
 
     @media (max-width:640px){
-        /* display:${({toggle}) => toggle? 'none' : 'flex'}; */
         position: fixed;
         flex-direction:column;
         align-items: center;
-        right:${({toggle}) => toggle? '-70%' : '0'};
+        right:${({toggle}) => toggle? '0' : '-70%'};
         top:80px;
         background-color:black;
         margin: 0;

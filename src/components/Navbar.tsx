@@ -20,6 +20,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
       // active state from redux
       const active = useAppSelector((state) => state.toggleSideNav.active)
+      console.log(active)
       // dispatch is called to import toggleSwitch from redux
       const dispatch = useDispatch<AppDispatch>();
   
