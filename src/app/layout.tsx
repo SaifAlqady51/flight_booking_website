@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from '@/lib/registery'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Nav/Navbar'
 import { ReduxProvider } from '@/redux/ReduxProvider'
 import Theme from '../Theme/Theme'
 import { GlobalStyles } from '@/Theme/ThemeColors'

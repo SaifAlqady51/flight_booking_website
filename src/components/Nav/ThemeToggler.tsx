@@ -1,7 +1,6 @@
 'use client'
 import {PiSunFill,PiMoonFill} from 'react-icons/pi'
-import {StyledThemeToggler} from '../styles/ThemeToggler.styles'
-
+import { StyledThemeToggler } from '@/styles/NavStyles/ThemeToggler.styles';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { switchTheme } from '@/redux/features/toggleTheme-slice';

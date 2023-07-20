@@ -36,6 +36,7 @@ export const NavLinks = styled.ul<{toggle: Boolean}>`
         padding: 0;
         width:70%;
         background-color: rgb(4, 102, 200,0.4);
+        backdrop-filter: blur(10px);
     }
 
 `
