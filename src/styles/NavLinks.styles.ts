@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
 
-export const NavLinks = styled.ul`
-    width:20%;
+export const NavLinks = styled.ul<{toggle: Boolean}>`
+    width:25%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -11,7 +11,32 @@ export const NavLinks = styled.ul`
     
 
     @media (max-width: 1500px){
-        width:25%;
+        width:35%;
+    }
+
+    @media (max-width: 1050px){
+        width:55%;
+    }
+    @media (max-width: 800px){
+        width:70%;
+    }
+
+
+    @media (max-width:640px){
+        /* display:${({toggle}) => toggle? 'none' : 'flex'}; */
+        position: fixed;
+        flex-direction:column;
+        align-items: center;
+        right:${({toggle}) => toggle? '-70%' : '0'};
+        top:80px;
+        background-color:black;
+        margin: 0;
+        transition: right .5s;
+        height:100vh;
+        justify-content: start;
+        padding: 0;
+        width:70%;
+        background-color: rgb(4, 102, 200,0.4);
     }
 
 `

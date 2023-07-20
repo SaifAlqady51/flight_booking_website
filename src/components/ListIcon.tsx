@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { BsList } from "react-icons/bs";
-import { ListIconContainer } from '@/styles/ListIconContainer';
+import { StyledIcon } from '@/styles/ListIcon.styles';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import {toggleSwitch} from '../redux/features/toggleSideNav-slice'
 import { useDispatch } from 'react-redux';
-
+import {AiOutlineClose} from 'react-icons/ai'
 
 
 
@@ -15,10 +15,10 @@ const ListIcon: FC = ({}) => {
     const dispatch = useDispatch<AppDispatch>();
 
 
-  return (
-    <ListIconContainer toggle={active} >
-        <BsList onClick={() => dispatch(toggleSwitch())}/>
-    </ListIconContainer>
+  return (      
+    <StyledIcon >
+      {active? <BsList onClick={() => dispatch(toggleSwitch())}/> : < AiOutlineClose onClick={() => dispatch(toggleSwitch())}/>}
+    </StyledIcon>
   )
 }
 

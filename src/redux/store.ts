@@ -1,11 +1,13 @@
 import {configureStore} from '@reduxjs/toolkit'
 import  toggleSideNav from './features/toggleSideNav-slice'
+import toggleTheme  from './features/toggleTheme-slice';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 
 export const store = configureStore({
     reducer:{
-        toggleSideNav
+        toggleSideNav,
+        toggleTheme
 
     }
 })

@@ -3,8 +3,7 @@ import {IconContext} from 'react-icons'
 
 interface ProviderProps {
     className?: string,
-    children: JSX.Element
-    toggle?:boolean
+    children: JSX.Element,
 }
 
 
@@ -12,14 +11,16 @@ const Provider = ({className,children}:ProviderProps) => <IconContext.Provider v
 
 
 
-export const ListIconContainer = styled(Provider)`
+export const StyledIcon = styled(Provider)`
     width:40px;
     height:40px;
-    /* @ts-ignore */
-    color: ${({toggle}) => toggle? "white": "red"};
+    color: white;
     display:none;
     padding-right:10px;
-    @media (max-width:1000px){
+    
+    @media (max-width:640px){
         display:flex;
+        flex-shrink: 0;
+        padding-left:15px;
     }
 `

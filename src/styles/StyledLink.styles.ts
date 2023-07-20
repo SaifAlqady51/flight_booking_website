@@ -15,8 +15,9 @@ export const StyledLink = styled(Link)`
 
 
     @media (max-width: 1000px) {
-        display:none
+        color: ${(props) => props.theme.textColor};
+
     }
 
 
-` 
+`
