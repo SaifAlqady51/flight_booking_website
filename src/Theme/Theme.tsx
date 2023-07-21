@@ -6,7 +6,7 @@ import { GlobalStyles } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { AppDispatch,useAppSelector } from "@/redux/store";
 import { ReactNode, useState } from "react";
-import ThemeToggler from "@/components/ThemeToggler";
+import ThemeToggler from "@/components/Nav/ThemeToggler";
 import { switchTheme } from "@/redux/features/toggleTheme-slice";
 
 
