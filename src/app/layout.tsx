@@ -7,6 +7,7 @@ import Theme from '../Theme/Theme'
 import { GlobalStyles } from '@/Theme/ThemeColors'
 
 import { AppDispatch,useAppSelector } from "@/redux/store";
+import { AuthProvider } from '@/components/AuthProvider'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -28,10 +29,14 @@ export default function RootLayout({
       <ReduxProvider>
 
             <StyledComponentsRegistry>
+
               <Theme>
                 <GlobalStyles />
-                <Navbar />
-                {children}
+                <AuthProvider>
+                  <Navbar />
+                  {children}
+                </AuthProvider>
+
               </Theme>
 
             </StyledComponentsRegistry>

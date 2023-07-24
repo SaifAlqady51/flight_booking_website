@@ -18,7 +18,7 @@ export const StyledIcon = styled(Provider)`
     display:none;
     padding-right:10px;
     
-    @media (max-width:640px){
+    @media (max-width:750px){
         display:flex;
         flex-shrink: 0;
         padding-left:15px;

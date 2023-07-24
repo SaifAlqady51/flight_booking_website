@@ -14,8 +14,10 @@ export const StyledLink = styled(Link)`
     }
 
 
-    @media (max-width: 1000px) {
+    @media (max-width: 750px) {
         color: ${(props) => props.theme.textColor};
+        font-size: 18px;
+        font-weight: bold;
 
     }
 

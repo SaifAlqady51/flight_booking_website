@@ -6,6 +6,11 @@ export const NavContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position:fixed;
+    width: 100%;
+    top:0;
+    z-index: 10;
+
 `
 
 export const LeftNavbar = styled.div`
@@ -15,10 +20,13 @@ export const LeftNavbar = styled.div`
     align-items: center;
     justify-content: space-evenly;
 
-    @media (max-width:1000px){
-        width:30%;
+    @media  (max-width:1400px){
+        width:20%
     }
-    @media (max-width:500px) {
+    @media (max-width:1000px){
+        width:35%;
+    }
+    @media (max-width:750px) {
         width:100%;
         justify-content: center;
     }
@@ -34,11 +42,15 @@ export const RightNavbar = styled.div`
     justify-content: end;
     flex-shrink:0;
 
+
+    @media  (max-width:1400px){
+        width:80%
+    }
     @media (max-width:1000px){
-        width:70%;
+        width:65%;
         
     }
-    @media (max-width:640px) {
+    @media (max-width:750px) {
         width:10%;
         display:flex;
         align-items: center;

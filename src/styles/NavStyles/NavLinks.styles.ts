@@ -22,21 +22,23 @@ export const NavLinks = styled.ul<{toggle: Boolean}>`
     }
 
 
-    @media (max-width:640px){
-        position: fixed;
+    @media (max-width:750px){
+        position: absolute;
         flex-direction:column;
         align-items: center;
-        right:${({toggle}) => toggle? '0' : '-70%'};
+        right:${({toggle}) => toggle? '0' : '-100%'};
         top:80px;
         background-color:black;
         margin: 0;
         transition: right .5s;
-        height:100vh;
+        height:200px;
         justify-content: start;
         padding: 0;
-        width:70%;
+        width:100%;
         background-color: rgb(4, 102, 200,0.4);
+        z-index: 11;
         backdrop-filter: blur(10px);
+
     }
 
 `

@@ -11,6 +11,7 @@ import { TayaraIcon } from '@/styles/NavStyles/TayaraIcon.styles';
 import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import { StyledLi } from '@/styles/NavStyles/StyledLi.styles';
+import Signup from './Signup'
 
 interface NavbarProps {
   
@@ -19,7 +20,7 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({}) => {
 
       // active state from redux
-      const active = useAppSelector((state) => state.toggleSideNav.active)
+      const active:boolean = useAppSelector((state) => state.toggleSideNav.active)
       console.log(active)
       // dispatch is called to import toggleSwitch from redux
       const dispatch = useDispatch<AppDispatch>();
@@ -48,7 +49,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
               <StyledLink href='/seats'>Seats</StyledLink>
             </StyledLi>
             <StyledLi>
-              <StyledLink href='#'>Sign up</StyledLink>
+              <Signup />
             </StyledLi>
           </NavLinks>
 
