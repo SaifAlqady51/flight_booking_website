@@ -1,8 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit'
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
+
+// slices
 import  toggleSideNav from './features/toggleSideNav-slice'
 import toggleTheme  from './features/toggleTheme-slice';
 import signupButtonIsLoading from './features/signupButtonIsLoading-slice';
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 
 export const store = configureStore({

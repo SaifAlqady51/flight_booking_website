@@ -1,5 +1,6 @@
-import styled from 'styled-components'
-import {IconContext} from 'react-icons'
+import styled from 'styled-components';
+import {IconContext} from 'react-icons';
+import {motion} from 'framer-motion';
 
 interface ProviderProps {
     className?: string,
@@ -14,16 +15,24 @@ export const StyledThemeToggler = styled(Provider)`
     height:30px;
     color:white;
     flex-shrink: 0;
-    -webkit-transition: -webkit-transform .5s;
-    &:active {
-        -webkit-transform: rotate(360deg);
-    }
     @media  (max-width:500px){
         width:25px;
         height:25px;
-        -webkit-transition: -webkit-transform .5s;
-
 
     }
+
+`
+
+export const ListIconContainer = styled(motion.div)`
+
+    width:30px;
+    height:30px;
+    color:white;
+    flex-shrink: 0;
+    @media  (max-width:500px){
+        width:25px;
+        height:25px;
+    }
+
 
 `
