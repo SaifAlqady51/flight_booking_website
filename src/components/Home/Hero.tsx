@@ -1,6 +1,6 @@
 import { FC, RefObject, useRef } from 'react'
 import { HeroStyles } from '@/styles/HomeStyles/Hero.styles'
-import {motion, useMotionValue, useScroll} from 'framer-motion'
+import {motion, useMotionValue, useMotionValueEvent, useScroll} from 'framer-motion'
 import { useTransform } from 'framer-motion'
 interface HeroProps {
   
@@ -21,10 +21,15 @@ const Hero: FC<HeroProps> = ({}) => {
     offset: ["end end","end start"],
   }) 
 
-  const animation = useTransform(scrollYProgress, [0,1],[0,360],{clamp:false});
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("Page scroll: ", latest)
+  })
+
+
+
 
   return(
-      <HeroStyles as={motion.h2} initial={{x:0}} animate={{x:300}}  style={{animation}}  ref={targetRef}>Book your flight in one minute</HeroStyles>
+      <HeroStyles as={motion.h2} initial={{x:0}}    ref={targetRef}>Book your flight in one minute</HeroStyles>
   )
 }
 

@@ -5,7 +5,7 @@ type initialStateType = {
 }
 
 const initialState = {
-    theme:'light'
+    theme: 'dark'
 } as initialStateType;
 
 export const toggleTheme = createSlice({

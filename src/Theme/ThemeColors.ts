@@ -19,7 +19,7 @@ export const lightMode = {
 export const GlobalStyles = createGlobalStyle`
     body {
         background-color: ${(props) => props.theme.body};
-        color:${(props) => props.theme.textColor}
+        color:${(props) => props.theme.textColor};
     }
 
 `
