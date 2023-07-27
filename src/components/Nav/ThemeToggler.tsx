@@ -6,6 +6,8 @@ import { AppDispatch, useAppSelector } from '@/redux/store';
 import { switchTheme } from '@/redux/features/toggleTheme-slice';
 import {useAnimate} from 'framer-motion'
 
+import { PersistGate } from 'redux-persist/integration/react';
+
 
 interface ThemeTogglerProps {
   

@@ -7,9 +7,7 @@ export const HomeContainer = styled.div`
     justify-content: start;
     margin-top: 100px;
     height: 3000px;
+    overflow-x: hidden;
 
-    @media (max-width: 768px) {
-        overflow-x: hidden;
-    }
 
 `
