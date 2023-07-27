@@ -6,7 +6,6 @@ import { ReduxProvider } from '@/redux/ReduxProvider'
 import Theme from '../Theme/Theme'
 import { GlobalStyles } from '@/Theme/ThemeColors'
 
-import { AppDispatch,useAppSelector } from "@/redux/store";
 import { AuthProvider } from '@/components/AuthProvider'
 
 
