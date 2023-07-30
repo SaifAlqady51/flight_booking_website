@@ -21,7 +21,7 @@ const persistConfig = {
     key: 'root',
     version:1,
     storage,
-    blacklist:['toggleSideNav']
+    blacklist:['toggleSideNav', 'signupButtonIsLoading']
 }
 
 const reducer = combineReducers({

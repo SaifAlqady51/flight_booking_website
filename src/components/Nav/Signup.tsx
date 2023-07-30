@@ -27,7 +27,7 @@ const Signup: FC = () => {
       }
   }
 
-  const signout = async () => {
+  const singoutFromGoogle = async () => {
     dispatch(thruthyIsLoading())
 
     try{
@@ -37,12 +37,10 @@ const Signup: FC = () => {
       throw new Error('Error signing out'+ error)
     }
   }
-  if(session){
 
-  }
   return (
     <>
-        <SignupButton  onClick={session? signout: signupWithGoogle} disabled={isLoading} >{session? 'Sign out': 'Sign up'}</SignupButton>
+        <SignupButton  onClick={session? singoutFromGoogle: signupWithGoogle} disabled={isLoading} >{session? 'Sign out': 'Sign up'}</SignupButton>
     </>
   )
 }
