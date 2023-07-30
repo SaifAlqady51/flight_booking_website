@@ -9,8 +9,10 @@ import {AiOutlineClose} from 'react-icons/ai'
 
 
 const ListIcon: FC = ({}) => {
+
     // active state from redux
     const active = useAppSelector((state) => state.toggleSideNav.active)
+    
     // dispatch is called to import toggleSwitch from redux
     const dispatch = useDispatch<AppDispatch>();
 

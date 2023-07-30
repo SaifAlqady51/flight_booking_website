@@ -6,12 +6,13 @@ import  toggleSideNav from './features/toggleSideNav-slice'
 import toggleTheme  from './features/toggleTheme-slice';
 import signupButtonIsLoading from './features/signupButtonIsLoading-slice';
 
-import storageSession from 'reduxjs-toolkit-persist/lib/storage/session'
+// import storageSession from 'reduxjs-toolkit-persist/lib/storage/session'
 
 // redux persist 
 // import storage from 'redux-persist/lib/storage';
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistReducer } from 'redux-persist';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
+import storage from 'redux-persist/lib/storage';
 
 
 
@@ -19,7 +20,7 @@ import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistReducer } fro
 const persistConfig = {
     key: 'root',
     version:1,
-    storage:storageSession,
+    storage,
     blacklist:['toggleSideNav']
 }
 
@@ -43,7 +44,7 @@ export const store = configureStore({
     })
 })
 
-export type RootState = ReturnType<typeof store.getState>;
+type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState>  = useSelector;
 
