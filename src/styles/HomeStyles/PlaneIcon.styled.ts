@@ -3,23 +3,23 @@ import Image from 'next/image';
 import {motion} from 'framer-motion'
 
 export const PlaneIconContainer = styled(motion.div)`
-    width:180px;
-    height:110px;
+    width:150px;
+    height:150px;
 
     @media (max-width:750px) {
         width:100px;
-        height:61px;
+        height:100px;
         
     }
 `
 
 export const PlaneIconStyled = styled(Image)`
-    width:180px;
-    height:110px;
+    width:150px;
+    height:150px;
 
     @media (max-width:750px) {
         width:100px;
-        height:61px;
+        height:100px;
     }
 `
 
