@@ -1,5 +1,5 @@
 import { FC, RefObject, useRef } from 'react'
-import { HeroStyles } from '@/styles/HomeStyles/Hero.styles'
+import { HeroStyles } from '@/styles/HomeStyles/HeroStyles/Hero.styles'
 import {motion,  useMotionValueEvent, useScroll} from 'framer-motion'
 
 interface HeroProps {
