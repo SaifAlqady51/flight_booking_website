@@ -7,6 +7,7 @@ export const HeroImageContainer = styled(motion.div)`
     width:500px;
     height:500px;
     border-radius: 10px;
+    margin-bottom:20px;
 
     @media (max-width:750px) {
         width:200px;
@@ -18,6 +19,7 @@ export const HeroImageStyled = styled(Image)`
     width:500px;
     height:500px;
     border-radius: 200px;
+    margin-bottom:20px;
 
 
     @media (max-width:750px) {
