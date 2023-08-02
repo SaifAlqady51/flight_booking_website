@@ -5,7 +5,7 @@ export const HeroStyles = styled(motion.h2)`
     font-size: 40px;
     
      @media (max-width:500px){
-        font-size:20px;
+        font-size:28px;
         
     }
     

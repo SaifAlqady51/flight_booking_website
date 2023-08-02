@@ -10,8 +10,8 @@ export const HeroImageContainer = styled(motion.div)`
     margin-bottom:20px;
 
     @media (max-width:750px) {
-        width:200px;
-        height:200px;
+        width:300px;
+        height:300px;
     }
 `
 
@@ -23,8 +23,8 @@ export const HeroImageStyled = styled(Image)`
 
 
     @media (max-width:750px) {
-        width:200px;
-        height:200px;
+        width:300px;
+        height:300px;
     }
 `
 
