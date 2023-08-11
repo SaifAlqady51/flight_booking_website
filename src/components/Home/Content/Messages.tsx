@@ -1,44 +1,41 @@
 import { FC } from 'react';
 import Image from 'next/image'
-import { MainDiv,ChildDiv,GrandChildDiv } from '@/styles/HomeStyles/ContentStyles/Messages.styles';
+import { MainDiv,ChildDiv,ChildDivTop,ChildDivBottom,GrandChildDiv,GrandChildDivTop, GrandChildDivBottom } from '@/styles/HomeStyles/ContentStyles/Messages.styles';
 import spiningWorld from '../../../../public/giphy.gif';
 import purpleSky from '../../../../public/pruple-sky.gif'
 import { MessageImage } from '@/styles/HomeStyles/ContentStyles/MessageImage';
-interface MessagesProps {
-  
-}
 
-const Messages: FC<MessagesProps> = ({}) => {
+
+const Messages: FC = ({}) => {
   return (
     <>
         <MainDiv>
-            <ChildDiv>
+            <ChildDivTop>
 
-                <GrandChildDiv order='2' width='30%'>
-                    <MessageImage src={spiningWorld} height={400} widthMobile='366px' alt='spinning-earth'/>
-                </GrandChildDiv>
+                <GrandChildDivTop order='2' width='30%' widthRes='45%' >
+                    <MessageImage src={spiningWorld} height={400} heightMobile='440px' alt='spinning-earth'/>
+                </GrandChildDivTop>
 
-                <GrandChildDiv order='1' text={true} width='70%' >
+                <GrandChildDivTop order='1' text={true} width='70%' widthRes='60%' >
                     <h2>Explore the world with us</h2>
                     <h4>It is all about one click to discover new opportunities, see the world and have fun</h4>
-                </GrandChildDiv>
+                </GrandChildDivTop>
 
 
-            </ChildDiv>
-        </MainDiv>
-        <MainDiv>
-            <ChildDiv>
+            </ChildDivTop>
+
+            <ChildDivBottom>
         
-                <GrandChildDiv text={true} width='40%'>
+                <GrandChildDivBottom text={true} width='40%' widthRes='30%'>
                     <h2>Touch the sky where your dreams belong</h2>
                     <h4>Fly with your dreams </h4>
-                </GrandChildDiv>
+                </GrandChildDivBottom>
 
-                <GrandChildDiv width='60%' justify='end'>
-                    <MessageImage src={purpleSky} height={400} heightMobile='200px' alt='purple-sky'/>
-                </GrandChildDiv>
+                <GrandChildDivBottom  width='60%' widthRes='40%' align='end'   >
+                    <MessageImage src={purpleSky} height={400} widthMobileSmall='400px' widthMobile='700px' widthTab='600px'  alt='purple-sky'/>
+                </GrandChildDivBottom>
 
-            </ChildDiv>
+            </ChildDivBottom>
         </MainDiv>
     </>
   )
