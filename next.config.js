@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     compiler:{
-        styledComponent: true
-    }
+        styledComponents: true
+    },
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;

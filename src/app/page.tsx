@@ -5,17 +5,22 @@ import PlaneIcon from "@/components/Home/Hero/PlaneIcon";
 import HeroImage from "@/components/Home/Hero/HeroImage";
 import Card from "@/components/Home/Content/Card";
 import Messages from "@/components/Home/Content/Messages";
+import {useEffect} from 'react'
+// import {FetchData} from '../api/api'
 
 export default function Home() {
+	// useEffect(() => {
+	// 	FetchData()
+	// },[])
   return (
     <>
-      <HomeContainer>
-        <PlaneIcon />
-        <Hero />
-        <HeroImage />
-        <Card />
-        <Messages />
-      </HomeContainer>
+		{/* <PlaneIcon /> */}
+		<HomeContainer>
+			<Hero />
+			<HeroImage />
+			<Card />
+			<Messages />
+		</HomeContainer>
     </>
   )
 }

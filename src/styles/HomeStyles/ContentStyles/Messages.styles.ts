@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import motion from 'framer-motion';
+import {motion} from 'framer-motion';
 
 
 export const MainDiv = styled.div`
@@ -51,10 +51,13 @@ interface GarndChildDivProps {
     align?:string,
     order?:string,
     wideImage?:boolean,
-    widthRes?: string,
+	widthRes?: string,
+
 }
 
-export const GrandChildDiv = styled.div<GarndChildDivProps>`
+
+export const GrandChildDiv = styled(motion.div)<GarndChildDivProps>`
+
     height:inherit;
     width:${(props) => props.width};
     display:flex;

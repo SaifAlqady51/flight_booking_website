@@ -10,13 +10,13 @@ interface HeroProps {
 
 const Hero: FC<HeroProps> = ({}) => {
 
-  const targetRef = useRef<HTMLDivElement>(null)
+  // const targetRef = useRef<HTMLDivElement>(null)
 
 
 
   return(
     <>
-      <HeroStyles as={motion.h2} ref={targetRef} initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{duration:2}}  >Book your flight in one minute</HeroStyles>
+		<HeroStyles as={motion.h2} initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{duration:2}}  >Book your flight in one minute</HeroStyles>
     </>
 
   )

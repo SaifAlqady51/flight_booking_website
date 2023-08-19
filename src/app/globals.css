@@ -3,4 +3,5 @@ body {
     @media (max-width: 768px) {
         overflow-x: hidden;
     }
+	height: 100%;
 }
