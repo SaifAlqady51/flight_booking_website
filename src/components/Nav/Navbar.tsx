@@ -2,7 +2,7 @@
 import { NavContainer, LeftNavbar,RightNavbar } from '@/styles/NavStyles/Navbar.styles'
 import { Name } from '@/styles/NavStyles/CompanyName.styles'
 import { FC } from 'react'
-import Logo from '../../../public/globe.png'
+import Logo from '../../../public/static/images/globe.png'
 import { StyledLink } from '@/styles/NavStyles/StyledLink.styles'
 import { NavLinks } from '@/styles/NavStyles/NavLinks.styles'
 import ListIcon from './ListIcon'
