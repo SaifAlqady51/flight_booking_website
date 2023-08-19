@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { HeroImageContainer,HeroImageStyled } from '@/styles/HomeStyles/HeroStyles/HeroImage.styles'
-import planeWindow from '../../../../public/planeWindow.gif'
+import planeWindow from '../../../../public/static/images/planeWindow.gif'
 
 interface HeroImageProps {
   

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { PlaneIconContainer, PlaneIconStyled } from '@/styles/HomeStyles/HeroStyles/PlaneIcon.styled'
-import horizotalPlane from '../../../../public/paper-plane-purple.png'
+import horizotalPlane from '../../../../public/static/images/paper-plane-purple.png'
 import { motionValue } from 'framer-motion'
 
 

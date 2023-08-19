@@ -2,8 +2,8 @@ import { FC } from 'react';
 import {useAnimate} from 'framer-motion'
 import Image from 'next/image';
 import { MainDiv,ChildDiv,ChildDivTop,ChildDivBottom,GrandChildDiv,GrandChildDivTop, GrandChildDivBottom } from '@/styles/HomeStyles/ContentStyles/Messages.styles';
-import spiningWorld from '../../../../public/giphy.gif';
-import purpleSky from '../../../../public/pruple-sky.gif';
+import spiningWorld from '../../../../public/static/images/giphy.gif';
+import purpleSky from '../../../../public/static/images/pruple-sky.gif';
 import { MessageImage } from '@/styles/HomeStyles/ContentStyles/MessageImage';
 
 
