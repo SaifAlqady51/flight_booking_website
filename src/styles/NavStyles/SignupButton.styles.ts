@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 
 export const SignupButton = styled.button`
-    width: 100px;
+    width: 120px;
     height: 30px;
     color: white;
     background-color:inherit;
