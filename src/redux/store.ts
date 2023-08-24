@@ -5,13 +5,9 @@ import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import  toggleSideNav from './features/toggleSideNav-slice'
 import toggleTheme  from './features/toggleTheme-slice';
 import signupButtonIsLoading from './features/signupButtonIsLoading-slice';
+import flightFormInputValues from './features/flightFormInputValues-slice';
 
-// import storageSession from 'reduxjs-toolkit-persist/lib/storage/session'
-
-// redux persist 
-// import storage from 'redux-persist/lib/storage';
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistReducer } from 'redux-persist';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import storage from 'redux-persist/lib/storage';
 
 
@@ -21,13 +17,14 @@ const persistConfig = {
     key: 'root',
     version:1,
     storage,
-    blacklist:['toggleSideNav', 'signupButtonIsLoading']
+    blacklist:['toggleSideNav', 'signupButtonIsLoading','flightFormInputValues']
 }
 
 const reducer = combineReducers({
     toggleTheme,
     toggleSideNav,
-    signupButtonIsLoading
+	signupButtonIsLoading,
+	flightFormInputValues
 })
 
 

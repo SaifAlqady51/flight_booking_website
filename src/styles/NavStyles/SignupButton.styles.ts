@@ -19,6 +19,7 @@ export const SignupButton = styled.button`
 	text-transform: uppercase;
 	padding:6px 10px;
 	margin-left:15px;
+	margin-right:15px;
 	
 
     

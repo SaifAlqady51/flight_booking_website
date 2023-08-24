@@ -1,24 +1,22 @@
 'use client'
-import Hero from "@/components/Home/Hero/Hero";
+import Hero from "@components/Home/Hero/Hero";
 import { HomeContainer } from "@/styles/HomeStyles/HomeContainer";
-import PlaneIcon from "@/components/Home/Hero/PlaneIcon";
-import HeroImage from "@/components/Home/Hero/HeroImage";
-import Card from "@/components/Home/Content/Card";
-import Messages from "@/components/Home/Content/Messages";
+import PlaneIcon from "@components/Home/Hero/PlaneIcon";
+import HeroImage from "@components/Home/Hero/HeroImage";
+// import Card from "@/components/Home/Content/Card";
+import Messages from "@components/Home/Content/Messages";
 import {useEffect} from 'react'
 // import {FetchData} from '../api/api'
+import { FlightSearchForm } from "@components/Home/Content/SearchForm/FlightSearchForm";
 
 export default function Home() {
-	// useEffect(() => {
-	// 	FetchData()
-	// },[])
   return (
     <>
 		{/* <PlaneIcon /> */}
 		<HomeContainer>
 			<Hero />
 			<HeroImage />
-			<Card />
+			<FlightSearchForm />
 			<Messages />
 		</HomeContainer>
     </>

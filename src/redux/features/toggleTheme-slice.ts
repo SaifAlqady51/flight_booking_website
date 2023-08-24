@@ -15,7 +15,7 @@ export const toggleTheme = createSlice({
         switchTheme:(state:initialStateType) => {
             state.theme === "light" ? state.theme = "dark" : state.theme = "light";
         },
-    }
+ }
 })
 
 export const {switchTheme} = toggleTheme.actions;

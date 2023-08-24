@@ -1,12 +1,12 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from '@/lib/registery'
-import Navbar from '../components/Nav/Navbar'
+import Navbar from '@components/Nav/Navbar'
 import { ReduxProvider } from '@/redux/ReduxProvider'
 import Theme from '../Theme/Theme'
 import { GlobalStyles } from '@/Theme/ThemeColors'
 
-import { AuthProvider } from '@/components/AuthProvider'
+import { AuthProvider } from '@components/AuthProvider'
 
 
 const inter = Inter({ subsets: ['latin'] })

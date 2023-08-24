@@ -23,7 +23,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+	  "@components/*":["./src/app/components/*"],
+	  "@styles/*":["./src/styles/*"],
+	  "@redux/*":["./src/redux/*"],
+	  "@public/*":["./public/*"],
+	  "@server/*":["./server/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/_document.js"],

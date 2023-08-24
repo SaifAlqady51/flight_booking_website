@@ -1,0 +1,12 @@
+import styled from 'styled-components';
+
+
+export const SubmitButton = styled.input`
+	width:120px;
+	height:45px;
+	background-color: #10002b;
+	color:white;
+	border:none;
+	border-radius:20px;
+	font-size:18px;
+`

@@ -1,13 +1,10 @@
 "use client"
 import { ThemeProvider } from "styled-components";
 import {lightMode, darkMode } from "./ThemeColors";
-import { GlobalStyles } from "@mui/material";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch,useAppSelector } from "@/redux/store";
-import { ReactNode, useState } from "react";
-import ThemeToggler from "@/components/Nav/ThemeToggler";
-import { switchTheme } from "@/redux/features/toggleTheme-slice";
+import { ReactNode } from "react";
 
 
 interface ThemeProviderProps {

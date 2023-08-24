@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components'; 
 import {IconContext} from 'react-icons'
 
 interface ProviderProps {
