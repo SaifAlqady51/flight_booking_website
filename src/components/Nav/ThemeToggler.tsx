@@ -5,16 +5,8 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { switchTheme } from '@/redux/features/toggleTheme-slice';
 import {useAnimate} from 'framer-motion'
-// import { FetchData } from '../../api/api'
-// import { getAmadeusKey } from '../../../server/amadeus'
 
-import { PersistGate } from 'redux-persist/integration/react';
-import {getFlightOffer} from '../../../server/api';
-import  { getDuffelId }  from '../../../server/utils/getDuffelID'
-import {getFlightOrderId} from '../../../server/utils/getFlightOrderId'
-interface ThemeTogglerProps {
   
-}
 
 const ThemeToggler = () => {
   const [scope, animate] = useAnimate();
@@ -30,9 +22,6 @@ const ThemeToggler = () => {
 
     animate(scope.current,{rotate:[0,360]})
 	
-	// getFlightOffer({from:'PAR',to:'SYD'})
-	// getDuffelId()
-	getFlightOrderId()
   }
 
   return (
