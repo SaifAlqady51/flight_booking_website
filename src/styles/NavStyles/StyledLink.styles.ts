@@ -4,9 +4,10 @@ import Link from 'next/link'
 export const StyledLink = styled(Link)`
     color:white;
     text-decoration: none;
-    padding: 6px 10px;
+    padding: 8px 20px;
     font-size: 17px;
-    border-radius: 3px;
+	border-radius: 3px;
+
 
     &:hover{
         background-color: grey;

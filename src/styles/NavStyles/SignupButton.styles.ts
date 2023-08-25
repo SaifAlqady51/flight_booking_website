@@ -9,7 +9,7 @@ export const SignupButton = styled.button`
     background-color:inherit;
     border:none;
     border-radius: 8px;
-    font-size:18px;
+    font-size:20px;
     margin-right:20px;
     display:flex;
     align-items: center;
@@ -17,7 +17,7 @@ export const SignupButton = styled.button`
     flex-shrink: 0;
     font-weight: 900;
 	text-transform: uppercase;
-	padding:6px 10px;
+	padding:8px 10px;
 	margin-left:15px;
 	margin-right:15px;
 	

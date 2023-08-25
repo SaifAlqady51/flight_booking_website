@@ -40,7 +40,7 @@ export const FlightSearchForm = () => {
 	const handleSumbit = (e:React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log(flights)
-		router.push('/seats')
+		router.push('/flights')
 	}
 	
 

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {IconContext} from 'react-icons';
 import {motion} from 'framer-motion';
 
@@ -10,29 +10,27 @@ interface ProviderProps {
 
 const Provider = ({className,children}:ProviderProps) => <IconContext.Provider value={{className}} >{children}</IconContext.Provider>;
 
-export const StyledThemeToggler = styled(Provider)`
-    width:30px;
+
+const ListIconStyled = css`
+	margin-right:40px;
+	width:30px;
     height:30px;
     color:white;
     flex-shrink: 0;
-    @media  (max-width:500px){
-        width:25px;
-        height:25px;
 
-    }
+	@media (max-width:1500px){
+		margin-right:100px;
+	}
+	@media (max-width:750px){
+		margin-right:20px;
+	}
 
+`
+export const StyledThemeToggler = styled(Provider)`
+
+	${ListIconStyled}
 `
 
 export const ListIconContainer = styled(motion.div)`
-
-    width:30px;
-    height:30px;
-    color:white;
-    flex-shrink: 0;
-    @media  (max-width:500px){
-        width:25px;
-        height:25px;
-    }
-
-
+	${ListIconStyled}
 `

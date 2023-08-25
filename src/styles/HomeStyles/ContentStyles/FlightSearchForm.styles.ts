@@ -10,11 +10,25 @@ export const FlightSearchFormStyles = styled.form`
 	align-items:center;
 	justify-content:space-around;
 	background: ${(props) => props.theme.navColor };
+
+	@media (max-width:1100px){
+		width:90%
+	}
+
+	@media (max-width:800px){
+		flex-direction:column;
+		width:300px;
+		height:360px;
+		padding-top:10px
+	}
 `
 
 export const SearchFieldContainer = styled.div`
 	width:25%;
 	position:relative;
+	@media (max-width:800px){
+		width:80%;
+	}
 `
 
 export const StyledInput = styled.input`
@@ -27,6 +41,7 @@ export const StyledInput = styled.input`
 	background: inherit;
 	font-size:1em;
 	outline:none;
+
 
 
 

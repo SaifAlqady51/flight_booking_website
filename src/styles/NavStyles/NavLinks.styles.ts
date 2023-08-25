@@ -2,24 +2,14 @@ import { styled } from "styled-components";
 
 
 export const NavLinks = styled.ul<{toggle: Boolean}>`
-    width:25%;
+    width:50%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     text-transform: uppercase;
     list-style-type: none;
     
 
-    @media (max-width: 1500px){
-        width:35%;
-    }
-
-    @media (max-width: 1050px){
-        width:55%;
-    }
-    @media (max-width: 800px){
-        width:70%;
-    }
 
 
     @media (max-width:750px){
@@ -42,3 +32,13 @@ export const NavLinks = styled.ul<{toggle: Boolean}>`
     }
 
 `
+    // @media (max-width: 1500px){
+    //     width:35%;
+    // }
+
+    // @media (max-width: 1050px){
+    //     width:55%;
+    // }
+    // @media (max-width: 800px){
+    //     width:70%;
+    // }
