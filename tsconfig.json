@@ -26,9 +26,10 @@
       "@/*": ["./src/*"],
 	  "@components/*":["./src/app/components/*"],
 	  "@styles/*":["./src/styles/*"],
-	  "@redux/*":["./src/redux/*"],
+	  "@redux/*":["/src/redux/*"],
 	  "@public/*":["./public/*"],
-	  "@server/*":["./server/*"]
+	  "@server/*":["/server/*"],
+	  "@images/*": ["/public/static/images/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/_document.js"],

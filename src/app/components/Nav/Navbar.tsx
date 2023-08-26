@@ -46,7 +46,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
               <StyledLink href='/about'>About</StyledLink>
             </StyledLi>
             <StyledLi>
-              <StyledLink href='/seats'>Seats</StyledLink>
+              <StyledLink href='/flights'>Flights</StyledLink>
             </StyledLi>
             <StyledLi>
               <Signup />

@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled,{css} from 'styled-components';
 import Image from 'next/image';
 import {motion} from 'framer-motion'
 
 
-export const HeroImageContainer = styled(motion.div)`
+const HeroImage = css`
+
     width:500px;
     height:500px;
     border-radius: 10px;
@@ -13,18 +14,14 @@ export const HeroImageContainer = styled(motion.div)`
         width:350px;
         height:350px;
     }
+
+`
+
+export const HeroImageContainer = styled(motion.div)`
+	${HeroImage}
 `
 
 export const HeroImageStyled = styled(Image)`
-    width:500px;
-    height:500px;
-    border-radius: 200px;
-    margin-bottom:20px;
-
-
-    @media (max-width:750px) {
-        width:350px;
-        height:350px;
-    }
+	${HeroImage}
 `
 
