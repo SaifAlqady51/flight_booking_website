@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import Image from "next/image";
-
+// main contianer of the flight card
 export const FlightCardContainer = styled.div`
 	width: 70%;
 	height: 300px;
@@ -9,7 +9,7 @@ export const FlightCardContainer = styled.div`
 	border-radius: 40px;
 	display: flex;
 `;
-
+// left contianer
 export const LeftContainer = styled.div`
 	width: 30%;
 	height: 100%;
@@ -17,12 +17,7 @@ export const LeftContainer = styled.div`
 	align-items: center;
 	justify-content: start;
 `;
-
-export const RightContainer = styled.div`
-	width: 70%;
-	height: inherit;
-`;
-
+// left contianer elements  
 const FlightCardImageTemp = css`
 	width: 150px;
 	height: 150px;
@@ -32,3 +27,32 @@ const FlightCardImageTemp = css`
 export const FlightCardImage = styled(Image)`
 	${FlightCardImageTemp}
 `;
+
+// right contianer
+export const RightContainer = styled.div`
+	width: 70%;
+	height: inherit;
+	display:flex;
+	flex-direction:column;
+`;
+// right contianer elements
+export const FlightBasicInfo = styled.div`
+	height:50%;
+	padding:10px;
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+
+
+;
+`
+
+export const FlightCardText = styled.h2`
+	font-size: 20px;
+	color:white ;
+`
+
+export const FlightDetailedInfo = styled.div`
+	height:50%;
+	padding:10px;
+`

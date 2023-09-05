@@ -3,7 +3,6 @@ import { NavContainer, LeftNavbar,RightNavbar } from '@/styles/NavStyles/Navbar.
 import { Name } from '@/styles/NavStyles/CompanyName.styles'
 import { FC } from 'react'
 import Logo from '@public/static/images/globe.png'
-import { StyledLink } from '@/styles/NavStyles/StyledLink.styles'
 import { NavLinks } from '@/styles/NavStyles/NavLinks.styles'
 import ListIcon from './ListIcon'
 import ThemeToggler from './ThemeToggler';
@@ -11,8 +10,8 @@ import { TayaraIcon } from '@/styles/NavStyles/TayaraIcon.styles';
 import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import { StyledLi } from '@/styles/NavStyles/StyledLi.styles';
+import {StyledLink} from '@/styles/NavStyles/StyledLink.styles';
 import Signup from './Signup'
-
 interface NavbarProps {
   
 }

@@ -1,24 +1,19 @@
-'use client'
+"use client";
 import Hero from "@components/Home/Hero/Hero";
-import { HomeContainer } from "@/styles/HomeStyles/HomeContainer";
-import PlaneIcon from "@components/Home/Hero/PlaneIcon";
+import { Container } from "@/styles/HomeStyles/HomeContainer";
 import HeroImage from "@components/Home/Hero/HeroImage";
-// import Card from "@/components/Home/Content/Card";
 import Messages from "@components/Home/Content/Messages";
-import {useEffect} from 'react'
-// import {FetchData} from '../api/api'
 import { FlightSearchForm } from "@components/Home/Content/SearchForm/FlightSearchForm";
 
 export default function Home() {
-  return (
-    <>
-		{/* <PlaneIcon /> */}
-		<HomeContainer>
-			<Hero />
-			<HeroImage />
-			<FlightSearchForm />
-			<Messages />
-		</HomeContainer>
-    </>
-  )
+	return (
+		<>
+			<Container>
+				<Hero />
+				<HeroImage />
+				<FlightSearchForm />
+				<Messages />
+			</Container>
+		</>
+	);
 }

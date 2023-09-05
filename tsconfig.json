@@ -26,10 +26,12 @@
       "@/*": ["./src/*"],
 	  "@components/*":["./src/app/components/*"],
 	  "@styles/*":["./src/styles/*"],
-	  "@redux/*":["/src/redux/*"],
+	  "@redux/*":["./src/redux/*"],
 	  "@public/*":["./public/*"],
-	  "@server/*":["/server/*"],
-	  "@images/*": ["/public/static/images/*"]
+	  "@server/*":["./server/*"],
+	  "@images/*": ["/public/static/images/*"],
+	  "@lib/*": ["./src/lib/*"]
+
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/_document.js"],

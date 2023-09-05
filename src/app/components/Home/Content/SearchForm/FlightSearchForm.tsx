@@ -1,56 +1,56 @@
-'use client'
-import { AppDispatch, useAppSelector } from '@/redux/store';
-import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
+"use client";
+import { AppDispatch, useAppSelector } from "@/redux/store";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { useState, ChangeEvent } from "react";
 
-import { FlightSearchFormStyles } from '@styles/HomeStyles/ContentStyles/FlightSearchForm.styles'
-import {SearchField} from '../SearchForm/SearchField' 
-import {changeLocationValue, changeDistinationValue, changeFlightDateValue} from '@redux/features/flightFormInputValues-slice';
-import { ChangeEvent,useEffect } from 'react';
-import { useFindFlightSearch } from '@server/controllers/getFlightOffer'
-import { SubmitButton } from '@styles/HomeStyles/ContentStyles/SubmitButton.styles'
+import { eventType } from "@/types/flightSearchForm-types";
+import { FlightSearchFormStyles } from "@styles/HomeStyles/ContentStyles/FlightSearchForm.styles";
+import { SearchField } from "../SearchForm/SearchField";
+import { changeFormValue } from "@redux/features/flightFormInputValues-slice";
+import { useFindFlightSearch } from "@server/controllers/getFlightOffer";
+import { SubmitButton } from "@styles/HomeStyles/ContentStyles/SubmitButton.styles";
+import { handleChange } from "@/utils/handleInputChanges";
 //testing our reducers
-//
 
 export const FlightSearchForm = () => {
-	
-	const router = useRouter()
+	const router = useRouter();
+	const flightFormInputValues = useAppSelector(
+		(state) => state.flightFormInputValues
+	);
 
-	const flights = useFindFlightSearch()
+	const [location, setLocation] = useState("");
+	const [distination, setDistination] = useState("");
+	const [flightDate, setFlightDate] = useState("");
 
-	const flightInputValues = useAppSelector((state) => state.flightFormInputValues)
+	console.log(location, distination, flightDate);
+
+	useFindFlightSearch();
+	const flightData = useAppSelector((state) => state.flightData.flights);
+
 	const dispatch = useDispatch<AppDispatch>();
 
-		
-	useEffect(() => {console.log(JSON.stringify(flightInputValues))},[flightInputValues])
-
-	const handleLocationChange = (e:ChangeEvent<HTMLInputElement>) => {
-		dispatch(changeLocationValue(e.target.value))
-		
-	}
-
-	const handleDistinationChange = (e:ChangeEvent<HTMLInputElement>) => {
-		dispatch(changeDistinationValue(e.target.value))
-	}
-
-	const handleFlightDateChange = (e:ChangeEvent<HTMLInputElement>) => {
-		dispatch(changeFlightDateValue(e.target.value))
-	}
-
-	const handleSumbit = (e:React.FormEvent<HTMLFormElement>) => {
+	const handleSumbit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log(flights)
-		router.push('/flights')
-	}
-	
+		dispatch(changeFormValue({ location, distination, flightDate }));
+		router.replace("/flights");
+	};
 
-	return(
+	return (
 		<FlightSearchFormStyles onSubmit={handleSumbit}>
-			<SearchField labelOfInputField='location' handleChange={handleLocationChange} />
-			<SearchField labelOfInputField='distination' handleChange={handleDistinationChange}  />
-			<SearchField labelOfInputField='flight date' handleChange={handleFlightDateChange} />
-			<SubmitButton type="submit" value='Submit'/>
-
+			<SearchField
+				labelOfInputField="location"
+				handleChange={(e: eventType) => handleChange(e, setLocation)}
+			/>
+			<SearchField
+				labelOfInputField="distination"
+				handleChange={(e: eventType) => handleChange(e, setDistination)}
+			/>
+			<SearchField
+				labelOfInputField="flight date"
+				handleChange={(e: eventType) => handleChange(e, setFlightDate)}
+			/>
+			<SubmitButton type="submit" value="Submit" />
 		</FlightSearchFormStyles>
-	)
-}
+	);
+};

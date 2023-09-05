@@ -1,39 +1,31 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit' ;
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type initialStateType = {
-	location:string,
-	distination:string,
-	flightDate:string
-}
+export type FlightFormInputValuesinitialStateType = {
+	location: string;
+	distination: string;
+	flightDate: string;
+};
 
 const initialState = {
-	location:'',
-	distination:'',
-	flightDate:''
-} as initialStateType
-
+	location: "",
+	distination: "",
+	flightDate: "",
+} as FlightFormInputValuesinitialStateType;
 
 export const flightFormInputValues = createSlice({
-	name: 'flightFormInputValues',
+	name: "flightFormInputValues",
 	initialState: initialState,
-	reducers:{
-		changeLocationValue:(state:initialStateType,action:PayloadAction<string>) => {
-			let newLocation = action.payload
-			state.location = newLocation
-		},	
-		changeDistinationValue:(state:initialStateType,action:PayloadAction<string>) => {
-			state.distination = action.payload
+	reducers: {
+		changeFormValue: (
+			state: FlightFormInputValuesinitialStateType,
+			action: PayloadAction<FlightFormInputValuesinitialStateType>
+		) => {
+			state.location = action.payload.location;
+			state.distination = action.payload.distination;
+			state.flightDate = action.payload.flightDate;
 		},
-		
-		changeFlightDateValue:(state:initialStateType,action:PayloadAction<string>) => {
+	},
+});
 
-			state.flightDate= action.payload
-		},
-
-
-		
-	}
-})
-
-export const {changeLocationValue, changeDistinationValue, changeFlightDateValue} = flightFormInputValues.actions;
-export default flightFormInputValues.reducer
+export const { changeFormValue } = flightFormInputValues.actions;
+export default flightFormInputValues.reducer;
