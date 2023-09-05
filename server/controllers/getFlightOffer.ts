@@ -1,6 +1,4 @@
 "use client";
-import axios from "axios";
-import { getAmadeusKey } from "../utils/getAmadeusKey";
 import { useEffect } from "react";
 import { useAppSelector, AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
@@ -12,12 +10,13 @@ export async function useFindFlightSearch() {
 	);
 	const dispatch = useDispatch<AppDispatch>();
 
-	useEffect(() => {
-		if(location.length === 3 && distination.length === 3 && flightDate.length === 10){
-			dispatch(fetchedFlightData({ location, distination, flightDate }));
-		}
-	}, [location,distination,flightDate]);
-	
+	// useEffect(() => {
+	if (
+		location.length >= 3 &&
+		distination.length >= 3 &&
+		flightDate.length === 10
+	) {
+		dispatch(fetchedFlightData({ location, distination, flightDate }));
+	}
+	// }, [location, distination, flightDate]);
 }
-
-
