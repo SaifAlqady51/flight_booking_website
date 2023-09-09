@@ -25,6 +25,7 @@ const ListIconStyled = css`
 	}
 	@media (max-width: 750px) {
 		margin-right: 20px;
+		margin-left:30px
 	}
 `;
 export const StyledThemeToggler = styled(Provider)`

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { getAmadeusKey } from "@server/utils/getAmadeusKey";
 import axios from "axios";
+
 import { FlightFormInputValuesinitialStateType } from "./flightFormInputValues-slice";
 type initialStateType = {
 	flights: any[];
@@ -20,8 +21,10 @@ export const fetchedFlightData = createAsyncThunk(
 		location,
 		distination,
 		flightDate,
+		adults,
+		travelClass,
 	}: FlightFormInputValuesinitialStateType) => {
-		const url = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${location}&destinationLocationCode=${distination}&departureDate=${flightDate}&adults=1&nonStop=false&max=250`;
+		const url = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${location}&destinationLocationCode=${distination}&departureDate=${flightDate}&adults=${adults}&travelClass=${travelClass}&nonStop=false&currencyCode=USD&max=50`;
 		const config = {
 			headers: { Authorization: await getAmadeusKey() },
 		};

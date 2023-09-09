@@ -1,15 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
+import { TravelClassType } from "@/types/inputField-types";
 export type FlightFormInputValuesinitialStateType = {
 	location: string;
 	distination: string;
 	flightDate: string;
+	adults: string;
+	travelClass: TravelClassType;
 };
 
 const initialState = {
 	location: "",
 	distination: "",
 	flightDate: "",
+	adults: "",
+	travelClass: "",
 } as FlightFormInputValuesinitialStateType;
 
 export const flightFormInputValues = createSlice({
@@ -23,6 +27,8 @@ export const flightFormInputValues = createSlice({
 			state.location = action.payload.location;
 			state.distination = action.payload.distination;
 			state.flightDate = action.payload.flightDate;
+			state.adults = action.payload.adults;
+			state.travelClass = action.payload.travelClass;
 		},
 	},
 });

@@ -1,9 +1,19 @@
 import styled, { css } from "styled-components";
 import Image from "next/image";
 // main contianer of the flight card
+//
+export const AllFlightCardsContainer = styled.div`
+	height: 600px;
+	width:80%;
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	overflow:scroll;
+`;
 export const FlightCardContainer = styled.div`
 	width: 70%;
-	height: 300px;
+	height: 200px;
 	background-color: ${(props) => props.theme.navColor};
 	margin-top: 100px;
 	border-radius: 40px;
@@ -17,7 +27,7 @@ export const LeftContainer = styled.div`
 	align-items: center;
 	justify-content: start;
 `;
-// left contianer elements  
+// left contianer elements
 const FlightCardImageTemp = css`
 	width: 150px;
 	height: 150px;
@@ -32,27 +42,30 @@ export const FlightCardImage = styled(Image)`
 export const RightContainer = styled.div`
 	width: 70%;
 	height: inherit;
-	display:flex;
-	flex-direction:column;
+	display: flex;
+	flex-direction: column;
 `;
 // right contianer elements
 export const FlightBasicInfo = styled.div`
-	height:50%;
-	padding:10px;
-	display:flex;
+	height: 50%;
+	padding: 10px;
+	display: flex;
 	align-items: center;
-	justify-content: space-between;
-
-
-;
-`
+	justify-content: space-between; ;
+`;
 
 export const FlightCardText = styled.h2`
+	min-width:200px;
 	font-size: 20px;
-	color:white ;
-`
+	color: white;
+	margin-left: 10%;
+`;
+export const FlightCardTextResult = styled.span`
+	font-size: 20px;
+	color: wheat;
+`;
 
 export const FlightDetailedInfo = styled.div`
-	height:50%;
-	padding:10px;
-`
+	height: 50%;
+	padding: 10px;
+`;

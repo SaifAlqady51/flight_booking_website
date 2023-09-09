@@ -1,4 +1,10 @@
+import {TravelClassType} from "./inputField-types"
 
-export type eventType = React.ChangeEvent<HTMLInputElement>
+export type InputEventType = React.ChangeEvent<HTMLInputElement>
 
-export type setChangeType =  React.Dispatch<React.SetStateAction<string>>
+
+export type SelectEventType = React.ChangeEvent<HTMLSelectElement>
+
+export type SetInputChangeType =  React.Dispatch<React.SetStateAction<string>>
+
+export type SetSelectChangeType = React.Dispatch<React.SetStateAction<TravelClassType>>

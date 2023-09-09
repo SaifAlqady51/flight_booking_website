@@ -17,12 +17,6 @@ export const ChildDiv = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-
-	/* @media (max-width:750px){
-        flex-direction: column;
-        align-items: center;
-        justify-content:center
-    } */
 `;
 export const ChildDivBottom = styled(ChildDiv)`
 	@media (max-width: 1200px) {

@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import { FC } from "react";
 import {
 	FlightCardContainer,
 	LeftContainer,
@@ -9,14 +9,21 @@ import {
 	FlightCardText,
 } from "@styles/FlightStyles/FlightCard.styles";
 import PaperAirplane from "@images/paper-airplane.png";
+import { LoadingFlightCard } from "./LoadingFlightCard";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 
 interface FlightCardProps {
-	price:string,
-	date:string,
-	itineraries:number
+	price: string;
+	date: string;
+	itineraries: number;
 }
 
-export const FlightCard:FC<FlightCardProps> = ({price,date,itineraries}) => {
+export const FlightCard: FC<FlightCardProps> = ({
+	price,
+	date,
+	itineraries,
+}) => {
 	return (
 		<FlightCardContainer>
 			<LeftContainer>
@@ -31,7 +38,10 @@ export const FlightCard:FC<FlightCardProps> = ({price,date,itineraries}) => {
 				</FlightBasicInfo>
 
 				<FlightDetailedInfo>
-					<FlightCardText> Itineraries : {itineraries} </FlightCardText>
+					<FlightCardText>
+						{" "}
+						Itineraries : {itineraries}{" "}
+					</FlightCardText>
 				</FlightDetailedInfo>
 			</RightContainer>
 		</FlightCardContainer>

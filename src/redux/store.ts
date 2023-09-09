@@ -9,6 +9,7 @@ import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 // slices
 import toggleSideNav from "./features/toggleSideNav-slice";
+import expandFlightCards from './features/expandFlightCard-slice'
 import toggleTheme from "./features/toggleTheme-slice";
 import signupButtonIsLoading from "./features/signupButtonIsLoading-slice";
 import flightFormInputValues from "./features/flightFormInputValues-slice";
@@ -41,6 +42,7 @@ const reducer = combineReducers({
 	signupButtonIsLoading,
 	flightFormInputValues,
 	flightData,
+	expandFlightCards
 });
 
 export const persistedReducer = persistReducer(
