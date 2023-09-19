@@ -1,22 +1,21 @@
-// import axios from 'axios';
-// import { GetFlightOffer } from '../controllers/getFlightOffer'
-// import {getAmadeusKey} from './getAmadeusKey';
+import axios from "axios";
+import { getAmadeusKey } from "./getAmadeusKey";
+import { FlightType } from "@/types/flight-types";
 
-// export async function getSeatsMap(){
-// 	const URL = 'https://test.api.amadeus.com/v1/shopping/seatmaps'
-// 	try{
-// 		const response = await axios({
-// 			method:'POST',
-// 			url:URL,
-// 			data: await GetFlightOffer(),
-// 			headers:{
-// 				"Authorization": await getAmadeusKey()	
-// 			}
-			
-// 		})
-// 		console.log(response.data.data[0].decks[0].seats)
-// 	}catch(error){
-// 		console.log(error)
-// 	}
-// }
-
+export async function getSeatsMap(flightData : FlightType) {
+	console.log('flight data: ' + JSON.stringify(flightData))
+	const URL = "https://test.api.amadeus.com/v1/shopping/seatmaps";
+	try {
+		const response = await axios({
+			method: "POST",
+			url: URL,
+			data: {data:[flightData]},
+			headers: {
+				Authorization: await getAmadeusKey(),
+			},
+		});
+		console.log(response.data);
+	} catch (error) {
+		console.log(error);
+	}
+}

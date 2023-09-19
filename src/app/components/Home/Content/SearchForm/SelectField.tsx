@@ -5,7 +5,7 @@ import {
 	SearchFieldContainer,
 	InputLabel,
 } from "@styles/HomeStyles/ContentStyles/FlightSearchForm.styles";
-import { TravelClassType } from "@/types/inputField-types";
+import { TravelClassType } from "@/types/travelClass-types";
 
 interface SelectFieldProps {
 	handleChange: any;

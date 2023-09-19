@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { getAmadeusKey } from "@server/utils/getAmadeusKey";
+import { TravelClassType } from "@/types/travelClass-types";
 import axios from "axios";
 
 import { FlightFormInputValuesinitialStateType } from "./flightFormInputValues-slice";
 type initialStateType = {
-	flights: any[];
+	flights: TravelClassType[];
 	loading: "idle" | "pending" | "succeeded" | "failed";
 	error: string;
 };
@@ -21,14 +22,14 @@ export const fetchedFlightData = createAsyncThunk(
 		location,
 		distination,
 		flightDate,
-		adults,
+	adults,
 		travelClass,
 	}: FlightFormInputValuesinitialStateType) => {
-		const url = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${location}&destinationLocationCode=${distination}&departureDate=${flightDate}&adults=${adults}&travelClass=${travelClass}&nonStop=false&currencyCode=USD&max=50`;
+		const  URL = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${location}&destinationLocationCode=${distination}&departureDate=${flightDate}&adults=${adults}&travelClass=${travelClass}&nonStop=false&currencyCode=USD&max=50`;
 		const config = {
 			headers: { Authorization: await getAmadeusKey() },
 		};
-		const flights = await axios.get(url, config);
+		const flights = await axios.get(URL, config);
 		return flights.data;
 	}
 );
@@ -49,9 +50,8 @@ export const flightData = createSlice({
 					state.flights.push(...action.payload.data);
 					state.loading = "succeeded";
 				}
-			);
+);
 	},
 });
 
-// export const {storeFlightsData} = flightData.actions;
 export default flightData.reducer;

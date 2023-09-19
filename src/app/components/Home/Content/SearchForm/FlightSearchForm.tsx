@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { InputEventType } from "@/types/flightSearchForm-types";
 import { SelectChangeEvent } from "@mui/material/Select";
-import { TravelClassType } from "@/types/inputField-types";
+import { TravelClassType } from "@/types/travelClass-types";
 import { FlightSearchFormStyles } from "@styles/HomeStyles/ContentStyles/FlightSearchForm.styles";
 import { SearchField } from "../SearchForm/SearchField";
 import { SubmitButton } from "@styles/Buttons.styles";

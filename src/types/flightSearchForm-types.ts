@@ -1,4 +1,4 @@
-import {TravelClassType} from "./inputField-types"
+import {TravelClassType} from "./travelClass-types"
 
 export type InputEventType = React.ChangeEvent<HTMLInputElement>
 

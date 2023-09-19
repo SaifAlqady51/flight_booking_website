@@ -9,10 +9,13 @@ import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 // slices
 import toggleSideNav from "./features/toggleSideNav-slice";
-import expandFlightCards from './features/expandFlightCard-slice'
+import expandFlightCards from "./features/expandFlightCard-slice";
 import toggleTheme from "./features/toggleTheme-slice";
 import signupButtonIsLoading from "./features/signupButtonIsLoading-slice";
 import flightFormInputValues from "./features/flightFormInputValues-slice";
+import seatsMap from "./features/seatsMap-slice";
+import airlineLogo from "./features/airlineLogo-slice";
+
 import flightData from "./features/flightData-slice";
 import {
 	FLUSH,
@@ -33,6 +36,8 @@ const persistConfig = {
 		"toggleSideNav",
 		"signupButtonIsLoading",
 		"flightFormInputValues",
+		"seatsMap",
+		"airlineLogo",
 	],
 };
 
@@ -42,7 +47,9 @@ const reducer = combineReducers({
 	signupButtonIsLoading,
 	flightFormInputValues,
 	flightData,
-	expandFlightCards
+	expandFlightCards,
+	seatsMap,
+	airlineLogo,
 });
 
 export const persistedReducer = persistReducer(

@@ -18,6 +18,9 @@ export const FlightCardContainer = styled.div`
 	margin-top: 100px;
 	border-radius: 40px;
 	display: flex;
+	@media (max-width:1240px){
+		
+	}
 `;
 // left contianer
 export const LeftContainer = styled.div`
@@ -29,12 +32,12 @@ export const LeftContainer = styled.div`
 `;
 // left contianer elements
 const FlightCardImageTemp = css`
-	width: 150px;
-	height: 150px;
+	width: 80%;
+	max-height:95%;
 	display: flex;
 	margin: 10px;
 `;
-export const FlightCardImage = styled(Image)`
+export const FlightCardImage = styled.img`
 	${FlightCardImageTemp}
 `;
 
@@ -44,14 +47,23 @@ export const RightContainer = styled.div`
 	height: inherit;
 	display: flex;
 	flex-direction: column;
+
+	@media (max-width:1240px){
+		
+	}
 `;
 // right contianer elements
 export const FlightBasicInfo = styled.div`
-	height: 50%;
-	padding: 10px;
+	height: 40%;
+	padding: 5px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between; ;
+	justify-content: space-between; 
+	@media (max-width:1240px){
+		flex-direction:column;
+		align-items:start;
+		height:50%;
+	}
 `;
 
 export const FlightCardText = styled.h2`
@@ -66,6 +78,17 @@ export const FlightCardTextResult = styled.span`
 `;
 
 export const FlightDetailedInfo = styled.div`
-	height: 50%;
-	padding: 10px;
+	height: 40%;
+	padding: 5px;
+	@media (max-width:1240px){
+		height:20%
+	}
 `;
+
+export const FlightCardButtonsArea = styled.div`
+	height:25%;
+	display:flex;
+	justify-content:end;
+
+	
+`

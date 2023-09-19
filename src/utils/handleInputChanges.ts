@@ -4,7 +4,7 @@ import {
 	SetSelectChangeType,
 } from "@/types/flightSearchForm-types";
 import { SelectChangeEvent } from "@mui/material/Select";
-import { TravelClassType } from "@/types/inputField-types";
+import { TravelClassType } from "@/types/travelClass-types";
 
 // handle input filed changes 
 export const handleInputChange = (

@@ -4,6 +4,7 @@ import { FC } from "react";
 import { useAppSelector } from "@/redux/store";
 import SearchResult from "@components/Flights/SearchResult";
 import { AllFlightCardsContainer } from "@/styles/FlightStyles/FlightCard.styles";
+import { FlightType } from "@/types/flight-types";
 
 interface pageProps {}
 
@@ -13,13 +14,8 @@ const Page: FC<pageProps> = ({}) => {
 	const flights = useAppSelector((state) => state.flightData.flights);
 
 	const AllFlightCards = () =>
-		flights.map((flight: any) => (
-			<FlightCard
-				key={flight.id}
-				price={flight.price.total}
-				date={flight.lastTicketingDate}
-				itineraries={3}
-			></FlightCard>
+		flights.map((flight: FlightType) => (
+			<FlightCard key={flight.id} flightData={flight}></FlightCard>
 		));
 
 	return (

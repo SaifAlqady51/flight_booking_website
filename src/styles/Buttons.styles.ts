@@ -30,7 +30,7 @@ export const SubmitButton = styled.input`
 	}
 `;
 
-export const DeleteExpandButtons = css`
+export const GeneralButtons = css`
 	${Button}
 	width:120px;
 	border-radius: 10px;
@@ -40,7 +40,7 @@ export const DeleteExpandButtons = css`
 	justify-content: space-evenly;
 `;
 export const DeleteButton = styled.button`
-	${DeleteExpandButtons}
+	${GeneralButtons}
 	background: #8f2d56;
 	&:hover{
 		background:#ff2d66;
@@ -48,7 +48,7 @@ export const DeleteButton = styled.button`
 `;
 
 export const ExpandButton = styled.button`
-	${DeleteExpandButtons}
+	${GeneralButtons}
 	width:150px;	
 	background: #5e7cc0;
 
@@ -56,3 +56,13 @@ export const ExpandButton = styled.button`
 		background: #507cff;
 	}
 `;
+
+export const MoreButton = styled.button`
+	${GeneralButtons}
+	background:#c25c44;
+	height:35px;
+
+	&:hover {
+		background:#f25c24;
+	}
+`

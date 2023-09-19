@@ -1,7 +1,5 @@
 "use client";
 import { FC } from "react";
-import { useAnimate } from "framer-motion";
-import Image from "next/image";
 import {
 	MainDiv,
 	ChildDivTop,
