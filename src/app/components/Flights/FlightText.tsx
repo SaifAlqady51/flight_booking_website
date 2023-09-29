@@ -1,24 +1,21 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import {
-	FlightCardText,
-	FlightCardTextResult,
-} from "@/styles/FlightStyles/FlightCard.styles";
+import { SearchResultText, SearchResultTextResult } from '@/styles/Text.styles';
 
 interface FlightTextProps {
-	constText: string;
-	varText: string;
+    constText: string;
+    varText: string;
 }
 
 const FlightText: FC<FlightTextProps> = ({ constText, varText }) => {
-	return (
-		<>
-			<FlightCardText>
-				{constText} :{" "}
-				<FlightCardTextResult>{varText}</FlightCardTextResult>
-			</FlightCardText>
-		</>
-	);
+    return (
+        <>
+            <SearchResultText>
+                {constText} :{' '}
+                <SearchResultTextResult>{varText}</SearchResultTextResult>
+            </SearchResultText>
+        </>
+    );
 };
 
 export default FlightText;

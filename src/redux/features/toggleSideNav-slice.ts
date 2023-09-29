@@ -1,25 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from '@reduxjs/toolkit';
 
 type initialStateType = {
-        active:boolean
-}
+    active: boolean;
+};
 
 const initialState = {
-        active: false
-    
-} as initialStateType
+    active: false,
+} as initialStateType;
 
 export const toggleSideNav = createSlice({
-    name:'toggleSideNav',
+    name: 'toggleSideNav',
     initialState: initialState,
-    reducers:{
-        toggleSwitch: (state:initialStateType) => {
+    reducers: {
+        toggleSwitch: (state: initialStateType) => {
             state.active = !state.active;
         },
+    },
+});
 
-    }
-})
-
-export const {toggleSwitch} = toggleSideNav.actions;
+export const { toggleSwitch } = toggleSideNav.actions;
 export default toggleSideNav.reducer;

@@ -1,2 +1,6 @@
-
-export type TravelClassType = "" | "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST" 
+export type TravelClassType =
+    | ''
+    | 'ECONOMY'
+    | 'PREMIUM_ECONOMY'
+    | 'BUSINESS'
+    | 'FIRST';

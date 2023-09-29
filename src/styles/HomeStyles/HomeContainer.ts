@@ -8,6 +8,4 @@ export const Container = styled.div`
     margin-top: 80px;
     height: 3000px;
     overflow-x: hidden;
-
-
-`
+`;

@@ -1,36 +1,36 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TravelClassType } from "@/types/travelClass-types";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TravelClassType } from '@/types/travelClass-types';
 export type FlightFormInputValuesinitialStateType = {
-	location: string;
-	distination: string;
-	flightDate: string;
-	adults: string;
-	travelClass: TravelClassType;
+    location: string;
+    distination: string;
+    flightDate: string;
+    adults: string;
+    travelClass: TravelClassType;
 };
 
 const initialState = {
-	location: "",
-	distination: "",
-	flightDate: "",
-	adults: "",
-	travelClass: "",
+    location: '',
+    distination: '',
+    flightDate: '',
+    adults: '',
+    travelClass: '',
 } as FlightFormInputValuesinitialStateType;
 
 export const flightFormInputValues = createSlice({
-	name: "flightFormInputValues",
-	initialState: initialState,
-	reducers: {
-		changeFormValue: (
-			state: FlightFormInputValuesinitialStateType,
-			action: PayloadAction<FlightFormInputValuesinitialStateType>
-		) => {
-			state.location = action.payload.location;
-			state.distination = action.payload.distination;
-			state.flightDate = action.payload.flightDate;
-			state.adults = action.payload.adults;
-			state.travelClass = action.payload.travelClass;
-		},
-	},
+    name: 'flightFormInputValues',
+    initialState: initialState,
+    reducers: {
+        changeFormValue: (
+            state: FlightFormInputValuesinitialStateType,
+            action: PayloadAction<FlightFormInputValuesinitialStateType>,
+        ) => {
+            state.location = action.payload.location;
+            state.distination = action.payload.distination;
+            state.flightDate = action.payload.flightDate;
+            state.adults = action.payload.adults;
+            state.travelClass = action.payload.travelClass;
+        },
+    },
 });
 
 export const { changeFormValue } = flightFormInputValues.actions;

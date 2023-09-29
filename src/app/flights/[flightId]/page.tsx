@@ -1,8 +1,8 @@
-
-
+'use client';
+import { FlightStopsLine } from '@/app/components/Flights/FlightStopsLine';
 
 const page = () => {
-	return <h1>Flight Id </h1>;
+    return <FlightStopsLine />;
 };
 
 export default page;

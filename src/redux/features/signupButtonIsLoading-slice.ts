@@ -1,31 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from '@reduxjs/toolkit';
 
 type initialStateType = {
-    isLoading:boolean
-}
-
+    isLoading: boolean;
+};
 
 const initialState = {
-    isLoading:false
-} as initialStateType
+    isLoading: false,
+} as initialStateType;
 
 export const signupButtonIsLoading = createSlice({
-    name:'signupButtonIsLoading',
+    name: 'signupButtonIsLoading',
     initialState: initialState,
-    reducers:{
+    reducers: {
         // set the isLoading property to true
-        thruthyIsLoading:(state:initialStateType) => {
-            state.isLoading = true
+        thruthyIsLoading: (state: initialStateType) => {
+            state.isLoading = true;
         },
-        
+
         // set the isLoading property to false
-        falsyIsLoading:(state:initialStateType) => {
-            state.isLoading = false
-        }
-    }
-})
+        falsyIsLoading: (state: initialStateType) => {
+            state.isLoading = false;
+        },
+    },
+});
 
-
-export const {thruthyIsLoading, falsyIsLoading} = signupButtonIsLoading.actions;
+export const { thruthyIsLoading, falsyIsLoading } =
+    signupButtonIsLoading.actions;
 export default signupButtonIsLoading.reducer;

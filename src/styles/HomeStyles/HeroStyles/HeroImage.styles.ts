@@ -1,23 +1,23 @@
-import styled, { css } from "styled-components";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import styled, { css } from 'styled-components';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const HeroImage = css`
-	width: 500px;
-	height: 500px;
-	border-radius: 200px;
-	margin-bottom: 20px;
+    width: 500px;
+    height: 500px;
+    border-radius: 200px;
+    margin-bottom: 20px;
 
-	@media (max-width: 750px) {
-		width: 350px;
-		height: 350px;
-	}
+    @media (max-width: 750px) {
+        width: 350px;
+        height: 350px;
+    }
 `;
 
 export const HeroImageContainer = styled(motion.div)`
-	${HeroImage}
+    ${HeroImage}
 `;
 
 export const HeroImageStyled = styled(Image)`
-	${HeroImage}
+    ${HeroImage}
 `;
