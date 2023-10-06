@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { init } from 'next/dist/compiled/@vercel/og/satori';
 
-
 type initialStateType = {
     img: any[];
 };

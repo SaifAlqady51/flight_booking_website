@@ -7,8 +7,8 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 import { SignupButton } from '@/styles/NavStyles/SignupButton.styles';
 interface SignupButtonProps {}
 
-const Signup:FC = () => {
-	const {data:session} =  useSession();
+const Signup: FC = () => {
+    const { data: session } = useSession();
     const isLoading = useAppSelector(
         (state) => state.signupButtonIsLoading.isLoading,
     );

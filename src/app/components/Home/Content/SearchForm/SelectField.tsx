@@ -5,19 +5,22 @@ import {
     SearchFieldContainer,
     InputLabel,
 } from '@styles/HomeStyles/ContentStyles/FlightSearchForm.styles';
-import { TravelClassType } from '@/types/travelClass-types';
 
 interface SelectFieldProps {
     handleChange: any;
-    travelClass: TravelClassType;
+    travelClass: string;
+    labelOfSelectField?: string;
 }
 
 export const SelectField: FC<SelectFieldProps> = ({
     handleChange,
     travelClass,
 }) => {
+
+	// creating scope and animate from framer-motion package
     const [scope, animate] = useAnimate();
 
+	// function that change field Label when click on it
     const onFieldInputFocus = () => {
         animate(
             scope.current,

@@ -22,6 +22,7 @@ export const SearchField: FC<SearchFieldProps> = ({
 }) => {
     const [scope, animate] = useAnimate();
 
+
     const onFieldInputFocus = () => {
         animate(
             scope.current,
@@ -33,6 +34,7 @@ export const SearchField: FC<SearchFieldProps> = ({
     return (
         <SearchFieldContainer>
             <StyledInput
+				list="cities"
                 type={typeOfInputField ? typeOfInputField : 'text'}
                 onFocus={onFieldInputFocus}
                 onChange={handleChange}

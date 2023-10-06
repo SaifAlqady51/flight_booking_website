@@ -1,10 +1,8 @@
 import {
     InputEventType,
     SetInputChangeType,
-    SetSelectChangeType,
 } from '@/types/flightSearchForm-types';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { TravelClassType } from '@/types/travelClass-types';
 
 // handle input filed changes
 export const handleInputChange = (
@@ -17,9 +15,9 @@ export const handleInputChange = (
 //handl select field changes
 export const handleSelectChange = (
     e: SelectChangeEvent,
-    setChange: SetSelectChangeType,
+    setChange: SetInputChangeType,
 ) => {
-    setChange(e.target.value as TravelClassType);
+    setChange(e.target.value as string);
 };
 
 // convert city name to IATA code

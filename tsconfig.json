@@ -27,7 +27,9 @@
 	  "@public/*":["./public/*"],
 	  "@server/*":["./server/*"],
 	  "@images/*": ["/public/static/images/*"],
-	  "@lib/*": ["./src/lib/*"]
+	  "@lib/*": ["./src/lib/*"],
+	  "@utils/*": ["./src/utils/*"],
+	  "@graphql/*": ["./graphql/*"]
 
     }
   },

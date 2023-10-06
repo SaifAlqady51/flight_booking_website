@@ -1,6 +1,5 @@
-import { TravelClassType } from './travelClass-types';
 export type SeatsMapType = {
-    cabin: TravelClassType;
+    cabin: string;
     number: string;
     characteristicsCodes: string[];
     travelerPricing: [

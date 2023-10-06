@@ -7,6 +7,7 @@ import Theme from '../Theme/Theme';
 import { GlobalStyles } from '@/Theme/ThemeColors';
 import { AuthProvider } from '@components/AuthProvider';
 import NextTopLoader from 'nextjs-toploader';
+import { ApolloClientProvider } from '@graphql/ApolloClientProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -31,8 +32,10 @@ export default function RootLayout({
                                     color='#b8c0ff'
                                     showSpinner={false}
                                 />
-                                <Navbar />
-                                {children}
+                                <ApolloClientProvider>
+                                    <Navbar />
+                                    {children}
+                                </ApolloClientProvider>
                             </AuthProvider>
                         </Theme>
                     </StyledComponentsRegistry>

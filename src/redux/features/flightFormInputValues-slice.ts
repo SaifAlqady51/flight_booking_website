@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TravelClassType } from '@/types/travelClass-types';
 export type FlightFormInputValuesinitialStateType = {
     location: string;
     distination: string;
     flightDate: string;
     adults: string;
-    travelClass: TravelClassType;
+    travelClass: string;
 };
 
 const initialState = {
