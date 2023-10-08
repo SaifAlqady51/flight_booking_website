@@ -19,13 +19,9 @@ const ThemeToggler = () => {
 
     const clickIcon = () => {
         //extract switchTheme reducer from redux
+
         dispatch(switchTheme());
-
         animate(scope.current, { rotate: [0, 360] });
-
-        // getFlightOffer({from:'PAR',to:'SYD'})
-        // getDuffelId()
-        // getFlightOrderId()
     };
 
     return (

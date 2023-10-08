@@ -28,7 +28,7 @@ export const flightFormInputValues = createSlice({
             state.flightDate = action.payload.flightDate;
             state.adults = action.payload.adults;
             state.travelClass = action.payload.travelClass;
-        },
+		},
     },
 });
 

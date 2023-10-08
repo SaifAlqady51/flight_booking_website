@@ -1,6 +1,7 @@
 'use client';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
+import {Autocomplete} from '@mui/material';
 
 // styles for the flight search Form
 export const FlightSearchFormStyles = styled.form`
@@ -59,20 +60,21 @@ export const FieldStyles = css`
 
 export const StyledInput = styled.input`
     ${FieldStyles}
-    height:30px;
+    height:35px;
 `;
 
 export const StyledSelect = styled.select`
     ${FieldStyles}
     width:95%;
+	height:55px;
 `;
 
 // styles for the label of each field
 export const InputLabel = styled(motion.span)`
     position: absolute;
     left: 5px;
-    top: 5px;
-    padding: 10px;
+	top: 5px;
+	padding: 10px 10px 0 10px;
     color: white;
     pointer-events: none;
     font-size: 1.1em;

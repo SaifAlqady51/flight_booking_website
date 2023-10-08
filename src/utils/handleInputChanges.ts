@@ -2,7 +2,11 @@ import {
     InputEventType,
     SetInputChangeType,
 } from '@/types/flightSearchForm-types';
+
+
 import { SelectChangeEvent } from '@mui/material/Select';
+
+import { Dispatch, Action } from 'redux';
 
 // handle input filed changes
 export const handleInputChange = (
@@ -15,9 +19,9 @@ export const handleInputChange = (
 //handl select field changes
 export const handleSelectChange = (
     e: SelectChangeEvent,
-    setChange: SetInputChangeType,
+    setChange: SetInputChangeType 
 ) => {
-    setChange(e.target.value as string);
+    setChange(e.target.value);
 };
 
 // convert city name to IATA code

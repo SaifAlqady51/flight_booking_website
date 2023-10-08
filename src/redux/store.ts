@@ -16,7 +16,7 @@ import flightFormInputValues from './features/flightFormInputValues-slice';
 import seatsMap from './features/seatsMap-slice';
 import airlineLogo from './features/airlineLogo-slice';
 
-// import flightData from './features/flightData-slice';
+import flightData from './features/flightData-slice';
 import {
     FLUSH,
     REHYDRATE,
@@ -46,7 +46,7 @@ const reducer = combineReducers({
     toggleSideNav,
     signupButtonIsLoading,
     flightFormInputValues,
-    // flightData,
+    flightData,
     expandFlightCards,
     seatsMap,
     airlineLogo,
