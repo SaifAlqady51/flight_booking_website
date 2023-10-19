@@ -5,7 +5,6 @@ import { FC, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
-import { getSeatsMap } from '@server/utils/getSeatsMap';
 import { FlightType } from '@/types/flight-types';
 import { add } from '@redux/features/airlineLogo-slice';
 import {
@@ -18,7 +17,7 @@ import {
 } from '@styles/FlightStyles/FlightCard.styles';
 import { FlightCardText } from '@/styles/Text.styles';
 import { AppDispatch, useAppSelector } from '@/redux/store';
-import { fetchSeatsMap } from '@/redux/features/seatsMap-slice';
+// import { fetchSeatsMap } from '@/redux/features/seatsMap-slice';
 import { MoreButton } from '@/styles/Buttons.styles';
 interface FlightCardProps {
     flightData: FlightType;
@@ -70,7 +69,7 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData }) => {
 
     const handleMoreButton = () => {
         router.push(`flights/${flightData.id}`);
-        dispatch(fetchSeatsMap(flightData));
+        // dispatch(fetchSeatsMap(flightData));
     };
     return (
         <FlightCardContainer>
