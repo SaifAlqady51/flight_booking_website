@@ -6,6 +6,8 @@ export const AllFlightCardsContainer = styled.div`
     height: 600px;
     width: 80%;
     margin-top: 100px;
+    margin-bottom: 100px;
+	flex-shrink:0;
     display: flex;
     flex-direction: column;
     align-items: center;

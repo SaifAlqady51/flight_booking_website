@@ -9,6 +9,5 @@ export const filterCitiesList = (value: string) => {
         return cityName.startsWith(value);
     });
 
-
     return result;
 };

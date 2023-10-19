@@ -1,28 +1,31 @@
-import { gql, useMutation } from '@apollo/client';
+import { gql } from '@apollo/client';
 
-export const CreateNewSearchResult = gql`
+export const CreateSearchResult = gql`
     mutation Mutation(
-        $from: String!
-        $to: String!
+        $location: JSON
+        $distination: JSON
         $flightDate: String!
         $numberOfAdults: String!
         $travelClass: String!
+        $flights: JSON
         $userId: String!
     ) {
         createSearchResult(
-            from: $from
-            to: $to
+            location: $location
+            distination: $distination
             flightDate: $flightDate
             numberOfAdults: $numberOfAdults
             travelClass: $travelClass
+            flights: $flights
             userId: $userId
         ) {
             id
-            from
-            to
+            location
+            distination
             flightDate
             numberOfAdults
             travelClass
+            flights
             userId
         }
     }

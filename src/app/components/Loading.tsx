@@ -7,7 +7,7 @@ import {
     AirPlaneEngineImage,
     AirPlaneImageContainer,
 } from '@/styles/LoadingPage-styles';
-export default function Loading() {
+export default function LoadingPage() {
     return (
         <LoadingStyles>
             <AirPlaneImageContainer

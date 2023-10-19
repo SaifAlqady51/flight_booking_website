@@ -1,9 +1,13 @@
-body {
-    margin: 0;
-    @media (max-width: 768px) {
-        overflow-x: hidden;
-    }
-	height: 100%;
-	width:100%
+html {
+    scroll-behavior: smooth;
 }
 
+body {
+    scroll-behavior: smooth;
+    margin: 0;
+    @media (max-width: 768px) {
+        overflow-x: visible;
+    }
+    height: 100%;
+    width: 100%;
+}

@@ -5,10 +5,12 @@ export const SearchResultContainer = styled.div`
     height: 240px;
     background: ${(props) => props.theme.navColor};
     margin-top: 100px;
+    margin-bottom: 100px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    flex-shrink: 0;
 
     @media (max-width: 1070px) {
         height: 360px;

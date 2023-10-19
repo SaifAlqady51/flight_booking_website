@@ -1,94 +1,97 @@
 'use client';
 
-// react basic hooks
-import { useState, useEffect } from 'react';
+// react  hooks
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-// redux  
+// redux
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
-import {changeFormValue} from '@redux/features/flightFormInputValues-slice'
-import { fetchedFlightData } from '@/redux/features/flightData-slice';
+import {
+    changeLocation,
+    changeDistination,
+    changeFlightDate,
+    changeTravelClass,
+    changeNumberOfAdults,
+} from '@redux/features/flightFormInputValues-slice';
+import {thruthyIsLoading, falsyIsLoading} from '@/redux/features/loading-slice'
 
-import { CreateNewSearchResult } from '@/utils/createNewSearchResult';
+// graphql
+import { CreateSearchResult } from '@/utils/graphqlMutation/createSearchResult-mutation';
 import { useMutation } from '@apollo/client';
+import { getSearchResultsForCurrentUser } from '@/utils/graphqlQuery/getSearchResults-query';
+
 import { InputEventType } from '@/types/flightSearchForm-types';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { FlightSearchFormStyles } from '@styles/HomeStyles/ContentStyles/FlightSearchForm.styles';
 import { SearchField } from '../SearchForm/SearchField';
 import { SubmitButton } from '@styles/Buttons.styles';
-import {capitalizeString} from '@utils/capitalizeString'
+import { capitalizeString } from '@utils/capitalizeString';
+import { getFlightOffers } from '@/utils/externalAPI/amadeus/getFlightOffers';
 import {
     handleInputChange,
     handleSelectChange,
-    makeIATACode,
 } from '@/utils/handleInputChanges';
 import { SelectField } from './SelectField';
-import axios from 'axios';
+import { getCityCodeFromCityName } from '@utils/externalAPI/airLabs/makeIATACode';
 
 export const FlightSearchForm = () => {
     // set up router
     const router = useRouter();
 
-
     const dispatch = useDispatch<AppDispatch>();
 
-    // local states for the inputs field
-	const [location, setLocation] = useState<string>('');
-	const [distination, setDistination] = useState<string>('');
-	const [flightDate, setFlightDate] = useState<string>('');
-	const [numberOfAdults, setNumberOfAdults] = useState<string>('');
-    const [travelClass, setTravelClass] = useState<string>('');
-    const [userId, setUserId] = useState<string>('');
-	
-    dispatch(
-        changeFormValue({
-            location: capitalizeString(location),
-            distination: capitalizeString(distination),
-            flightDate: flightDate,
-            adults: numberOfAdults,
-            travelClass: travelClass,
-        }),
-    );
+    const { userId } = useAppSelector((state) => state.userIdSlice);
 
-    // fetching UserId from our local api
-    useEffect(() => {
-        async function fetchUserId() {
-            const response = await axios.get('http://localhost:3000/api');
-            setUserId(response.data);
-        }
+    const { location, distination, flightDate, numberOfAdults, travelClass } =
+        useAppSelector((state) => state.flightFormInputValues);
 
-        fetchUserId();
-    });
-
+    console.log('user ID: ' + userId);
     // calling the graphql mutation that creates new SearchResult
-    const [createSearchResult] = useMutation(CreateNewSearchResult);
+    const [createSearchResult] = useMutation(CreateSearchResult,{
+		refetchQueries:[
+			{query: getSearchResultsForCurrentUser, variables: {userId}}
+		]
+	});
 
+    // console.log(getAirPortIATACodeFromCityName('Alexandria'));
+	const [loading, setLoading] = useState<boolean>(false)
 
     const handleSumbit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        // waiting for IATA city code response from airLabs api
+		dispatch(thruthyIsLoading())
+        const locationIATACode = await getCityCodeFromCityName(location);
+        const distinationIATACode = await getCityCodeFromCityName(distination);
+
+        // waiting for flightsData response from amadeus api
+        const flightsList = await getFlightOffers({
+            locationIATACode,
+            distinationIATACode,
+            flightDate,
+            numberOfAdults,
+            travelClass,
+        });
+
         // create new SearchResult query in the graphql database
         createSearchResult({
             variables: {
-                from: location,
-                to: distination,
+                location: { cityName: location, IATACode: locationIATACode },
+                distination: {
+                    cityName: distination,
+                    IATACode: distinationIATACode,
+                },
                 flightDate: flightDate,
                 numberOfAdults: numberOfAdults,
                 travelClass: travelClass,
+                flights: { flightsList },
                 userId: userId,
             },
         });
 
-        dispatch(
-            fetchedFlightData({
-                location: makeIATACode(location),
-                distination: makeIATACode(distination),
-                flightDate,
-                adults: numberOfAdults,
-                travelClass,
-            }),
-        );
+		dispatch(falsyIsLoading())
+
         router.replace('/flights');
     };
 
@@ -96,34 +99,40 @@ export const FlightSearchForm = () => {
         <FlightSearchFormStyles onSubmit={handleSumbit}>
             <SearchField
                 labelOfInputField='location'
-				handleChange={(e: InputEventType) => 
-					handleInputChange(e, setLocation)
-				}
+                handleChange={(e: InputEventType) =>
+                    dispatch(changeLocation(capitalizeString(e.target.value)))
+                }
             />
             <SearchField
                 labelOfInputField='distination'
                 handleChange={(e: InputEventType) =>
-                    handleInputChange(e, setDistination)
+                    dispatch(
+                        changeDistination(capitalizeString(e.target.value)),
+                    )
                 }
             />
             <SearchField
                 labelOfInputField='flight date'
                 placeholder=' 2023-12-12'
                 handleChange={(e: InputEventType) =>
-                    handleInputChange(e, setFlightDate)
+                    dispatch(changeFlightDate(capitalizeString(e.target.value)))
                 }
             />
             <SearchField
                 labelOfInputField='number Of Adults'
                 handleChange={(e: InputEventType) =>
-                    handleInputChange(e, setNumberOfAdults)
+                    dispatch(
+                        changeNumberOfAdults(capitalizeString(e.target.value)),
+                    )
                 }
             />
             <SelectField
                 labelOfSelectField='travel class'
                 travelClass={travelClass}
                 handleChange={(e: SelectChangeEvent) =>
-                    handleSelectChange(e, setTravelClass)
+                    dispatch(
+                        changeTravelClass(capitalizeString(e.target.value)),
+                    )
                 }
             />
             <SubmitButton type='submit' value='Submit' />

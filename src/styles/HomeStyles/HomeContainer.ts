@@ -7,5 +7,4 @@ export const Container = styled.div`
     justify-content: start;
     margin-top: 80px;
     height: 3000px;
-    overflow-x: hidden;
 `;

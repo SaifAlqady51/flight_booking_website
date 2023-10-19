@@ -1,8 +1,6 @@
-import {Autocomplete, styled} from '@mui/material'
-
+import { Autocomplete, styled } from '@mui/material';
 
 export const MuiInput = styled(Autocomplete)`
-	
     color: white;
     padding: 10px;
     width: 90%;
@@ -11,5 +9,5 @@ export const MuiInput = styled(Autocomplete)`
     background: inherit;
     font-size: 1.3em;
     outline: none;
-    height:30px;
-`
+    height: 30px;
+`;

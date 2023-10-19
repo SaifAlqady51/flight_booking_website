@@ -2,7 +2,7 @@ import { StyledLink } from '@/styles/NavStyles/StyledLink.styles';
 import { FC } from 'react';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
-import { thruthyIsLoading } from '@/redux/features/signupButtonIsLoading-slice';
+import { thruthyIsLoading } from '@/redux/features/loading-slice';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { SignupButton } from '@/styles/NavStyles/SignupButton.styles';
 interface SignupButtonProps {}
@@ -10,7 +10,7 @@ interface SignupButtonProps {}
 const Signup: FC = () => {
     const { data: session } = useSession();
     const isLoading = useAppSelector(
-        (state) => state.signupButtonIsLoading.isLoading,
+        (state) => state.loading.isLoading,
     );
     const dispatch = useDispatch<AppDispatch>();
 

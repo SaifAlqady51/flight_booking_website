@@ -11,11 +11,12 @@ datasource db {
   relationMode = "prisma"
 }
 
-
 model User {
   id            String         @id @default(cuid())
   name          String
   email         String?        @unique
+  image         String?
+  emailVerified String?
   searchResults SearchResult[]
   sessions      Session[]
   accounts      Account[]
@@ -56,27 +57,17 @@ model Session {
   @@map("sessions")
 }
 
-// model VerificationRequest {
-//   id         String   @id @default(uuid())
-//   identifier String
-//   token      String   @unique
-//   expires    DateTime
-//   createdAt  DateTime @default(now())
-//   updatedAt  DateTime @updatedAt
-
-//   @@unique([identifier, token])
-// }
-
 model SearchResult {
-  id             String      @id @default(cuid())
-  from           String
-  to             String
+  id             String  @id @default(cuid())
+  location       Json
+  distination    Json
   flightDate     String
-  numberOfAdults String 
-  travelClass    String 
-  user           User?       @relation(fields: [userId], references: [id])
+  numberOfAdults String
+  travelClass    String
+  flights        Json?
+  logos          Json?
+  user           User?   @relation(fields: [userId], references: [id])
   userId         String?
 
   @@map("searchResults")
 }
-

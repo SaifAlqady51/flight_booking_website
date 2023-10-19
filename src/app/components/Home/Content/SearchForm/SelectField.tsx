@@ -16,11 +16,10 @@ export const SelectField: FC<SelectFieldProps> = ({
     handleChange,
     travelClass,
 }) => {
-
-	// creating scope and animate from framer-motion package
+    // creating scope and animate from framer-motion package
     const [scope, animate] = useAnimate();
 
-	// function that change field Label when click on it
+    // function that change field Label when click on it
     const onFieldInputFocus = () => {
         animate(
             scope.current,
@@ -32,6 +31,7 @@ export const SelectField: FC<SelectFieldProps> = ({
         <>
             <SearchFieldContainer>
                 <StyledSelect
+					required
                     onChange={handleChange}
                     value={travelClass}
                     onFocus={onFieldInputFocus}

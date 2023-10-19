@@ -14,7 +14,13 @@ export const lightMode = {
 };
 
 export const GlobalStyles = createGlobalStyle`
+	html {
+		
+		scroll-behavior: smooth;
+	}
     body {
+		
+		scroll-behavior: smooth;
         background-color: ${(props) => props.theme.body};
         color:${(props) => props.theme.textColor};
     }

@@ -4,5 +4,10 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 
 export async function GET(_req: Request) {
     const session = await getServerSession(authOptions);
-    return NextResponse.json(session?.user?.id);
+    // check if user signed up
+    if (session) {
+        return NextResponse.json(session?.user);
+    } else {
+        return NextResponse.json('');
+    }
 }

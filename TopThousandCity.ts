@@ -103,7 +103,7 @@ export const citiesList = [
     'Nangandao',
     'Pudong',
     'Xiangyang',
-	'Kegali',
+	'Kigali',
     'Dallas',
     'Houston',
     'Zhengzhou',

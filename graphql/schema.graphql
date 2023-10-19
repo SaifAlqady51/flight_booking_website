@@ -22,22 +22,27 @@ type Account {
 """Date custom scalar type"""
 scalar Date
 
+scalar JSON
+
 type Mutation {
-  createSearchResult(flightDate: String!, from: String!, numberOfAdults: String!, to: String!, travelClass: String!, user: UserInputType, userId: String!): SearchResult!
+  createSearchResult(distination: JSON, flightDate: String!, flights: JSON, location: JSON, logos: JSON, numberOfAdults: String!, travelClass: String!, user: UserInputType, userId: String!): SearchResult!
+  deleteSearchResult: SearchResult!
 }
 
 type Query {
-  searchResults: [SearchResult]!
+  getSearchResultsForSpecificUser(userId: String!): [SearchResult]!
   userById(id: String!): User!
   users: [User]!
 }
 
 type SearchResult {
+  distination: JSON
   flightDate: String
-  from: String
+  flights: JSON
   id: String
+  location: JSON
+  logos: JSON
   numberOfAdults: String
-  to: String
   travelClass: String
   user: User
   userId: String

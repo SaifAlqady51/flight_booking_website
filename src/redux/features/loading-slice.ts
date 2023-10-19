@@ -8,7 +8,7 @@ const initialState = {
     isLoading: false,
 } as initialStateType;
 
-export const signupButtonIsLoading = createSlice({
+export const loading = createSlice({
     name: 'signupButtonIsLoading',
     initialState: initialState,
     reducers: {
@@ -25,5 +25,5 @@ export const signupButtonIsLoading = createSlice({
 });
 
 export const { thruthyIsLoading, falsyIsLoading } =
-    signupButtonIsLoading.actions;
-export default signupButtonIsLoading.reducer;
+    loading.actions;
+export default loading.reducer;

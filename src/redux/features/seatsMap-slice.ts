@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SeatsMapType } from '@/types/seatsMap-types';
 import { FlightType } from '@/types/flight-types';
 import axios from 'axios';
-import { getAmadeusKey } from '@server/utils/getAmadeusKey';
+import { getAmadeusKey } from '../../utils/externalAPI/amadeus/getAmadeusKey';
 import { filterSeatsMap } from '@/utils/filterSeatsMap';
 
 type initialStateType = {
