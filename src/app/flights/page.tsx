@@ -26,22 +26,21 @@ const Page: FC<pageProps> = ({}) => {
 
     // import userId slice from redux
     const { userId } = useAppSelector((state) => state.userIdSlice);
-	const {isLoading}  = useAppSelector((state) => state.loading)
+    const { isLoading } = useAppSelector((state) => state.loading);
 
-    useEffect(() => {
-        async function fetchUserId() {
-            const currentUserId = await getUserId();
-            // store useId in redux userId state
-            dispatch(storeCurrentUserId(currentUserId));
-        }
-        fetchUserId();
-    }, [dispatch]);
+    // useEffect(() => {
+    //     async function fetchUserId() {
+    //         const currentUserId = await getUserId();
+    //         // store useId in redux userId state
+    //         dispatch(storeCurrentUserId(currentUserId));
+    //     }
+    //     fetchUserId();
+    // }, [dispatch]);
 
     // get searchResult query from graphql
     const { loading, error, data } = useQuery(getSearchResultsForCurrentUser, {
         variables: { userId: userId },
     });
-
 
     if (error) {
         console.error(error);

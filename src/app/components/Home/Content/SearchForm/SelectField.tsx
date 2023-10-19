@@ -31,7 +31,7 @@ export const SelectField: FC<SelectFieldProps> = ({
         <>
             <SearchFieldContainer>
                 <StyledSelect
-					required
+                    required
                     onChange={handleChange}
                     value={travelClass}
                     onFocus={onFieldInputFocus}

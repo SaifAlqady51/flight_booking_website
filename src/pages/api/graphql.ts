@@ -8,7 +8,6 @@ const apolloServer = new ApolloServer({
     context: createContext,
 });
 
-
 const cors = Cors();
 // start apolloServer
 
@@ -28,6 +27,6 @@ export default cors(async function handler(req: any, res: any) {
 
 export const config = {
     api: {
-		bodyParser: false
-	}
+        bodyParser: false,
+    },
 };

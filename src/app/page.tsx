@@ -17,14 +17,13 @@ export default function Home() {
 
     const { isLoading } = useAppSelector((state) => state.loading);
 
-    useEffect(() => {
-        async function fetchUserId() {
-            const currentUserId = await getUserId();
-            // store useId in redux userId state
-            dispatch(storeCurrentUserId(currentUserId));
-        }
-        fetchUserId();
-    }, [dispatch]);
+    // useEffect(() => {
+    //     async function fetchUserId() {
+    //         // store useId in redux userId state
+    //         // dispatch(storeCurrentUserId(currentUserId));
+    //     }
+    //     fetchUserId();
+    // }, [dispatch]);
 
     if (isLoading) {
         return <LoadingPage />;

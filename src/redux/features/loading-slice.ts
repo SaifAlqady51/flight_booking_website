@@ -24,6 +24,5 @@ export const loading = createSlice({
     },
 });
 
-export const { thruthyIsLoading, falsyIsLoading } =
-    loading.actions;
+export const { thruthyIsLoading, falsyIsLoading } = loading.actions;
 export default loading.reducer;

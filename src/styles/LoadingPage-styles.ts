@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import Image from 'next/image';

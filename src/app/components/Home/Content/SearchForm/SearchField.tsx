@@ -56,7 +56,7 @@ export const SearchField: FC<SearchFieldProps> = ({
     return (
         <SearchFieldContainer>
             <StyledInput
-				required
+                required
                 list={labelOfInputField}
                 type={typeOfInputField ? typeOfInputField : 'text'}
                 onFocus={onFieldInputFocus}

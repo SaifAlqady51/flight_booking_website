@@ -10,7 +10,7 @@ type initialStateType = {
 };
 
 const initialState = {
-	listOfExpanded: [{}] 
+    listOfExpanded: [{}],
 } as unknown as initialStateType;
 
 const expandFlightCards = createSlice({
@@ -21,8 +21,8 @@ const expandFlightCards = createSlice({
             state: initialStateType,
             action: PayloadAction<number>,
         ) => {
-            for(let i = 0; i <= action.payload ; i++) {
-				state.listOfExpanded.push({id:i+1, expanded:false})
+            for (let i = 0; i <= action.payload; i++) {
+                state.listOfExpanded.push({ id: i + 1, expanded: false });
             }
         },
         // switchFlightCards: (state: initialStateType[], action: PayloadAction<number>) => {

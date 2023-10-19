@@ -14,7 +14,10 @@ import {
     changeTravelClass,
     changeNumberOfAdults,
 } from '@redux/features/flightFormInputValues-slice';
-import {thruthyIsLoading, falsyIsLoading} from '@/redux/features/loading-slice'
+import {
+    thruthyIsLoading,
+    falsyIsLoading,
+} from '@/redux/features/loading-slice';
 
 // graphql
 import { CreateSearchResult } from '@/utils/graphqlMutation/createSearchResult-mutation';
@@ -48,20 +51,19 @@ export const FlightSearchForm = () => {
 
     console.log('user ID: ' + userId);
     // calling the graphql mutation that creates new SearchResult
-    const [createSearchResult] = useMutation(CreateSearchResult,{
-		refetchQueries:[
-			{query: getSearchResultsForCurrentUser, variables: {userId}}
-		]
-	});
+    const [createSearchResult] = useMutation(CreateSearchResult, {
+        refetchQueries: [
+            { query: getSearchResultsForCurrentUser, variables: { userId } },
+        ],
+    });
 
     // console.log(getAirPortIATACodeFromCityName('Alexandria'));
-	const [loading, setLoading] = useState<boolean>(false)
 
     const handleSumbit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // waiting for IATA city code response from airLabs api
-		dispatch(thruthyIsLoading())
+        dispatch(thruthyIsLoading());
         const locationIATACode = await getCityCodeFromCityName(location);
         const distinationIATACode = await getCityCodeFromCityName(distination);
 
@@ -90,7 +92,7 @@ export const FlightSearchForm = () => {
             },
         });
 
-		dispatch(falsyIsLoading())
+        dispatch(falsyIsLoading());
 
         router.replace('/flights');
     };

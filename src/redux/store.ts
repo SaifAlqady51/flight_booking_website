@@ -41,7 +41,8 @@ const persistConfig = {
         'airlineLogo',
         'flightData',
         'userIdSlice',
-		'expandFlightCards'
+        'expandFlightCards',
+		'loading',
     ],
 };
 
