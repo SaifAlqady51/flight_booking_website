@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { FC } from 'react';
-import LoadingPage from '@src/compoenets/LoadingPage';
+import LoadingPage from '../../app/components/LoadingPage';
 // graphql
 import { useQuery } from '@apollo/client';
 import { getSearchResultsForCurrentUser } from '@/utils/graphqlQuery/getSearchResults-query';
