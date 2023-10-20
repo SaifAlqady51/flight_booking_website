@@ -3,8 +3,10 @@ const nextConfig = {
     compiler: {
         styledComponents: true,
     },
-    webpack(config) {
-        config.infrastructureLogging = { debug: /PackFileCache/ };
+    webpack: (config, { isServer }) => {
+        if (isServer) {
+            config.plugins = [...config.plugins, new PrismaPlugin()];
+        }
         return config;
     },
     env: {
