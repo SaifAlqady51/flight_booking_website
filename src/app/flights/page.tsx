@@ -9,8 +9,6 @@ import { getSearchResultsForCurrentUser } from '@/utils/graphqlQuery/getSearchRe
 //redux
 import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
-import { storeCurrentUserId } from '@/redux/features/userId-slice';
-import { getUserId } from '@/utils/externalAPI/getUserId';
 import DisplaySearchResults from '../components/Flights/DisplaySearchResults';
 import { pushSearchResult } from '@/redux/features/expandFlightCard-slice';
 interface pageProps {}
@@ -27,15 +25,6 @@ const Page: FC<pageProps> = ({}) => {
     // import userId slice from redux
     const { userId } = useAppSelector((state) => state.userIdSlice);
     const { isLoading } = useAppSelector((state) => state.loading);
-
-    // useEffect(() => {
-    //     async function fetchUserId() {
-    //         const currentUserId = await getUserId();
-    //         // store useId in redux userId state
-    //         dispatch(storeCurrentUserId(currentUserId));
-    //     }
-    //     fetchUserId();
-    // }, [dispatch]);
 
     // get searchResult query from graphql
     const { loading, error, data } = useQuery(getSearchResultsForCurrentUser, {

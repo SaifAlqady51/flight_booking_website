@@ -14,7 +14,7 @@ export const userIdSlice = createSlice({
     reducers: {
         storeCurrentUserId: (
             state: initailStateType,
-            action: PayloadAction<string >,
+            action: PayloadAction<string>,
         ) => {
             state.userId = action.payload;
         },

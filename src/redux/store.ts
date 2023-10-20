@@ -42,7 +42,7 @@ const persistConfig = {
         'flightData',
         'userIdSlice',
         'expandFlightCards',
-		'loading',
+        'loading',
     ],
 };
 

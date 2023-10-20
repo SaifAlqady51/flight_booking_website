@@ -2,7 +2,10 @@ import { StyledLink } from '@/styles/NavStyles/StyledLink.styles';
 import { FC } from 'react';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
-import { falsyIsLoading, thruthyIsLoading } from '@/redux/features/loading-slice';
+import {
+    falsyIsLoading,
+    thruthyIsLoading,
+} from '@/redux/features/loading-slice';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { SignupButton } from '@/styles/NavStyles/SignupButton.styles';
 import { storeCurrentUserId } from '@/redux/features/userId-slice';
@@ -22,7 +25,7 @@ const Signup: FC = () => {
         dispatch(thruthyIsLoading());
         try {
             await signIn('google');
-			dispatch(falsyIsLoading())
+            dispatch(falsyIsLoading());
         } catch (error) {
             throw new Error('Error signing up' + error);
         }
@@ -33,7 +36,7 @@ const Signup: FC = () => {
 
         try {
             await signOut();
-			dispatch(falsyIsLoading())
+            dispatch(falsyIsLoading());
         } catch (error) {
             throw new Error('Error signing out' + error);
         }

@@ -13,30 +13,20 @@ import { FlightSearchForm } from '@components/Home/Content/SearchForm/FlightSear
 import LoadingPage from './components/LoadingPage';
 
 export default function Home() {
-    const dispatch = useDispatch<AppDispatch>();
-
     const { isLoading } = useAppSelector((state) => state.loading);
-
-    // useEffect(() => {
-    //     async function fetchUserId() {
-    //         // store useId in redux userId state
-    //         // dispatch(storeCurrentUserId(currentUserId));
-    //     }
-    //     fetchUserId();
-    // }, [dispatch]);
 
     if (isLoading) {
         return <LoadingPage />;
+    } else {
+        return (
+            <>
+                <Container>
+                    <Hero />
+                    <HeroImage />
+                    <FlightSearchForm />
+                    <Messages />
+                </Container>
+            </>
+        );
     }
-
-    return (
-        <>
-            <Container>
-                <Hero />
-                <HeroImage />
-                <FlightSearchForm />
-                <Messages />
-            </Container>
-        </>
-    );
 }
