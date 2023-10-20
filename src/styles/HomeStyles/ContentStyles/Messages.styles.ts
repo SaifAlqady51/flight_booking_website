@@ -54,7 +54,7 @@ export const GrandChildDiv = styled(motion.div)<GarndChildDivProps>`
     align-items: ${(props) => props.align};
 `;
 
-export const GrandChildDivTop = styled(GrandChildDiv)`
+export const GrandChildDivTop = styled(GrandChildDiv)<GarndChildDivProps>`
     @media (max-width: 1400px) {
         width: ${(props) => props.widthRes};
     }
@@ -75,7 +75,7 @@ export const GrandChildDivTop = styled(GrandChildDiv)`
     }
 `;
 
-export const GrandChildDivBottom = styled(GrandChildDiv)`
+export const GrandChildDivBottom = styled(GrandChildDiv)<GarndChildDivProps>`
     @media (max-width: 1400px) {
         width: ${(props) => props.widthRes};
         height: 200px;
