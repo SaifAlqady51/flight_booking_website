@@ -1,9 +1,8 @@
 {
   "name": "flight_booking_website",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
-    "postinstall": "npx prisma generate --no-engine",
+    "postinstall": "prisma generate --no-engine && prisma db push",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
