@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "npx prisma generate",
+    "postinstall": "npx prisma generate -no-engine",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -44,6 +44,7 @@
     "graphql-type-json": "^0.3.2",
     "immutable": "^4.3.1",
     "localforage": "^1.10.0",
+    "micro-cors": "^0.1.1",
     "next": "^13.5.3",
     "next-auth": "^4.23.1",
     "nextjs-toploader": "^1.4.2",
