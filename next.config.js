@@ -8,6 +8,7 @@ const nextConfig = {
         AIRLABS_API_KEY: process.env.AIRLABS_API_KEY,
         NEXTAUTH_URL: process.env.NEXTAUTH_URL,
         NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+        URL: process.env.URL,
     },
 };
 

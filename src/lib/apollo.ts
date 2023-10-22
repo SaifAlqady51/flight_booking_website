@@ -1,9 +1,9 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-
+const URL = process.env.URL
 
 const apolloClient = new ApolloClient({
-    uri: 'https://flight-booking-website-sandy.vercel.app/api/graphql',
+    uri: `${URL}/api/graphql`,
     cache: new InMemoryCache(),
 });
 
