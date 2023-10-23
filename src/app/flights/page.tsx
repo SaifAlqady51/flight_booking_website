@@ -34,11 +34,14 @@ const Page: FC<pageProps> = ({}) => {
     if (error) {
         console.error(error);
     }
+
     // if loading equlas true display loading screen
+
     if (loading || isLoading) {
         return <LoadingPage />;
-        // if loading equals flase dispaly All SearchResult if exist
-    } else {
+    }
+    // if loading equals flase dispaly All SearchResult if exist
+    else {
         return <DisplaySearchResults data={data} />;
     }
 };

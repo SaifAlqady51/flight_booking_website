@@ -30,40 +30,18 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData }) => {
 
     const dispatch = useDispatch<AppDispatch>();
 
-    //useEffect(() => {
-    //    //importing ailines logos from logo api
-    //    async function fetchData() {
-    //        const response = await axios.get(
-    //            `https://logo-api-pi.vercel.app/api?filename=${flightData.validatingAirlineCodes[0]}`,
-    //            { headers: { 'Access-Control-Allow-Origin': '*' } },
-    //        );
+    useEffect(() => {
+        //importing ailines logos from logo api
+        async function fetchData() {
+            const response = await axios.get(
+                `https://logo-api-pi.vercel.app/api?filename=${flightData.validatingAirlineCodes[0]}`,
+                { headers: { 'Access-Control-Allow-Origin': '*' } },
+            );
+			setImg(response.data.img)
+        }
+		fetchData()
+    },[]);
 
-    //        dispatch(
-    //            add({
-    //                name: flightData.validatingAirlineCodes[0],
-    //                img: response.data.img,
-    //            }),
-    //        );
-    //        setImg(response.data.img);
-    //    }
-    // console.log(LogoImagesList.img.length);
-    // if (LogoImagesList.img.length < 50) {
-    //     console.log('inside if');
-    //     fetchData()
-    //         .then((res) => console.log(res))
-    //         .catch((error) => console.log(error));
-    // } else {
-    //     console.log('inside else');
-    //     console.log(flightData.id);
-    //     const findImg = LogoImagesList.img.find(
-    //         (singleImg: any) =>
-    //             singleImg.name === flightData.validatingAirlineCodes[0],
-    //     );
-    //     console.log(findImg.name);
-    //     setImg(findImg.img);
-    // }
-    // fetchData()
-    // }, []);
 
     const router = useRouter();
 

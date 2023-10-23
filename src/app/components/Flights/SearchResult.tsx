@@ -5,7 +5,7 @@ import { FC } from 'react';
 // redux
 import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
-// import { switchFlightCards } from '@/redux/features/expandFlightCard-slice';
+import { switchFlightCards } from '@/redux/features/expandFlightCard-slice';
 
 // styles
 import {
@@ -15,62 +15,111 @@ import {
 } from '@/styles/FlightStyles/SearchResult.styles';
 import FlightText from './FlightText';
 import { DeleteButton, ExpandButton } from '@/styles/Buttons.styles';
+import { FlightCard } from './FlightCard';
+import { AllFlightCardsContainer } from '@/styles/FlightStyles/FlightCard.styles';
 
 // icons
 import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { listItemClasses } from '@mui/material';
 
 interface SearchResultProps {
-    location: string;
-    distination: string;
-    flightDate: string;
-    numberOfAdults: string;
-    travelClass: string;
+    id: string;
+    searchResult: any;
 }
 
-const SearchResult: FC<SearchResultProps> = ({
-    location,
-    distination,
-    flightDate,
-    numberOfAdults,
-    travelClass,
-}) => {
-    const { expanded } = useAppSelector((state) => state.expandFlightCards);
+const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
+    // importing listOfExpanded state from redux that change the state of each searchResult whether it was expanded or not
+    const { listOfExpanded } = useAppSelector(
+        (state) => state.expandFlightCards,
+    );
+
+    // import flights from redux
     const { flights } = useAppSelector((state) => state.flightData);
 
-    // const { location, distination, flightDate, numberOfAdults, travelClass } =
-    //     useAppSelector((state) => state.flightFormInputValues);
-
+    // dispatch is a method to update redux states
     const dispatch = useDispatch<AppDispatch>();
 
+    // find This current Search Result ID from listOfExpanded redux state
+    const findSearchResultId = () => {
+        const currentSearchResult = listOfExpanded.filter(
+            (list: any) => list.id === id,
+        );
+        console.log(
+            'current SEarch result : ' + JSON.stringify(currentSearchResult[0]),
+        );
+        return currentSearchResult[0];
+    };
+    // get expanded state from current Search Result
+    const getCurrentSearchResultExpandState = () => {
+        const currentSearchResult = findSearchResultId();
+        console.log(' current : ' + currentSearchResult.expanded);
+        return currentSearchResult.expanded;
+    };
+    // all the flights card that attached to current Search Result
+    const AllFlightCards = () =>
+        searchResult.flights.flightsList.map((flight: any) => (
+            <FlightCard key={flight.id} flightData={flight}></FlightCard>
+        ));
+
     return (
-        <SearchResultContainer>
-            <SearchResultInfo>
-                <FlightText constText={'From'} varText={location} />
-                <FlightText constText={'To'} varText={distination} />
-                <FlightText
-                    constText={'Number of results'}
-                    varText={flights.length}
-                />
-                <FlightText constText={'Date'} varText={flightDate} />
-                <FlightText
-                    constText={'Number of adults'}
-                    varText={numberOfAdults}
-                />
-                <FlightText constText={'Travel Class'} varText={travelClass} />
-            </SearchResultInfo>
-            <SearchResultButtonsArea>
-                <DeleteButton>
-                    <DeleteIcon />
-                    Delete
-                </DeleteButton>
-                {/* <ExpandButton onClick={() => dispatch(switchFlightCards(1))}> */}
-                {/*     {expanded[0] ? <ExpandLessIcon /> : <ExpandMoreIcon />} */}
-                {/*     {expanded[0] ? 'Expand less' : 'Expand more'} */}
-                {/* </ExpandButton> */}
-            </SearchResultButtonsArea>
-        </SearchResultContainer>
+        <>
+            <SearchResultContainer>
+                <SearchResultInfo>
+                    <FlightText
+                        constText={'From'}
+                        varText={searchResult.location.cityName}
+                    />
+                    <FlightText
+                        constText={'To'}
+                        varText={searchResult.distination.cityName}
+                    />
+                    <FlightText
+                        constText={'Number of results'}
+                        varText={flights.length}
+                    />
+                    <FlightText
+                        constText={'Date'}
+                        varText={searchResult.flightDate}
+                    />
+                    <FlightText
+                        constText={'Number of adults'}
+                        varText={searchResult.numberOfAdults}
+                    />
+                    <FlightText
+                        constText={'Travel Class'}
+                        varText={searchResult.travelClass}
+                    />
+                </SearchResultInfo>
+                <SearchResultButtonsArea>
+                    <DeleteButton>
+                        <DeleteIcon />
+                        Delete
+                    </DeleteButton>
+
+                    <ExpandButton
+                        onClick={() => dispatch(switchFlightCards(id))}
+                    >
+                        {getCurrentSearchResultExpandState() ? (
+                            <ExpandLessIcon />
+                        ) : (
+                            <ExpandMoreIcon />
+                        )}
+                        {getCurrentSearchResultExpandState()
+                            ? 'Expand less'
+                            : 'Expand more'}
+                    </ExpandButton>
+                </SearchResultButtonsArea>
+            </SearchResultContainer>
+            {getCurrentSearchResultExpandState() ? (
+                <AllFlightCardsContainer>
+                    <AllFlightCards />
+                </AllFlightCardsContainer>
+            ) : (
+                <div></div>
+            )}
+        </>
     );
 };
 

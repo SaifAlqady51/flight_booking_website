@@ -6,22 +6,44 @@ import { FlightCard } from '@components/Flights/FlightCard';
 // redux
 import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
-import { pushSearchResult } from '@/redux/features/expandFlightCard-slice';
+import {
+    pushSearchResult,
+    resetSearchResults,
+    switchFlightCards,
+} from '@/redux/features/expandFlightCard-slice';
 
 const DisplaySearchResults = ({ data }: { data: any }) => {
+    // console.log('first SearchResult : '  + JSON.stringify(data.getSearchResultsForSpecificUser[0]))
     const dispatch = useDispatch<AppDispatch>();
+    const { listOfExpanded } = useAppSelector(
+        (state) => state.expandFlightCards
+    );
+    const expandItemForEachSearchResult = (
+        numberOfSearchResults: number,
+        listOfIds: string[],
+    ) => {
+        dispatch(pushSearchResult({ numberOfSearchResults, listOfIds }));
+    };
 
-    const expandItemForEachSearchResult = (noOfSearchResult: number) => {
-        dispatch(pushSearchResult(noOfSearchResult));
+    const resetSearchResultsListOfExpanded = () => {
+        dispatch(resetSearchResults());
+    };
+
+    const getSearchResultsIds = () => {
+        const ids = data.getSearchResultsForSpecificUser.map(
+            (searchResult: any) => searchResult.id,
+        );
+        return ids;
     };
     useEffect(() => {
-        console.log(
-            expandItemForEachSearchResult(
-                data?.getSearchResultsForSpecificUser?.length,
-            ),
-        );
-        expandItemForEachSearchResult(
-            data?.getSearchResultsForSpecificUser?.length,
+        console.log('all ids for SearchResults ' + getSearchResultsIds());
+        resetSearchResultsListOfExpanded();
+        dispatch(
+            pushSearchResult({
+                numberOfSearchResults:
+                    data.getSearchResultsForSpecificUser.length,
+                listOfIds: getSearchResultsIds(),
+            }),
         );
     }, []);
 
@@ -30,29 +52,13 @@ const DisplaySearchResults = ({ data }: { data: any }) => {
             <>
                 <SearchResult
                     key={searchResult.id}
-                    location={searchResult.location.cityName}
-                    distination={searchResult.distination.cityName}
-                    flightDate={searchResult.flightDate}
-                    numberOfAdults={searchResult.numberOfAdults}
-                    travelClass={searchResult.travelClass}
+                    id={searchResult.id}
+                    searchResult={searchResult}
                 />
-
-                {true ? (
-                    <AllFlightCardsContainer>
-                        {searchResult.flights.flightsList.map((flight: any) => (
-                            <FlightCard
-                                key={flight.id}
-                                flightData={flight}
-                            ></FlightCard>
-                        ))}
-                    </AllFlightCardsContainer>
-                ) : (
-                    <div></div>
-                )}
             </>
         ));
 
-    if (data) {
+    if (data && listOfExpanded.length > 0) {
         return <AllSearchResults />;
     } else {
         return <h1>There is no Search Results for you</h1>;
