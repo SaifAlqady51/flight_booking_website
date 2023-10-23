@@ -11,6 +11,7 @@ import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import DisplaySearchResults from '../components/Flights/DisplaySearchResults';
 import { pushSearchResult } from '@/redux/features/expandFlightCard-slice';
+import { FlightSearchForm } from '../components/Home/Content/SearchForm/FlightSearchForm';
 interface pageProps {}
 
 const Page: FC<pageProps> = ({}) => {
@@ -42,7 +43,12 @@ const Page: FC<pageProps> = ({}) => {
     }
     // if loading equals flase dispaly All SearchResult if exist
     else {
-        return <DisplaySearchResults data={data} />;
+        return (
+            <>
+                <FlightSearchForm />
+                <DisplaySearchResults data={data} />
+            </>
+        );
     }
 };
 

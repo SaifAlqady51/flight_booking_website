@@ -58,7 +58,7 @@ const DisplaySearchResults = ({ data }: { data: any }) => {
             </>
         ));
 
-    if (data && listOfExpanded.length > 0) {
+    if (data && listOfExpanded.length > 0 ) {
         return <AllSearchResults />;
     } else {
         return <h1>There is no Search Results for you</h1>;
