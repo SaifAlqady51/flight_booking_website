@@ -1,4 +1,4 @@
-import { citiesList } from '../../TopThousandCity';
+import { citiesList } from '../../CitiesList';
 
 export const filterCitiesList = (value: string) => {
     if (value === '') {

@@ -57,44 +57,50 @@ export const FlightSearchForm = () => {
         ],
     });
 
-    // console.log(getAirPortIATACodeFromCityName('Alexandria'));
-
     const handleSumbit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // waiting for IATA city code response from airLabs api
         dispatch(thruthyIsLoading());
         const locationIATACode = await getCityCodeFromCityName(location);
+        console.log(locationIATACode);
         const distinationIATACode = await getCityCodeFromCityName(distination);
+        console.log(distinationIATACode);
 
-        // waiting for flightsData response from amadeus api
-        const flightsList = await getFlightOffers({
-            locationIATACode,
-            distinationIATACode,
-            flightDate,
-            numberOfAdults,
-            travelClass,
-        });
+        if (locationIATACode && distinationIATACode) {
+            // waiting for flightsData response from amadeus api
+            const flightsList = await getFlightOffers({
+                locationIATACode,
+                distinationIATACode,
+                flightDate,
+                numberOfAdults,
+                travelClass,
+            });
 
-        // create new SearchResult query in the graphql database
-        createSearchResult({
-            variables: {
-                location: { cityName: location, IATACode: locationIATACode },
-                distination: {
-                    cityName: distination,
-                    IATACode: distinationIATACode,
+            // create new SearchResult query in the graphql database
+            createSearchResult({
+                variables: {
+                    location: {
+                        cityName: location,
+                        IATACode: locationIATACode,
+                    },
+                    distination: {
+                        cityName: distination,
+                        IATACode: distinationIATACode,
+                    },
+                    flightDate: flightDate,
+                    numberOfAdults: numberOfAdults,
+                    travelClass: travelClass,
+                    flights: { flightsList },
+                    userId: userId,
                 },
-                flightDate: flightDate,
-                numberOfAdults: numberOfAdults,
-                travelClass: travelClass,
-                flights: { flightsList },
-                userId: userId,
-            },
-        });
+            });
+        }
 
         dispatch(falsyIsLoading());
 
         router.replace('/flights');
+		router.refresh()
     };
 
     return (

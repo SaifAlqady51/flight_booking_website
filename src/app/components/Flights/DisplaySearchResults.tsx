@@ -16,36 +16,33 @@ const DisplaySearchResults = ({ data }: { data: any }) => {
     // console.log('first SearchResult : '  + JSON.stringify(data.getSearchResultsForSpecificUser[0]))
     const dispatch = useDispatch<AppDispatch>();
     const { listOfExpanded } = useAppSelector(
-        (state) => state.expandFlightCards
+        (state) => state.expandFlightCards,
     );
-    const expandItemForEachSearchResult = (
-        numberOfSearchResults: number,
-        listOfIds: string[],
-    ) => {
-        dispatch(pushSearchResult({ numberOfSearchResults, listOfIds }));
+
+    console.log(
+        'data : ' + JSON.stringify(data.getSearchResultsForSpecificUser),
+    );
+
+    const getIdsForSearchResults = () => {
+        let listOfIds: string[] = [];
+        const searchResults = data.getSearchResultsForSpecificUser;
+        for (let searchResult of searchResults) {
+            listOfIds.push(searchResult.id);
+        }
+        return listOfIds;
     };
 
-    const resetSearchResultsListOfExpanded = () => {
-        dispatch(resetSearchResults());
-    };
-
-    const getSearchResultsIds = () => {
-        const ids = data.getSearchResultsForSpecificUser.map(
-            (searchResult: any) => searchResult.id,
-        );
-        return ids;
-    };
     useEffect(() => {
-        console.log('all ids for SearchResults ' + getSearchResultsIds());
-        resetSearchResultsListOfExpanded();
+		dispatch(resetSearchResults())
+		const listOfIds = getIdsForSearchResults()
+        console.log('List of Ids' + getIdsForSearchResults());
         dispatch(
             pushSearchResult({
-                numberOfSearchResults:
-                    data.getSearchResultsForSpecificUser.length,
-                listOfIds: getSearchResultsIds(),
+                numberOfSearchResults: listOfIds.length,
+                listOfIds: listOfIds,
             }),
         );
-    }, []);
+    }, [data]);
 
     const AllSearchResults = () =>
         data.getSearchResultsForSpecificUser.map((searchResult: any) => (
@@ -58,7 +55,11 @@ const DisplaySearchResults = ({ data }: { data: any }) => {
             </>
         ));
 
-    if (data && listOfExpanded.length > 0 ) {
+    if (
+        data &&
+        listOfExpanded.length ==
+            data.getSearchResultsForSpecificUser.length
+    ) {
         return <AllSearchResults />;
     } else {
         return <h1>There is no Search Results for you</h1>;

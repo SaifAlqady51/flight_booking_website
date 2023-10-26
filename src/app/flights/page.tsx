@@ -10,7 +10,10 @@ import { getSearchResultsForCurrentUser } from '@/utils/graphqlQuery/getSearchRe
 import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import DisplaySearchResults from '../components/Flights/DisplaySearchResults';
-import { pushSearchResult } from '@/redux/features/expandFlightCard-slice';
+import {
+    pushSearchResult,
+    resetSearchResults,
+} from '@/redux/features/expandFlightCard-slice';
 import { FlightSearchForm } from '../components/Home/Content/SearchForm/FlightSearchForm';
 interface pageProps {}
 
@@ -32,6 +35,34 @@ const Page: FC<pageProps> = ({}) => {
         variables: { userId: userId },
     });
 
+
+    // const resetSearchResultsListOfExpanded = () => {
+    //     dispatch(resetSearchResults());
+    // };
+
+    // const getSearchResultsIds = () => {
+    //     const ids = data.getSearchResultsForSpecificUser.map(
+    //         (searchResult: any) => searchResult.id,
+    //     );
+    //     return ids;
+    // };
+    // useEffect(() => {
+    //     resetSearchResultsListOfExpanded();
+    //     const createExpanedList = async () => {
+    //         dispatch(
+    //             pushSearchResult({
+    //                 numberOfSearchResults:
+    //                     data.getSearchResultsForSpecificUser.length,
+    //                 listOfIds: getSearchResultsIds(),
+    //             }),
+    //         );
+    //     };
+
+    // createExpanedList()
+    // console.log('length of listOfExpanded : ' + listOfExpanded.length);
+    // console.log('length of data : ' + data.getSearchResultsForSpecificUser.length)
+    // }, []);
+
     if (error) {
         console.error(error);
     }
@@ -42,14 +73,14 @@ const Page: FC<pageProps> = ({}) => {
         return <LoadingPage />;
     }
     // if loading equals flase dispaly All SearchResult if exist
-    else {
+    else{
         return (
             <>
                 <FlightSearchForm />
                 <DisplaySearchResults data={data} />
             </>
         );
-    }
+	}
 };
 
 export default Page;

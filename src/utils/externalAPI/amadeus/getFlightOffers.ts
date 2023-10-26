@@ -28,10 +28,6 @@ export const getFlightOffers = async ({
             },
         };
         const flights = await axios.get(URL, config);
-        console.log(
-            'flightsData befor addLogoToFlightsData function : ' +
-                JSON.stringify(flights.data.data[0]),
-        );
 
         // const allFlightOffers = await addLogoToFlightsData(flights.data.data);
         // console.log(

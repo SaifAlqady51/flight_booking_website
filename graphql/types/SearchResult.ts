@@ -89,9 +89,14 @@ export const SearchResultMutation = extendType({
         });
 
         t.nonNull.field('deleteSearchResult', {
-            type: SearchResult,
-            async resolve(_root, _args, ctx) {
-                return await ctx.prisma.searchResult.deleteMany();
+			type: SearchResult,
+			args:{
+				userId: nonNull(stringArg())
+			},
+			async resolve(_root:any, args, ctx) {
+				return await ctx.prisma.searchResult.deleteMany({
+					where: {userId: args.userId}
+				});
             },
         });
     },
