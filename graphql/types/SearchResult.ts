@@ -1,3 +1,4 @@
+import {resolve} from 'dns';
 import { extendType, nonNull, objectType, stringArg, arg } from 'nexus';
 import { User } from './User';
 
@@ -88,7 +89,7 @@ export const SearchResultMutation = extendType({
             },
         });
 
-        t.nonNull.field('deleteSearchResult', {
+        t.nonNull.field('deleteAllSearchResult', {
 			type: SearchResult,
 			args:{
 				userId: nonNull(stringArg())
@@ -98,6 +99,18 @@ export const SearchResultMutation = extendType({
 					where: {userId: args.userId}
 				});
             },
-        });
+		});
+
+		t.nonNull.field('deletSingleSearchResult', {
+			type:SearchResult,
+			args:{
+				id: nonNull(stringArg())
+			},
+			async resolve(_root, args,ctx){
+				return await ctx.prisma.searchResult.delete({
+					where: {id: args.id}	
+				})
+			}
+		})
     },
 });

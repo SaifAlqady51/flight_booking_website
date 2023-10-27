@@ -25,3 +25,11 @@ export const StyledIcon = styled(Provider)`
         padding-left: 15px;
     }
 `;
+
+
+export const SmallStyledIcon = styled(Provider)`
+    width: 40px;
+    height: 40px;
+    color: white;
+    padding-right: 10px;
+`;

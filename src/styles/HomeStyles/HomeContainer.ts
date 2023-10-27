@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{activeAlert: boolean}>`
+	filter:${(props) => props.activeAlert && "blur(3px) brightness(0.5)"};
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -24,6 +24,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { listItemClasses } from '@mui/material';
 
+// graphql
+import { useMutation } from '@apollo/client';
+import { DeleteSingleSearchResult } from '@/utils/graphqlMutation/DeleteSingleSearchResult-mutation';
+import { getSearchResultsForCurrentUser } from '@/utils/graphqlQuery/getSearchResults-query';
+
 interface SearchResultProps {
     id: string;
     searchResult: any;
@@ -34,6 +39,14 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
     const { listOfExpanded } = useAppSelector(
         (state) => state.expandFlightCards,
     );
+    const { userId } = useAppSelector((state) => state.userIdSlice);
+
+    // mutation for deleting single search result
+    const [deleteSingleSearchResult] = useMutation(DeleteSingleSearchResult, {
+        refetchQueries: [
+            { query: getSearchResultsForCurrentUser, variables: { userId } },
+        ],
+    });
 
     // import flights from redux
     const { flights } = useAppSelector((state) => state.flightData);
@@ -51,6 +64,12 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
         );
         return currentSearchResult[0];
     };
+
+    // delete a specific search result when this button clicked
+    const deletingButton = () => {
+        deleteSingleSearchResult({ variables: { id: searchResult.id } });
+    };
+
     // get expanded state from current Search Result
     const getCurrentSearchResultExpandState = () => {
         const currentSearchResult = findSearchResultId();
@@ -62,6 +81,7 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
         searchResult.flights.flightsList.map((flight: any) => (
             <FlightCard key={flight.id} flightData={flight}></FlightCard>
         ));
+    console.log(searchResult);
 
     return (
         <>
@@ -77,7 +97,7 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
                     />
                     <FlightText
                         constText={'Number of results'}
-                        varText={flights.length}
+                        varText={`${searchResult.flights.flightsList.length}`}
                     />
                     <FlightText
                         constText={'Date'}
@@ -93,7 +113,7 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
                     />
                 </SearchResultInfo>
                 <SearchResultButtonsArea>
-                    <DeleteButton>
+                    <DeleteButton onClick={deletingButton} >
                         <DeleteIcon />
                         Delete
                     </DeleteButton>

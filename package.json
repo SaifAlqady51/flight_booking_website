@@ -60,6 +60,7 @@
     "redux-persist": "^6.0.0",
     "reduxjs-toolkit-persist": "^7.2.1",
     "styled-components": "^6.0.1",
+    "toastr": "^2.1.4",
     "typescript": "5.1.6"
   },
   "devDependencies": {
@@ -67,6 +68,8 @@
     "@types/express": "^4.17.17",
     "@types/micro-cors": "^0.1.4",
     "@types/nprogress": "^0.2.0",
-    "eslint": "^8.50.0"
+    "@types/toastr": "^2.1.42",
+    "eslint": "^8.50.0",
+    "reactstrap": "^9.2.0"
   }
 }

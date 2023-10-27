@@ -16,6 +16,8 @@ import flightFormInputValues from './features/flightFormInputValues-slice';
 import seatsMap from './features/seatsMap-slice';
 import airlineLogo from './features/airlineLogo-slice';
 import userIdSlice from './features/userId-slice';
+import checkFlightDate  from './features/checkFlightDate-slice';
+import toggleAlert  from './features/toggleAlert-slice';
 
 import flightData from './features/flightData-slice';
 import {
@@ -43,6 +45,8 @@ const persistConfig = {
         'userIdSlice',
         'expandFlightCards',
         'loading',
+		'checkFlightDate',
+		'toggleAlert'
     ],
 };
 
@@ -56,6 +60,8 @@ const reducer = combineReducers({
     seatsMap,
     airlineLogo,
     userIdSlice,
+	checkFlightDate,
+	toggleAlert,
 });
 
 export const persistedReducer = persistReducer(

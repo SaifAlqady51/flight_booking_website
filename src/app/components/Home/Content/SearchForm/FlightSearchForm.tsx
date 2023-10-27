@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import toastr from 'toastr';
 // redux
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
@@ -18,6 +19,7 @@ import {
     thruthyIsLoading,
     falsyIsLoading,
 } from '@/redux/features/loading-slice';
+import { check } from '@/redux/features/checkFlightDate-slice';
 
 // graphql
 import { CreateSearchResult } from '@/utils/graphqlMutation/createSearchResult-mutation';
@@ -37,6 +39,8 @@ import {
 } from '@/utils/handleInputChanges';
 import { SelectField } from './SelectField';
 import { getCityCodeFromCityName } from '@utils/externalAPI/airLabs/makeIATACode';
+import { hanldeFlightDate } from '@/utils/handleFlightDateLogic';
+import { switchAlert } from '@/redux/features/toggleAlert-slice';
 
 export const FlightSearchForm = () => {
     // set up router
@@ -53,7 +57,10 @@ export const FlightSearchForm = () => {
     // calling the graphql mutation that creates new SearchResult
     const [createSearchResult] = useMutation(CreateSearchResult, {
         refetchQueries: [
-            { query: getSearchResultsForCurrentUser, variables: { userId } },
+            {
+                query: getSearchResultsForCurrentUser,
+                variables: { userId },
+            },
         ],
     });
 
@@ -61,13 +68,22 @@ export const FlightSearchForm = () => {
         e.preventDefault();
 
         // waiting for IATA city code response from airLabs api
-        dispatch(thruthyIsLoading());
         const locationIATACode = await getCityCodeFromCityName(location);
-        console.log(locationIATACode);
         const distinationIATACode = await getCityCodeFromCityName(distination);
-        console.log(distinationIATACode);
 
-        if (locationIATACode && distinationIATACode) {
+        if (!hanldeFlightDate(flightDate).status) {
+            dispatch(switchAlert());
+            dispatch(
+                check({
+                    status: hanldeFlightDate(flightDate).status,
+                    message: hanldeFlightDate(flightDate).message,
+                }),
+            );
+            // return window.alert(
+            //       `${hanldeFlightDate(flightDate).message}`,
+            // );
+        } else if (locationIATACode && distinationIATACode) {
+            dispatch(thruthyIsLoading());
             // waiting for flightsData response from amadeus api
             const flightsList = await getFlightOffers({
                 locationIATACode,
@@ -95,12 +111,12 @@ export const FlightSearchForm = () => {
                     userId: userId,
                 },
             });
+
+            dispatch(falsyIsLoading());
+
+            router.replace('/flights');
+            router.refresh();
         }
-
-        dispatch(falsyIsLoading());
-
-        router.replace('/flights');
-		router.refresh()
     };
 
     return (
