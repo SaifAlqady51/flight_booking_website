@@ -113,7 +113,7 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
                     />
                 </SearchResultInfo>
                 <SearchResultButtonsArea>
-                    <DeleteButton onClick={deletingButton} >
+                    <DeleteButton onClick={deletingButton}>
                         <DeleteIcon />
                         Delete
                     </DeleteButton>

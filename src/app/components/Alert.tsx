@@ -1,26 +1,24 @@
-import { AlertStyles, AlertText } from "@/styles/Alert.styles" 
+import { AlertStyles, AlertText } from '@/styles/Alert.styles';
 import { AiOutlineClose } from 'react-icons/ai';
-import { SmallStyledIcon } from "@/styles/NavStyles/ListIcon.styles";
-import { useAppSelector, AppDispatch } from "@/redux/store";
-import { useDispatch } from "react-redux";
-import {switchAlert} from "@/redux/features/toggleAlert-slice";
+import { SmallStyledIcon } from '@/styles/NavStyles/ListIcon.styles';
+import { useAppSelector, AppDispatch } from '@/redux/store';
+import { useDispatch } from 'react-redux';
+import { switchAlert } from '@/redux/features/toggleAlert-slice';
 interface AlertProps {
-	message:string,
+    message: string;
 }
 
-const Alert = ({message}: AlertProps) => {
+const Alert = ({ message }: AlertProps) => {
+    const dispatch = useDispatch<AppDispatch>();
 
-	const dispatch = useDispatch<AppDispatch>()
+    return (
+        <AlertStyles open>
+            <AlertText>{message}</AlertText>
+            <SmallStyledIcon>
+                <AiOutlineClose onClick={() => dispatch(switchAlert())} />
+            </SmallStyledIcon>
+        </AlertStyles>
+    );
+};
 
-	return (
-		<AlertStyles open >
-			<AlertText>{message}</AlertText>
-			<SmallStyledIcon>
-				<AiOutlineClose  onClick={() => dispatch(switchAlert())}/>
-			</SmallStyledIcon>
-		</AlertStyles>
-				
-	)
-}
-
-export default Alert
+export default Alert;

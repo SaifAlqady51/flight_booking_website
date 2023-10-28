@@ -3,6 +3,7 @@ import {
     NavContainer,
     LeftNavbar,
     RightNavbar,
+    HeroLink,
 } from '@/styles/NavStyles/Navbar.styles';
 import { Name } from '@/styles/NavStyles/CompanyName.styles';
 import { FC } from 'react';
@@ -16,6 +17,8 @@ import { useDispatch } from 'react-redux';
 import { StyledLi } from '@/styles/NavStyles/StyledLi.styles';
 import { StyledLink } from '@/styles/NavStyles/StyledLink.styles';
 import Signup from './Signup';
+
+import Link from 'next/link';
 interface NavbarProps {}
 
 const Navbar: FC<NavbarProps> = ({}) => {
@@ -31,8 +34,10 @@ const Navbar: FC<NavbarProps> = ({}) => {
         <div>
             <NavContainer>
                 <LeftNavbar>
-                    <TayaraIcon src={Logo} alt='tyara pic' />
-                    <Name>Tayara</Name>
+                    <HeroLink href='/'>
+                        <TayaraIcon src={Logo} alt='tyara pic' />
+                        <Name>Tayara</Name>
+                    </HeroLink>
                 </LeftNavbar>
                 <RightNavbar>
                     <ThemeToggler />

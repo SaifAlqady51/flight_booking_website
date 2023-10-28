@@ -15,16 +15,21 @@ import {
     resetSearchResults,
 } from '@/redux/features/expandFlightCard-slice';
 import { FlightSearchForm } from '../components/Home/Content/SearchForm/FlightSearchForm';
+import { Container } from '@/styles/HomeStyles/HomeContainer';
+import Alert from '../components/Alert';
 interface pageProps {}
 
 const Page: FC<pageProps> = ({}) => {
-    // dispatch redux
-    const dispatch = useDispatch<AppDispatch>();
+    // importing active alert state from redux that return true if there is an Alert
+    const { activeAlert } = useAppSelector((state) => state.toggleAlert);
 
-    // import expanedFlightCards slice from redux
-    const { listOfExpanded } = useAppSelector(
-        (state) => state.expandFlightCards,
+    // importing status and message states from check flight date status returns false if there is an error with flight date and message returns that error if exists
+    const { status, message } = useAppSelector(
+        (state) => state.checkFlightDate,
     );
+
+    // the condition that returns an alert
+    const conditionToDisplayAlert = activeAlert && !status;
 
     // import userId slice from redux
     const { userId } = useAppSelector((state) => state.userIdSlice);
@@ -34,34 +39,6 @@ const Page: FC<pageProps> = ({}) => {
     const { loading, error, data } = useQuery(getSearchResultsForCurrentUser, {
         variables: { userId: userId },
     });
-
-
-    // const resetSearchResultsListOfExpanded = () => {
-    //     dispatch(resetSearchResults());
-    // };
-
-    // const getSearchResultsIds = () => {
-    //     const ids = data.getSearchResultsForSpecificUser.map(
-    //         (searchResult: any) => searchResult.id,
-    //     );
-    //     return ids;
-    // };
-    // useEffect(() => {
-    //     resetSearchResultsListOfExpanded();
-    //     const createExpanedList = async () => {
-    //         dispatch(
-    //             pushSearchResult({
-    //                 numberOfSearchResults:
-    //                     data.getSearchResultsForSpecificUser.length,
-    //                 listOfIds: getSearchResultsIds(),
-    //             }),
-    //         );
-    //     };
-
-    // createExpanedList()
-    // console.log('length of listOfExpanded : ' + listOfExpanded.length);
-    // console.log('length of data : ' + data.getSearchResultsForSpecificUser.length)
-    // }, []);
 
     if (error) {
         console.error(error);
@@ -73,14 +50,17 @@ const Page: FC<pageProps> = ({}) => {
         return <LoadingPage />;
     }
     // if loading equals flase dispaly All SearchResult if exist
-    else{
+    else {
         return (
             <>
-                <FlightSearchForm />
-                <DisplaySearchResults data={data} />
+                {conditionToDisplayAlert && <Alert message={message} />}
+                <Container activeAlert={conditionToDisplayAlert}>
+                    <FlightSearchForm />
+                    <DisplaySearchResults data={data} />
+                </Container>
             </>
         );
-	}
+    }
 };
 
 export default Page;

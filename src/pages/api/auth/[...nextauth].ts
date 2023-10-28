@@ -22,7 +22,6 @@ function googleCredential() {
 }
 
 export const authOptions: NextAuthOptions = {
-
     adapter: PrismaAdapter(prisma),
     session: {
         strategy: 'jwt',

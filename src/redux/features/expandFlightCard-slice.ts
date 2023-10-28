@@ -46,16 +46,14 @@ const expandFlightCards = createSlice({
         switchFlightCards: (
             state: initialStateType,
             action: PayloadAction<string>,
-		) => {
+        ) => {
             for (let i = 0; i < state.listOfExpanded.length; i++) {
                 if (state.listOfExpanded[i].id === action.payload) {
                     state.listOfExpanded[i].expanded =
                         !state.listOfExpanded[i].expanded;
-
+                } else {
+                    state.listOfExpanded[i].expanded = false;
                 }
-				else {
-					state.listOfExpanded[i].expanded = false
-				}
             }
         },
     },

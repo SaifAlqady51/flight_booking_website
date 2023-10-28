@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import Link from 'next/link';
 export const NavContainer = styled.div`
     background-color: ${(props) => props.theme.navColor};
     height: 80px;
@@ -27,6 +27,13 @@ export const LeftNavbar = styled.div`
         width: 100%;
         justify-content: center;
     }
+`;
+
+export const HeroLink = styled(Link)`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
 `;
 
 export const RightNavbar = styled.div`

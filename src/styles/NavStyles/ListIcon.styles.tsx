@@ -26,7 +26,6 @@ export const StyledIcon = styled(Provider)`
     }
 `;
 
-
 export const SmallStyledIcon = styled(Provider)`
     width: 40px;
     height: 40px;

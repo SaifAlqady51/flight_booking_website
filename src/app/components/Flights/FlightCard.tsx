@@ -37,11 +37,10 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData }) => {
                 `https://logo-api-pi.vercel.app/api?filename=${flightData.validatingAirlineCodes[0]}`,
                 { headers: { 'Access-Control-Allow-Origin': '*' } },
             );
-			setImg(response.data.img)
+            setImg(response.data.img);
         }
-		fetchData()
-    },[]);
-
+        fetchData();
+    }, []);
 
     const router = useRouter();
 

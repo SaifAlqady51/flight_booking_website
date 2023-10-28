@@ -33,8 +33,8 @@ const DisplaySearchResults = ({ data }: { data: any }) => {
     };
 
     useEffect(() => {
-		dispatch(resetSearchResults())
-		const listOfIds = getIdsForSearchResults()
+        dispatch(resetSearchResults());
+        const listOfIds = getIdsForSearchResults();
         console.log('List of Ids' + getIdsForSearchResults());
         dispatch(
             pushSearchResult({
@@ -57,8 +57,7 @@ const DisplaySearchResults = ({ data }: { data: any }) => {
 
     if (
         data &&
-        listOfExpanded.length ==
-            data.getSearchResultsForSpecificUser.length
+        listOfExpanded.length == data.getSearchResultsForSpecificUser.length
     ) {
         return <AllSearchResults />;
     } else {
