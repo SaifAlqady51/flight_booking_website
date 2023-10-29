@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description: 'flight Booking website',
 };
 
-const page: FC<pageProps> = ({}) => {
+const page: FC<pageProps> = () => {
     console.log('about page');
     return (
         <>

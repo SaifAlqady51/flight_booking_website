@@ -1,9 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { getUserId } from '@/utils/externalAPI/getUserId';
-import { useDispatch } from 'react-redux';
-import { AppDispatch, useAppSelector } from '@/redux/store';
-import { storeCurrentUserId } from '@/redux/features/userId-slice';
+import {  useAppSelector } from '@/redux/store';
 import Hero from '@components/Home/Hero/Hero';
 import { Container } from '@/styles/HomeStyles/HomeContainer';
 import HeroImage from '@components/Home/Hero/HeroImage';

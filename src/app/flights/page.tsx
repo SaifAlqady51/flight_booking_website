@@ -1,25 +1,22 @@
 'use client';
-import { useEffect } from 'react';
+// react
 import { FC } from 'react';
-import LoadingPage from '../../app/components/LoadingPage';
+
 // graphql
 import { useQuery } from '@apollo/client';
 import { getSearchResultsForCurrentUser } from '@/utils/graphqlQuery/getSearchResults-query';
 
 //redux
-import { useAppSelector, AppDispatch } from '@/redux/store';
-import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/redux/store';
+//styles
+import LoadingPage from '../../app/components/LoadingPage';
 import DisplaySearchResults from '../components/Flights/DisplaySearchResults';
-import {
-    pushSearchResult,
-    resetSearchResults,
-} from '@/redux/features/expandFlightCard-slice';
 import { FlightSearchForm } from '../components/Home/Content/SearchForm/FlightSearchForm';
 import { Container } from '@/styles/HomeStyles/HomeContainer';
 import Alert from '../components/Alert';
 interface pageProps {}
 
-const Page: FC<pageProps> = ({}) => {
+const Page: FC<pageProps> = () => {
     // importing active alert state from redux that return true if there is an Alert
     const { activeAlert } = useAppSelector((state) => state.toggleAlert);
 

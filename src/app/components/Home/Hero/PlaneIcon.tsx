@@ -3,16 +3,14 @@ import {
     PlaneIconContainer,
     PlaneIconStyled,
 } from '@/styles/HomeStyles/HeroStyles/PlaneIcon.styled';
-import horizotalPlane from '../../../../public/static/images/paper-plane-purple.png';
-import { motionValue } from 'framer-motion';
+import horizotalPlane from '@public/static/images/paper-plane-purple.png';
 
 interface PlaneIconProps {}
 
-const PlaneIcon: FC<PlaneIconProps> = ({}) => {
+const PlaneIcon: FC<PlaneIconProps> = () => {
     // calculat the width of the screen
     const width: number = window.innerWidth;
 
-    const x = motionValue(0);
 
     return (
         // wrap the Image with div because framer motion does not work with Image
@@ -28,4 +26,3 @@ const PlaneIcon: FC<PlaneIconProps> = ({}) => {
 
 export default PlaneIcon;
 
-//initial={{x:-1100}} animate={{x:1100}} transition={{type:'spring',duration:9}}

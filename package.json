@@ -39,6 +39,7 @@
     "express": "^4.18.2",
     "framer-motion": "^10.13.0",
     "fs": "^0.0.1-security",
+    "globalthis": "^1.0.3",
     "graphql": "^16.8.1",
     "graphql-type-json": "^0.3.2",
     "immutable": "^4.3.1",
@@ -66,6 +67,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
+    "@types/globalthis": "^1.0.3",
     "@types/micro-cors": "^0.1.4",
     "@types/nprogress": "^0.2.0",
     "@types/toastr": "^2.1.42",

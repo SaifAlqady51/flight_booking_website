@@ -6,7 +6,6 @@ import {
     CityName,
     AirPlaneImage,
 } from '@styles/FlightDetailedStyles/StopsLine.styles';
-import { set } from 'nprogress';
 
 interface AllStopsProps {
     stops: SegmentType[];

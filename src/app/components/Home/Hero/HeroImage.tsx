@@ -7,7 +7,7 @@ import planeWindow from '@public/static/images/planeWindow.gif';
 
 interface HeroImageProps {}
 
-const HeroImage: FC<HeroImageProps> = ({}) => {
+const HeroImage: FC<HeroImageProps> = () => {
     return (
         <>
             <HeroImageContainer

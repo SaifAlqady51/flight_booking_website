@@ -12,23 +12,19 @@ import { NavLinks } from '@/styles/NavStyles/NavLinks.styles';
 import ListIcon from './ListIcon';
 import ThemeToggler from './ThemeToggler';
 import { TayaraIcon } from '@/styles/NavStyles/TayaraIcon.styles';
-import { useAppSelector, AppDispatch } from '@/redux/store';
-import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/redux/store';
 import { StyledLi } from '@/styles/NavStyles/StyledLi.styles';
 import { StyledLink } from '@/styles/NavStyles/StyledLink.styles';
 import Signup from './Signup';
 
-import Link from 'next/link';
 interface NavbarProps {}
 
-const Navbar: FC<NavbarProps> = ({}) => {
+const Navbar: FC<NavbarProps> = () => {
     // active state from redux
     const active: boolean = useAppSelector(
         (state) => state.toggleSideNav.active,
     );
     console.log(active);
-    // dispatch is called to import toggleSwitch from redux
-    const dispatch = useDispatch<AppDispatch>();
 
     return (
         <div>

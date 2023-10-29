@@ -22,7 +22,6 @@ import { AllFlightCardsContainer } from '@/styles/FlightStyles/FlightCard.styles
 import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import { listItemClasses } from '@mui/material';
 
 // graphql
 import { useMutation } from '@apollo/client';
@@ -47,9 +46,6 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
             { query: getSearchResultsForCurrentUser, variables: { userId } },
         ],
     });
-
-    // import flights from redux
-    const { flights } = useAppSelector((state) => state.flightData);
 
     // dispatch is a method to update redux states
     const dispatch = useDispatch<AppDispatch>();

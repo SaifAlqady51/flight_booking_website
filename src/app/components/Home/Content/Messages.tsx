@@ -11,7 +11,7 @@ import spiningWorld from '@public/static/images/giphy.gif';
 import purpleSky from '@public/static/images/pruple-sky.gif';
 import { MessageImage } from '@/styles/HomeStyles/ContentStyles/MessageImage';
 
-const Messages: FC = ({}) => {
+const Messages: FC = () => {
     const DivAnimation = {
         offscreen: { y: 100, opacity: 0 },
         onscreen: { y: 0, opacity: 1 },

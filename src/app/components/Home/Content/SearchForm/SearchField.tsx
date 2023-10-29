@@ -9,9 +9,7 @@ import { FC } from 'react';
 import { useAnimate } from 'framer-motion';
 import CitiesList from '../../Content/SearchForm/CitiesList';
 import { filterCitiesList } from '@utils/filterCitiesList';
-import { useDispatch } from 'react-redux';
-import { AppDispatch, useAppSelector } from '@/redux/store';
-import dist from 'styled-components';
+import { useAppSelector } from '@/redux/store';
 
 interface SearchFieldProps {
     typeOfInputField?: string;

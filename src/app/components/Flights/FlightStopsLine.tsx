@@ -3,13 +3,9 @@ import { FC } from 'react';
 import { usePathname } from 'next/navigation';
 import {
     StopsLineContainer,
-    CityName,
-    AirPlaneImage,
 } from '@styles/FlightDetailedStyles/StopsLine.styles';
-import { useAppSelector, AppDispatch } from '@/redux/store';
-import { useDispatch } from 'react-redux';
+import { useAppSelector} from '@/redux/store';
 import { FlightType, SegmentType } from '@/types/flight-types';
-import airPlane from '@public/static/images/airplane.png';
 import AllStops from './AllStops';
 
 export const FlightStopsLine: FC = () => {

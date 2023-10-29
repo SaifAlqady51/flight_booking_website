@@ -1,4 +1,3 @@
-import { StyledLink } from '@/styles/NavStyles/StyledLink.styles';
 import { FC } from 'react';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
@@ -9,7 +8,6 @@ import {
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { SignupButton } from '@/styles/NavStyles/SignupButton.styles';
 import { storeCurrentUserId } from '@/redux/features/userId-slice';
-interface SignupButtonProps {}
 
 const Signup: FC = () => {
     const { data: session } = useSession();

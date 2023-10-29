@@ -1,5 +1,6 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
+import React from 'react';
 import StyledComponentsRegistry from '@/lib/registery';
 import Navbar from '@components/Nav/Navbar';
 import { ReduxProvider } from '@/redux/ReduxProvider';

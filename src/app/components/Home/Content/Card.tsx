@@ -5,7 +5,7 @@ import {
 } from '@/styles/HomeStyles/ContentStyles/Card.styles';
 interface CardProps {}
 
-const Card: FC<CardProps> = ({}) => {
+const Card: FC<CardProps> = () => {
     return (
         <>
             <CardContainer>

@@ -1,15 +1,12 @@
 'use client';
 import { useEffect } from 'react';
 import SearchResult from '@components/Flights/SearchResult';
-import { AllFlightCardsContainer } from '@/styles/FlightStyles/FlightCard.styles';
-import { FlightCard } from '@components/Flights/FlightCard';
 // redux
 import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import {
     pushSearchResult,
     resetSearchResults,
-    switchFlightCards,
 } from '@/redux/features/expandFlightCard-slice';
 
 const DisplaySearchResults = ({ data }: { data: any }) => {
@@ -23,16 +20,15 @@ const DisplaySearchResults = ({ data }: { data: any }) => {
         'data : ' + JSON.stringify(data.getSearchResultsForSpecificUser),
     );
 
-    const getIdsForSearchResults = () => {
-        let listOfIds: string[] = [];
-        const searchResults = data.getSearchResultsForSpecificUser;
-        for (let searchResult of searchResults) {
-            listOfIds.push(searchResult.id);
-        }
-        return listOfIds;
-    };
-
     useEffect(() => {
+        const getIdsForSearchResults = () => {
+            let listOfIds: string[] = [];
+            const searchResults = data.getSearchResultsForSpecificUser;
+            for (let searchResult of searchResults) {
+                listOfIds.push(searchResult.id);
+            }
+            return listOfIds;
+        };
         dispatch(resetSearchResults());
         const listOfIds = getIdsForSearchResults();
         console.log('List of Ids' + getIdsForSearchResults());
@@ -42,7 +38,7 @@ const DisplaySearchResults = ({ data }: { data: any }) => {
                 listOfIds: listOfIds,
             }),
         );
-    }, [data]);
+    }, [data, dispatch]);
 
     const AllSearchResults = () =>
         data.getSearchResultsForSpecificUser.map((searchResult: any) => (

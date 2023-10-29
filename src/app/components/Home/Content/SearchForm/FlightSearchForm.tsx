@@ -1,10 +1,9 @@
 'use client';
 
 // react  hooks
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import React from 'react';
 
-import toastr from 'toastr';
 // redux
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
@@ -20,40 +19,43 @@ import {
     falsyIsLoading,
 } from '@/redux/features/loading-slice';
 import { check } from '@/redux/features/checkFlightDate-slice';
+import { switchAlert } from '@/redux/features/toggleAlert-slice';
 
 // graphql
 import { CreateSearchResult } from '@/utils/graphqlMutation/createSearchResult-mutation';
 import { useMutation } from '@apollo/client';
 import { getSearchResultsForCurrentUser } from '@/utils/graphqlQuery/getSearchResults-query';
 
-import { InputEventType } from '@/types/flightSearchForm-types';
+// styles
 import { SelectChangeEvent } from '@mui/material/Select';
-import { FlightSearchFormStyles } from '@styles/HomeStyles/ContentStyles/FlightSearchForm.styles';
 import { SearchField } from '../SearchForm/SearchField';
+import { FlightSearchFormStyles } from '@styles/HomeStyles/ContentStyles/FlightSearchForm.styles';
 import { SubmitButton } from '@styles/Buttons.styles';
+import { SelectField } from './SelectField';
+
+//utils
 import { capitalizeString } from '@utils/capitalizeString';
 import { getFlightOffers } from '@/utils/externalAPI/amadeus/getFlightOffers';
-import {
-    handleInputChange,
-    handleSelectChange,
-} from '@/utils/handleInputChanges';
-import { SelectField } from './SelectField';
 import { getCityCodeFromCityName } from '@utils/externalAPI/airLabs/makeIATACode';
 import { hanldeFlightDate } from '@/utils/handleFlightDateLogic';
-import { switchAlert } from '@/redux/features/toggleAlert-slice';
+
+// types
+import { InputEventType } from '@/types/flightSearchForm-types';
 
 export const FlightSearchForm = () => {
     // set up router
     const router = useRouter();
 
+    // dispatch is a fundamental method of updateing redux states
     const dispatch = useDispatch<AppDispatch>();
 
+    // userId is the id of the curretn user
     const { userId } = useAppSelector((state) => state.userIdSlice);
 
+    // this redux state returns all input values
     const { location, distination, flightDate, numberOfAdults, travelClass } =
         useAppSelector((state) => state.flightFormInputValues);
 
-    console.log('user ID: ' + userId);
     // calling the graphql mutation that creates new SearchResult
     const [createSearchResult] = useMutation(CreateSearchResult, {
         refetchQueries: [
@@ -79,9 +81,6 @@ export const FlightSearchForm = () => {
                     message: hanldeFlightDate(flightDate).message,
                 }),
             );
-            // return window.alert(
-            //       `${hanldeFlightDate(flightDate).message}`,
-            // );
         } else if (locationIATACode && distinationIATACode) {
             dispatch(thruthyIsLoading());
             // waiting for flightsData response from amadeus api
