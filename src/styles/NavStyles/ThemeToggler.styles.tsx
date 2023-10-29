@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { IconContext } from 'react-icons';
 import { motion } from 'framer-motion';
+import { JSX } from 'react';
 
 interface ProviderProps {
     className?: string;

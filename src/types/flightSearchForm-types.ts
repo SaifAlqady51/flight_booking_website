@@ -1,3 +1,5 @@
+import React from "react";
+
 export type InputEventType = React.ChangeEvent<HTMLInputElement>;
 
 export type SelectEventType = React.ChangeEvent<HTMLSelectElement>;

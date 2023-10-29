@@ -39,7 +39,6 @@
     "express": "^4.18.2",
     "framer-motion": "^10.13.0",
     "fs": "^0.0.1-security",
-    "globalthis": "^1.0.3",
     "graphql": "^16.8.1",
     "graphql-type-json": "^0.3.2",
     "immutable": "^4.3.1",

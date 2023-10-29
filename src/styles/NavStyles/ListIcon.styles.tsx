@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IconContext } from 'react-icons';
+import { JSX } from 'react';
 
 interface ProviderProps {
     className?: string;

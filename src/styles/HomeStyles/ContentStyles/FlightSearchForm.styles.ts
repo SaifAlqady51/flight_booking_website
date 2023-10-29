@@ -1,7 +1,6 @@
 'use client';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import { Autocomplete } from '@mui/material';
 
 // styles for the flight search Form
 export const FlightSearchFormStyles = styled.form`

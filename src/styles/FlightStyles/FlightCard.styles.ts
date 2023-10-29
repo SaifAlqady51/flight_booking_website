@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
-import Image from 'next/image';
 // main contianer of the flight card
-//
+
 export const AllFlightCardsContainer = styled.div`
     height: 600px;
     width: 80%;

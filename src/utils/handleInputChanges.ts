@@ -5,7 +5,6 @@ import {
 
 import { SelectChangeEvent } from '@mui/material/Select';
 
-import { Dispatch, Action } from 'redux';
 
 // handle input filed changes
 export const handleInputChange = (

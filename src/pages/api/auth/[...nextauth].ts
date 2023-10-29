@@ -3,8 +3,6 @@ import NextAuth from 'next-auth/next';
 import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '../../../lib/prisma';
-import type { Session } from 'next-auth';
-import type { JWT } from 'next-auth/jwt';
 
 function googleCredential() {
     const clientId = process.env.GOOGLE_CLIENT_ID;
@@ -49,7 +47,7 @@ export const authOptions: NextAuthOptions = {
             const dbUser = await prisma.user.findFirst({
                 where: {
                     email: token.email,
-                },
+                }
             });
 
             if (!dbUser) {
@@ -66,10 +64,6 @@ export const authOptions: NextAuthOptions = {
     },
 };
 
-// const authHandler = NextAuth(authOptions);
-// export default async function handler(...params: any[]) {
-//   await authHandler(...params);
-// }
 const handler = NextAuth(authOptions);
 export default handler;
 export { handler as GET, handler as POST };
