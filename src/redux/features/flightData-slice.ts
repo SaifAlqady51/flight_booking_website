@@ -25,7 +25,7 @@ export const fetchedFlightData = createAsyncThunk(
         numberOfAdults,
         travelClass,
     }: FlightFormInputValuesinitialStateType) => {
-        const URL = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${location}&destinationLocationCode=${distination}&departureDate=${flightDate}&adults=${numberOfAdults}&travelClass=${travelClass}&nonStop=false&currencyCode=USD&max=50`;
+        const URL = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${location.IATACode}&destinationLocationCode=${distination.IATACode}&departureDate=${flightDate}&adults=${numberOfAdults}&travelClass=${travelClass}&nonStop=false&currencyCode=USD&max=10`;
         const config = {
             headers: { Authorization: await getAmadeusKey() },
         };

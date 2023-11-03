@@ -15,9 +15,10 @@ import { FlightCardText } from '@/styles/Text.styles';
 import { MoreButton } from '@/styles/Buttons.styles';
 interface FlightCardProps {
     flightData: FlightType;
+    id: string;
 }
 
-export const FlightCard: FC<FlightCardProps> = ({ flightData }) => {
+export const FlightCard: FC<FlightCardProps> = ({ flightData, id }) => {
     const [img, setImg] = useState('');
 
     useEffect(() => {
@@ -31,6 +32,8 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData }) => {
         }
         fetchData();
     }, [flightData]);
+
+	console.log(flightData)
 
     const router = useRouter();
 
@@ -59,7 +62,12 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData }) => {
                 </FlightBasicInfo>
 
                 <FlightCardButtonsArea>
-                    <MoreButton onClick={handleMoreButton}>More</MoreButton>
+                    <MoreButton
+						href={{ pathname: `/flights/${id}`, query: {object: JSON.stringify(flightData)} }}
+                        onClick={handleMoreButton}
+                    >
+                        More
+                    </MoreButton>
                 </FlightCardButtonsArea>
             </RightContainer>
         </FlightCardContainer>

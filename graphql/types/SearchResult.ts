@@ -1,4 +1,3 @@
-import {resolve} from 'dns';
 import { extendType, nonNull, objectType, stringArg, arg } from 'nexus';
 import { User } from './User';
 

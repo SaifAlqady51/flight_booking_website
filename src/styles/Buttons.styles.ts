@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Link from 'next/link';
 
 export const Button = css`
     height: 45px;
@@ -57,7 +58,7 @@ export const ExpandButton = styled.button`
     }
 `;
 
-export const MoreButton = styled.button`
+export const MoreButton = styled(Link)`
     ${GeneralButtons}
     background:#c25c44;
     height: 35px;

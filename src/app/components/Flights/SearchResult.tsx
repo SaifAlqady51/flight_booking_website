@@ -1,11 +1,12 @@
 'use client';
 
 import { FC } from 'react';
-
+import { useRouter } from 'next/navigation';
 // redux
 import { useAppSelector, AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import { switchFlightCards } from '@/redux/features/expandFlightCard-slice';
+import { deleteSearchResult } from '@/redux/features/flightFormInputValues-slice';
 
 // styles
 import {
@@ -15,7 +16,7 @@ import {
 } from '@/styles/FlightStyles/SearchResult.styles';
 import FlightText from './FlightText';
 import { DeleteButton, ExpandButton } from '@/styles/Buttons.styles';
-import { FlightCard } from './FlightCard';
+import AllFlightCards from './AllFlightCards';
 import { AllFlightCardsContainer } from '@/styles/FlightStyles/FlightCard.styles';
 
 // icons
@@ -34,10 +35,12 @@ interface SearchResultProps {
 }
 
 const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
+    const router = useRouter();
     // importing listOfExpanded state from redux that change the state of each searchResult whether it was expanded or not
     const { listOfExpanded } = useAppSelector(
         (state) => state.expandFlightCards,
     );
+
     const { userId } = useAppSelector((state) => state.userIdSlice);
 
     // mutation for deleting single search result
@@ -49,7 +52,7 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
 
     // dispatch is a method to update redux states
     const dispatch = useDispatch<AppDispatch>();
-
+    const { flights } = useAppSelector((state) => state.flightData);
     // find This current Search Result ID from listOfExpanded redux state
     const findSearchResultId = () => {
         const currentSearchResult = listOfExpanded.filter(
@@ -62,21 +65,30 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
     };
 
     // delete a specific search result when this button clicked
-    const deletingButton = () => {
+    const deletingSearchResult = () => {
         deleteSingleSearchResult({ variables: { id: searchResult.id } });
+        router.refresh();
+    };
+
+    const deleteingSearchResultWithoutUser = () => {
+        dispatch(deleteSearchResult());
     };
 
     // get expanded state from current Search Result
     const getCurrentSearchResultExpandState = () => {
         const currentSearchResult = findSearchResultId();
-        console.log(' current : ' + currentSearchResult.expanded);
         return currentSearchResult.expanded;
     };
     // all the flights card that attached to current Search Result
-    const AllFlightCards = () =>
-        searchResult.flights.flightsList.map((flight: any) => (
-            <FlightCard key={flight.id} flightData={flight}></FlightCard>
-        ));
+
+    // const AllFlightCards = (flightsList:any) =>
+    // flightsList.map((flight: any) => (
+    // <FlightCard
+    // key={flight.id}
+    // id={flight.id}
+    // flightData={flight}
+    // ></FlightCard>
+    // ));
     console.log(searchResult);
 
     return (
@@ -91,10 +103,15 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
                         constText={'To'}
                         varText={searchResult.distination.cityName}
                     />
-                    <FlightText
-                        constText={'Number of results'}
-                        varText={`${searchResult.flights.flightsList.length}`}
-                    />
+
+                    {/* <FlightText */}
+                    {/*     constText={'Number of results'} */}
+                    {/*     varText={`${ */}
+                    {/*         userId */}
+                    {/*             ? searchResult.flights.flightsList.length */}
+                    {/*             : flights.length */}
+                    {/*     }`} */}
+                    {/* /> */}
                     <FlightText
                         constText={'Date'}
                         varText={searchResult.flightDate}
@@ -109,7 +126,13 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
                     />
                 </SearchResultInfo>
                 <SearchResultButtonsArea>
-                    <DeleteButton onClick={deletingButton}>
+                    <DeleteButton
+                        onClick={
+                            userId
+                                ? deletingSearchResult
+                                : deleteingSearchResultWithoutUser
+                        }
+                    >
                         <DeleteIcon />
                         Delete
                     </DeleteButton>
@@ -128,9 +151,14 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
                     </ExpandButton>
                 </SearchResultButtonsArea>
             </SearchResultContainer>
-            {getCurrentSearchResultExpandState() ? (
+            {getCurrentSearchResultExpandState() &&
+            (searchResult.flights || flights) ? (
                 <AllFlightCardsContainer>
-                    <AllFlightCards />
+                    <AllFlightCards
+                        flightsList={
+                            userId ? searchResult.flights.flightsList : flights
+                        }
+                    />
                 </AllFlightCardsContainer>
             ) : (
                 <div></div>

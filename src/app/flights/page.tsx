@@ -7,13 +7,14 @@ import { useQuery } from '@apollo/client';
 import { getSearchResultsForCurrentUser } from '@/utils/graphqlQuery/getSearchResults-query';
 
 //redux
-import { useAppSelector } from '@/redux/store';
+import { AppDispatch, useAppSelector } from '@/redux/store';
 //styles
 import LoadingPage from '../../app/components/LoadingPage';
 import DisplaySearchResults from '../components/Flights/DisplaySearchResults';
 import { FlightSearchForm } from '../components/Home/Content/SearchForm/FlightSearchForm';
 import { Container } from '@/styles/HomeStyles/HomeContainer';
 import Alert from '../components/Alert';
+import { useDispatch } from 'react-redux';
 interface pageProps {}
 
 const Page: FC<pageProps> = () => {
@@ -37,6 +38,12 @@ const Page: FC<pageProps> = () => {
         variables: { userId: userId },
     });
 
+    const dataWithoutUser = useAppSelector(
+        (state) => state.flightFormInputValues,
+    );
+    console.log(
+        'flight form Input values : ' + JSON.stringify(dataWithoutUser),
+    );
     if (error) {
         console.error(error);
     }
@@ -46,17 +53,22 @@ const Page: FC<pageProps> = () => {
     if (loading || isLoading) {
         return <LoadingPage />;
     }
-    // if loading equals flase dispaly All SearchResult if exist
-    else {
+    // data and userId exist or dataWithoutUser.id exist (dataWithoutUser.id only exist if there is no user signed up)
+    else if ((data && userId) || dataWithoutUser.id) {
         return (
             <>
                 {conditionToDisplayAlert && <Alert message={message} />}
                 <Container activeAlert={conditionToDisplayAlert}>
                     <FlightSearchForm />
-                    <DisplaySearchResults data={data} />
+                    <DisplaySearchResults
+                        data={data.getSearchResultsForSpecificUser}
+                        dataWithoutUser={dataWithoutUser}
+                    />
                 </Container>
             </>
         );
+    } else {
+        return <div></div>;
     }
 };
 

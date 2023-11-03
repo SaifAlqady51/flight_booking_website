@@ -39,8 +39,8 @@ export const SearchField: FC<SearchFieldProps> = ({
     >([]);
 
     useEffect(() => {
-        SetLocationCitiesList(filterCitiesList(location));
-        SetDistinationCitiesList(filterCitiesList(distination));
+        SetLocationCitiesList(filterCitiesList(location.cityName));
+        SetDistinationCitiesList(filterCitiesList(distination.cityName));
     }, [location, distination]);
 
     const onFieldInputFocus = () => {

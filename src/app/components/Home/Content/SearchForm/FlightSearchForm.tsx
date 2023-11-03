@@ -8,12 +8,15 @@ import React from 'react';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import {
+    changeLocationCityName,
+    changeDistinationCityName,
     changeLocation,
     changeDistination,
     changeFlightDate,
     changeTravelClass,
     changeNumberOfAdults,
 } from '@redux/features/flightFormInputValues-slice';
+import { fetchedFlightData } from '@/redux/features/flightData-slice';
 import {
     thruthyIsLoading,
     falsyIsLoading,
@@ -66,12 +69,71 @@ export const FlightSearchForm = () => {
         ],
     });
 
+    const handleSumbitWithoutUser = async (
+        e: React.FormEvent<HTMLFormElement>,
+    ) => {
+        e.preventDefault();
+        const locationIATACode = await getCityCodeFromCityName(
+            location.cityName,
+        );
+        const distinationIATACode = await getCityCodeFromCityName(
+            distination.cityName,
+        );
+        console.log('helelo');
+
+        dispatch(
+            changeLocation({
+                cityName: location.cityName,
+                IATACode: locationIATACode,
+            }),
+        );
+
+        dispatch(
+            changeDistination({
+                cityName: distination.cityName,
+                IATACode: distinationIATACode,
+            }),
+        );
+        if (!hanldeFlightDate(flightDate).status) {
+            dispatch(switchAlert());
+            dispatch(
+                check({
+                    status: hanldeFlightDate(flightDate).status,
+                    message: hanldeFlightDate(flightDate).message,
+                }),
+            );
+        } else if (locationIATACode && distinationIATACode) {
+            dispatch(thruthyIsLoading());
+            dispatch(
+                fetchedFlightData({
+                    location: {
+                        cityName: location,
+                        IATACode: locationIATACode,
+                    },
+                    distination: {
+                        cityName: distination,
+                        IATACode: distinationIATACode,
+                    },
+                    flightDate,
+                    numberOfAdults,
+                    travelClass,
+                }),
+            );
+            dispatch(falsyIsLoading());
+            router.push('/flights');
+        }
+    };
+
     const handleSumbit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // waiting for IATA city code response from airLabs api
-        const locationIATACode = await getCityCodeFromCityName(location);
-        const distinationIATACode = await getCityCodeFromCityName(distination);
+        const locationIATACode = await getCityCodeFromCityName(
+            location.cityName,
+        );
+        const distinationIATACode = await getCityCodeFromCityName(
+            distination.cityName,
+        );
 
         if (!hanldeFlightDate(flightDate).status) {
             dispatch(switchAlert());
@@ -96,11 +158,11 @@ export const FlightSearchForm = () => {
             createSearchResult({
                 variables: {
                     location: {
-                        cityName: location,
+                        cityName: location.cityName,
                         IATACode: locationIATACode,
                     },
                     distination: {
-                        cityName: distination,
+                        cityName: distination.cityName,
                         IATACode: distinationIATACode,
                     },
                     flightDate: flightDate,
@@ -110,27 +172,33 @@ export const FlightSearchForm = () => {
                     userId: userId,
                 },
             });
-
+            router.push('/flights');
             dispatch(falsyIsLoading());
-
-            router.replace('/flights');
-            router.refresh();
         }
     };
 
     return (
-        <FlightSearchFormStyles onSubmit={handleSumbit}>
+        <FlightSearchFormStyles
+            onSubmit={userId ? handleSumbit : handleSumbitWithoutUser}
+        >
             <SearchField
                 labelOfInputField='location'
                 handleChange={(e: InputEventType) =>
-                    dispatch(changeLocation(capitalizeString(e.target.value)))
+                    dispatch(
+                        changeLocationCityName(
+                            capitalizeString(e.target.value),
+                        ),
+                    )
                 }
             />
             <SearchField
                 labelOfInputField='distination'
                 handleChange={(e: InputEventType) =>
                     dispatch(
-                        changeDistination(capitalizeString(e.target.value)),
+                        changeDistinationCityName({
+                            cityName: capitalizeString(e.target.value),
+                            userId: userId,
+                        }),
                     )
                 }
             />

@@ -1,15 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+type Place = {
+    cityName: string;
+    IATACode: string;
+};
+
 export type FlightFormInputValuesinitialStateType = {
-    location: string;
-    distination: string;
+    id?: string;
+    location: Place;
+    distination: Place;
     flightDate: string;
     numberOfAdults: string;
     travelClass: string;
 };
 
 const initialState = {
-    location: '',
-    distination: '',
+    id: '',
+    location: { cityName: '', IATACode: '' },
+    distination: { cityName: '', IATACode: '' },
     flightDate: '',
     numberOfAdults: '',
     travelClass: '',
@@ -19,26 +27,32 @@ export const flightFormInputValues = createSlice({
     name: 'flightFormInputValues',
     initialState: initialState,
     reducers: {
-        // changeFormValue: (
-        //     state: FlightFormInputValuesinitialStateType,
-        //     action: PayloadAction<FlightFormInputValuesinitialStateType>,
-        // ) => {
-        //     state.location = action.payload.location;
-        //     state.distination = action.payload.distination;
-        //     state.flightDate = action.payload.flightDate;
-        //     state.numberOfAdults = action.payload.numberOfAdults;
-        //     state.travelClass = action.payload.travelClass;
-        // },
-
-        changeLocation: (
+        changeLocationCityName: (
             state: FlightFormInputValuesinitialStateType,
             action: PayloadAction<string>,
         ) => {
+            state.location.cityName = action.payload;
+        },
+        changeDistinationCityName: (
+            state: FlightFormInputValuesinitialStateType,
+            action: PayloadAction<{ cityName: string; userId: string }>,
+        ) => {
+            state.distination.cityName = action.payload.cityName;
+            if (!action.payload.userId.length) {
+                state.id = `${Date.now()}`;
+            }
+        },
+
+        changeLocation: (
+            state: FlightFormInputValuesinitialStateType,
+            action: PayloadAction<Place>,
+        ) => {
             state.location = action.payload;
         },
+
         changeDistination: (
             state: FlightFormInputValuesinitialStateType,
-            action: PayloadAction<string>,
+            action: PayloadAction<Place>,
         ) => {
             state.distination = action.payload;
         },
@@ -60,14 +74,33 @@ export const flightFormInputValues = createSlice({
         ) => {
             state.travelClass = action.payload;
         },
+        deleteSearchResult: (state: FlightFormInputValuesinitialStateType) => {
+            state = {
+                id: '',
+                location: {
+                    cityName: '',
+                    IATACode: '',
+                },
+                distination: {
+                    cityName: '',
+                    IATACode: '',
+                },
+                flightDate: '',
+                numberOfAdults: '',
+                travelClass: '',
+            };
+        },
     },
 });
 
 export const {
+    changeLocationCityName,
+    changeDistinationCityName,
     changeLocation,
     changeDistination,
     changeFlightDate,
     changeNumberOfAdults,
-    changeTravelClass,
+	changeTravelClass,
+	deleteSearchResult
 } = flightFormInputValues.actions;
 export default flightFormInputValues.reducer;

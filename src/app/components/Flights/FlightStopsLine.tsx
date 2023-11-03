@@ -1,34 +1,24 @@
 'use client';
 import { FC } from 'react';
-import { usePathname } from 'next/navigation';
-import {
-    StopsLineContainer,
-} from '@styles/FlightDetailedStyles/StopsLine.styles';
-import { useAppSelector} from '@/redux/store';
-import { FlightType, SegmentType } from '@/types/flight-types';
-import AllStops from './AllStops';
+import { StopsLineContainer } from '@styles/FlightDetailedStyles/StopsLine.styles';
+import {  useSearchParams } from 'next/navigation';
 
-export const FlightStopsLine: FC = () => {
-    // get the flights data that returned from the api
-    const { flights } = useAppSelector((state) => state.flightData);
+interface FlightStopsLineProps {
+	flightData: any
+}
 
-    // get the current pathname
-    const pathname = usePathname();
+export const FlightStopsLine: FC<FlightStopsLineProps> = () => {
 
-    // make a vairable id that takes the id of the page
-    const id: number = parseInt(pathname?.slice(-1) as string);
+	const searchParams = useSearchParams()
 
-    // get the specific flight with the id from
-    const flightById: FlightType = flights[id - 1];
+	const object = searchParams?.get('object')
+	
 
-    // get the stops list form that flight
-    const stops: SegmentType[] = flightById.itineraries[0].segments;
 
-    // make a vairable takes the last arirval from stops list
 
     return (
         <StopsLineContainer>
-            <AllStops stops={stops} />
+             {/* <AllStops stops={flight.itineraries[0].segmant} /> */}
         </StopsLineContainer>
     );
 };
