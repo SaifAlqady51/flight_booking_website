@@ -2,7 +2,7 @@
 
 ![Project Home page](https://raw.githubusercontent.com/SaifAlqady51/flight_booking_website/main/public/static/images/Tayara_home_page.png)
 
-Tayara is a Flight booking website whick takes your flight data and returns flight offers to you based on your data,
+![Tayara](https://flight-booking-website-sandy.vercel.app/) is a Flight booking website whick takes your flight data and returns flight offers to you based on your data,
 
 # Details
 
@@ -31,3 +31,5 @@ This project build with modern technologies like:
 * ![Eslint](https://eslint.org/)
 * ![Prettier](https://prettier.io/)
 * ![ts-prune](https://github.com/nadeesha/ts-prune)
+
+
