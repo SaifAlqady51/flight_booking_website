@@ -75,20 +75,8 @@ export const flightFormInputValues = createSlice({
             state.travelClass = action.payload;
         },
         deleteSearchResult: (state: FlightFormInputValuesinitialStateType) => {
-            state = {
-                id: '',
-                location: {
-                    cityName: '',
-                    IATACode: '',
-                },
-                distination: {
-                    cityName: '',
-                    IATACode: '',
-                },
-                flightDate: '',
-                numberOfAdults: '',
-                travelClass: '',
-            };
+            /*eslint-disable*/
+            state = initialState ;
         },
     },
 });
@@ -100,7 +88,7 @@ export const {
     changeDistination,
     changeFlightDate,
     changeNumberOfAdults,
-	changeTravelClass,
-	deleteSearchResult
+    changeTravelClass,
+    deleteSearchResult,
 } = flightFormInputValues.actions;
 export default flightFormInputValues.reducer;

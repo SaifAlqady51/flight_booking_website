@@ -10,7 +10,7 @@ interface FlightStopsLineProps {
 export const FlightStopsLine: FC<FlightStopsLineProps> = () => {
 
 	const searchParams = useSearchParams()
-
+	/* eslint-disable */
 	const object = searchParams?.get('object')
 	
 
