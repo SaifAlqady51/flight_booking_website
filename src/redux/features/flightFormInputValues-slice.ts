@@ -35,12 +35,9 @@ export const flightFormInputValues = createSlice({
         },
         changeDistinationCityName: (
             state: FlightFormInputValuesinitialStateType,
-            action: PayloadAction<{ cityName: string; userId: string }>,
+            action: PayloadAction<string>,
         ) => {
-            state.distination.cityName = action.payload.cityName;
-            if (!action.payload.userId.length) {
-                state.id = `${Date.now()}`;
-            }
+            state.distination.cityName = action.payload;
         },
 
         changeLocation: (
@@ -70,9 +67,13 @@ export const flightFormInputValues = createSlice({
         },
         changeTravelClass: (
             state: FlightFormInputValuesinitialStateType,
-            action: PayloadAction<string>,
+			action: PayloadAction<{travelClass:string,userId:string}>,
         ) => {
-            state.travelClass = action.payload;
+            state.travelClass = action.payload.travelClass;
+            if (!action.payload.userId.length) {
+
+                state.id = `${Date.now()}`;
+            }
         },
         deleteSearchResult: (state: FlightFormInputValuesinitialStateType) => {
             /*eslint-disable*/

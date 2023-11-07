@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 
-export const Button = css`
+const Button = css`
     height: 45px;
     cursor: pointer;
     border: none;
@@ -31,7 +31,7 @@ export const SubmitButton = styled.input`
     }
 `;
 
-export const GeneralButtons = css`
+const GeneralButtons = css`
     ${Button}
     width:120px;
     border-radius: 10px;

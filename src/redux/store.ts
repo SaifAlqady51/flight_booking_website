@@ -64,7 +64,7 @@ const reducer = combineReducers({
     toggleAlert,
 });
 
-export const persistedReducer = persistReducer(
+const persistedReducer = persistReducer(
     persistConfig,
     reducer as Reducer,
 );
@@ -90,9 +90,3 @@ type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-export type AppTunk<ReturenType = void> = ThunkAction<
-    ReturenType,
-    RootState,
-    unknown,
-    Action<string>
->;

@@ -43,7 +43,7 @@ const Navbar: FC<NavbarProps> = () => {
                             <StyledLink href='/'>Home</StyledLink>
                         </StyledLi>
                         <StyledLi>
-                            <StyledLink href='/about'>About</StyledLink>
+                            <StyledLink href='/pricing'>Pricing</StyledLink>
                         </StyledLi>
                         <StyledLi>
                             <StyledLink href='/flights'>Flights</StyledLink>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FlightPageText = styled.h2`
+const FlightPageText = styled.h2`
     min-width: 20%;
     font-size: 20px;
     color: white;

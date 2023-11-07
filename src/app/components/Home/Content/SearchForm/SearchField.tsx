@@ -11,15 +11,14 @@ import CitiesList from '../../Content/SearchForm/CitiesList';
 import { filterCitiesList } from '@utils/filterCitiesList';
 import { useAppSelector } from '@/redux/store';
 
+
 interface SearchFieldProps {
-    typeOfInputField?: string;
     labelOfInputField: string;
-    handleChange?: any;
+	handleChange?: any;
     placeholder?: string;
 }
 
 export const SearchField: FC<SearchFieldProps> = ({
-    typeOfInputField,
     labelOfInputField,
     handleChange,
     placeholder,
@@ -40,6 +39,7 @@ export const SearchField: FC<SearchFieldProps> = ({
 
     useEffect(() => {
         SetLocationCitiesList(filterCitiesList(location.cityName));
+
         SetDistinationCitiesList(filterCitiesList(distination.cityName));
     }, [location, distination]);
 
@@ -56,7 +56,7 @@ export const SearchField: FC<SearchFieldProps> = ({
             <StyledInput
                 required
                 list={labelOfInputField}
-                type={typeOfInputField ? typeOfInputField : 'text'}
+                type='text'
                 onFocus={onFieldInputFocus}
                 onChange={handleChange}
                 placeholder={placeholder}

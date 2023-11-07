@@ -1,4 +1,3 @@
-import { resolve } from 'dns';
 import {
     extendType,
     inputObjectType,
@@ -9,6 +8,7 @@ import {
 import { Account } from './Account';
 import { SearchResult } from './SearchResult';
 import { Session } from './Session';
+
 export const User = objectType({
     name: 'User',
     definition(t) {

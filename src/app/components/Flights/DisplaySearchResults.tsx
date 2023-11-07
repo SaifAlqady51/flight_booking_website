@@ -37,7 +37,7 @@ const DisplaySearchResults: FC<DisplaySearchResultsProps> = ({
     useEffect(() => {
         const getIdsForSearchResults = () => {
             let listOfIds: string[] = [];
-			let searchResults = userId? data : dataWithoutUser;
+			let searchResults = userId? data : new Array(dataWithoutUser);
             console.log('search Result : ' + JSON.stringify(searchResults));
             for (let searchResult of searchResults) {
                 listOfIds.push(searchResult.id);

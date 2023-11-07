@@ -44,6 +44,7 @@ import { hanldeFlightDate } from '@/utils/handleFlightDateLogic';
 
 // types
 import { InputEventType } from '@/types/flightSearchForm-types';
+import { FieldType } from '@/types/inputField-types';
 
 export const FlightSearchForm = () => {
     // set up router
@@ -69,6 +70,16 @@ export const FlightSearchForm = () => {
         ],
     });
 
+    const flightDataFalseValidity = () => {
+        dispatch(
+            check({
+                status: hanldeFlightDate(flightDate).status,
+                message: hanldeFlightDate(flightDate).message,
+            }),
+        );
+    };
+
+    // this function executes when the user is not signed in
     const handleSumbitWithoutUser = async (
         e: React.FormEvent<HTMLFormElement>,
     ) => {
@@ -79,7 +90,6 @@ export const FlightSearchForm = () => {
         const distinationIATACode = await getCityCodeFromCityName(
             distination.cityName,
         );
-        console.log('helelo');
 
         dispatch(
             changeLocation({
@@ -95,13 +105,8 @@ export const FlightSearchForm = () => {
             }),
         );
         if (!hanldeFlightDate(flightDate).status) {
-            dispatch(switchAlert());
-            dispatch(
-                check({
-                    status: hanldeFlightDate(flightDate).status,
-                    message: hanldeFlightDate(flightDate).message,
-                }),
-            );
+            flightDataFalseValidity();
+
         } else if (locationIATACode && distinationIATACode) {
             dispatch(thruthyIsLoading());
             dispatch(
@@ -124,6 +129,7 @@ export const FlightSearchForm = () => {
         }
     };
 
+    // this function executes when the user is signed in
     const handleSumbit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -136,13 +142,8 @@ export const FlightSearchForm = () => {
         );
 
         if (!hanldeFlightDate(flightDate).status) {
-            dispatch(switchAlert());
-            dispatch(
-                check({
-                    status: hanldeFlightDate(flightDate).status,
-                    message: hanldeFlightDate(flightDate).message,
-                }),
-            );
+            flightDataFalseValidity();
+
         } else if (locationIATACode && distinationIATACode) {
             dispatch(thruthyIsLoading());
             // waiting for flightsData response from amadeus api
@@ -176,53 +177,45 @@ export const FlightSearchForm = () => {
             dispatch(falsyIsLoading());
         }
     };
+    const inputFields: FieldType[] = [
+        { label: 'location', changeingFunction: changeLocationCityName },
+        { label: 'distination', changeingFunction: changeDistinationCityName },
+        {
+            label: 'flight date',
+            placeholder: '2023-12-12',
+            changeingFunction: changeFlightDate,
+        },
+        { label: 'number of adults', changeingFunction: changeNumberOfAdults },
+    ];
 
     return (
         <FlightSearchFormStyles
             onSubmit={userId ? handleSumbit : handleSumbitWithoutUser}
         >
-            <SearchField
-                labelOfInputField='location'
-                handleChange={(e: InputEventType) =>
-                    dispatch(
-                        changeLocationCityName(
-                            capitalizeString(e.target.value),
-                        ),
-                    )
-                }
-            />
-            <SearchField
-                labelOfInputField='distination'
-                handleChange={(e: InputEventType) =>
-                    dispatch(
-                        changeDistinationCityName({
-                            cityName: capitalizeString(e.target.value),
-                            userId: userId,
-                        }),
-                    )
-                }
-            />
-            <SearchField
-                labelOfInputField='flight date'
-                placeholder=' 2023-12-12'
-                handleChange={(e: InputEventType) =>
-                    dispatch(changeFlightDate(capitalizeString(e.target.value)))
-                }
-            />
-            <SearchField
-                labelOfInputField='number Of Adults'
-                handleChange={(e: InputEventType) =>
-                    dispatch(
-                        changeNumberOfAdults(capitalizeString(e.target.value)),
-                    )
-                }
-            />
+            {inputFields.map((field: FieldType) => (
+                <>
+                    <SearchField
+                        labelOfInputField={field.label}
+                        handleChange={(e: InputEventType) =>
+                            dispatch(
+                                field.changeingFunction(
+                                    capitalizeString(e.target.value),
+                                ),
+                            )
+                        }
+                        placeholder={field.placeholder}
+                    />
+                </>
+            ))}
             <SelectField
                 labelOfSelectField='travel class'
                 travelClass={travelClass}
                 handleChange={(e: SelectChangeEvent) =>
                     dispatch(
-                        changeTravelClass(capitalizeString(e.target.value)),
+                        changeTravelClass({
+                            travelClass: capitalizeString(e.target.value),
+                            userId: userId,
+                        }),
                     )
                 }
             />
