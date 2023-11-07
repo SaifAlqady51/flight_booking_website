@@ -15,8 +15,9 @@ import { FlightSearchForm } from '../components/Home/Content/SearchForm/FlightSe
 import { Container } from '@/styles/HomeStyles/HomeContainer';
 import Alert from '../components/Alert';
 
+interface props {}
 
-const Page: FC = () => {
+const Page: FC<props> = () => {
     // importing active alert state from redux that return true if there is an Alert
     const { activeAlert } = useAppSelector((state) => state.toggleAlert);
 
@@ -40,9 +41,6 @@ const Page: FC = () => {
     const dataWithoutUser = useAppSelector(
         (state) => state.flightFormInputValues,
     );
-    console.log(
-        'flight form Input values : ' + JSON.stringify(dataWithoutUser),
-    );
     if (error) {
         console.error(error);
     }
@@ -60,14 +58,18 @@ const Page: FC = () => {
                 <Container activeAlert={conditionToDisplayAlert}>
                     <FlightSearchForm />
                     <DisplaySearchResults
-                        data={data.getSearchResultsForSpecificUser}
+                        data={data?.getSearchResultsForSpecificUser}
                         dataWithoutUser={dataWithoutUser}
                     />
                 </Container>
             </>
         );
     } else {
-        return <div></div>;
+        return (
+            <Container activeAlert={conditionToDisplayAlert}>
+                <FlightSearchForm />
+            </Container>
+        );
     }
 };
 
