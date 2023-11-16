@@ -41,7 +41,7 @@ const Page = () => {
         getPricesAndProducts();
     }, []);
 
-    if (isLoading) {
+    if (isLoading || prices.length === 0) {
         return <LoadingPage />;
     } else {
         return (
