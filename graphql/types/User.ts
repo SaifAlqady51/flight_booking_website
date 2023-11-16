@@ -15,6 +15,8 @@ export const User = objectType({
         t.string('id');
         t.string('name');
         t.string('email');
+        t.string('image');
+        t.string('subscription');
         t.list.field('sessions', {
             type: Session,
             resolve(parent: any, _args, ctx) {
@@ -54,6 +56,8 @@ export const UserInputType = inputObjectType({
         t.string('id');
         t.string('name');
         t.string('email');
+        t.string('image');
+        t.string('subscription');
     },
 });
 
@@ -72,10 +76,41 @@ export const UserQuery = extendType({
             args: {
                 id: nonNull(stringArg()),
             },
-            //@ts-ignore
             resolve(_parent, args, ctx) {
                 return ctx.prisma.user.findUnique({
                     where: { id: args.id },
+                });
+            },
+        });
+    },
+});
+
+export const UserMutation = extendType({
+    type: 'Mutation',
+    definition(t) {
+        t.nonNull.field('deleteAllUsers', {
+            type: 'User',
+            args: {
+                userId: nonNull(stringArg()),
+            },
+            async resolve(_parent, args, ctx) {
+                return await ctx.prisma.user.deleteMany({
+                    where: { id: args.userId },
+                });
+            },
+        });
+        t.nonNull.field('updateUserSubscription', {
+            type: 'User',
+            args: {
+                userId: nonNull(stringArg()),
+                subscription: nonNull(stringArg()),
+            },
+            async resolve(_parent, args, ctx) {
+                return await ctx.prisma.user.updateMany({
+                    where: { id : args.userId },
+                    data: {
+                        subscription: args.subscription,
+                    },
                 });
             },
         });
