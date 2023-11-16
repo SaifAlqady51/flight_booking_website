@@ -4,7 +4,6 @@ import { Container } from '@/styles/HomeStyles/HomeContainer';
 import PricingCard from '../components/Pricing/PricingCard';
 import { PricingCardsContainer } from '@/styles/PricingStyles/PricingCard.styles';
 import getPrices from '@/utils/getPricesFromStripe';
-import getProductById from '@/utils/getProductById';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import {
