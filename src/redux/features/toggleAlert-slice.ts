@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type initialStateType = {
-    activeAlert: boolean;
+    activAlert: boolean;
 };
 
 const initialState = {
-    activeAlert: true,
+    activAlert: true,
 };
 
 export const toggleAlert = createSlice({
@@ -13,7 +13,7 @@ export const toggleAlert = createSlice({
     initialState,
     reducers: {
         switchAlert: (state: initialStateType) => {
-            state.activeAlert = !state.activeAlert;
+            state.activAlert = !state.activAlert;
         },
     },
 });

@@ -1169,6 +1169,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
+    subscription: string | null
     image: string | null
     emailVerified: string | null
   }
@@ -1177,6 +1178,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
+    subscription: string | null
     image: string | null
     emailVerified: string | null
   }
@@ -1185,6 +1187,7 @@ export namespace Prisma {
     id: number
     name: number
     email: number
+    subscription: number
     image: number
     emailVerified: number
     _all: number
@@ -1195,6 +1198,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    subscription?: true
     image?: true
     emailVerified?: true
   }
@@ -1203,6 +1207,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    subscription?: true
     image?: true
     emailVerified?: true
   }
@@ -1211,6 +1216,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    subscription?: true
     image?: true
     emailVerified?: true
     _all?: true
@@ -1292,6 +1298,7 @@ export namespace Prisma {
     id: string
     name: string
     email: string | null
+    subscription: string | null
     image: string | null
     emailVerified: string | null
     _count: UserCountAggregateOutputType | null
@@ -1317,6 +1324,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    subscription?: boolean
     image?: boolean
     emailVerified?: boolean
     searchResults?: boolean | User$searchResultsArgs<ExtArgs>
@@ -1329,6 +1337,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    subscription?: boolean
     image?: boolean
     emailVerified?: boolean
   }
@@ -1352,6 +1361,7 @@ export namespace Prisma {
       id: string
       name: string
       email: string | null
+      subscription: string | null
       image: string | null
       emailVerified: string | null
     }, ExtArgs["result"]["user"]>
@@ -1756,6 +1766,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
+    readonly subscription: FieldRef<"User", 'String'>
     readonly image: FieldRef<"User", 'String'>
     readonly emailVerified: FieldRef<"User", 'String'>
   }
@@ -5124,6 +5135,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
+    subscription: 'subscription',
     image: 'image',
     emailVerified: 'emailVerified'
   };
@@ -5268,6 +5280,7 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     email?: StringNullableFilter<"User"> | string | null
+    subscription?: StringNullableFilter<"User"> | string | null
     image?: StringNullableFilter<"User"> | string | null
     emailVerified?: StringNullableFilter<"User"> | string | null
     searchResults?: SearchResultListRelationFilter
@@ -5279,6 +5292,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrderInput | SortOrder
+    subscription?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     searchResults?: SearchResultOrderByRelationAggregateInput
@@ -5293,6 +5307,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
+    subscription?: StringNullableFilter<"User"> | string | null
     image?: StringNullableFilter<"User"> | string | null
     emailVerified?: StringNullableFilter<"User"> | string | null
     searchResults?: SearchResultListRelationFilter
@@ -5304,6 +5319,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrderInput | SortOrder
+    subscription?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -5318,6 +5334,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
+    subscription?: StringNullableWithAggregatesFilter<"User"> | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     emailVerified?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
@@ -5564,6 +5581,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
     searchResults?: SearchResultCreateNestedManyWithoutUserInput
@@ -5575,6 +5593,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
     searchResults?: SearchResultUncheckedCreateNestedManyWithoutUserInput
@@ -5586,6 +5605,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
     searchResults?: SearchResultUpdateManyWithoutUserNestedInput
@@ -5597,6 +5617,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
     searchResults?: SearchResultUncheckedUpdateManyWithoutUserNestedInput
@@ -5608,6 +5629,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
   }
@@ -5616,6 +5638,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -5624,6 +5647,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -5958,6 +5982,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    subscription?: SortOrder
     image?: SortOrder
     emailVerified?: SortOrder
   }
@@ -5966,6 +5991,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    subscription?: SortOrder
     image?: SortOrder
     emailVerified?: SortOrder
   }
@@ -5974,6 +6000,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    subscription?: SortOrder
     image?: SortOrder
     emailVerified?: SortOrder
   }
@@ -6858,6 +6885,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
     searchResults?: SearchResultCreateNestedManyWithoutUserInput
@@ -6868,6 +6896,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
     searchResults?: SearchResultUncheckedCreateNestedManyWithoutUserInput
@@ -6894,6 +6923,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
     searchResults?: SearchResultUpdateManyWithoutUserNestedInput
@@ -6904,6 +6934,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
     searchResults?: SearchResultUncheckedUpdateManyWithoutUserNestedInput
@@ -6914,6 +6945,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
     searchResults?: SearchResultCreateNestedManyWithoutUserInput
@@ -6924,6 +6956,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
     searchResults?: SearchResultUncheckedCreateNestedManyWithoutUserInput
@@ -6950,6 +6983,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
     searchResults?: SearchResultUpdateManyWithoutUserNestedInput
@@ -6960,6 +6994,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
     searchResults?: SearchResultUncheckedUpdateManyWithoutUserNestedInput
@@ -6970,6 +7005,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -6980,6 +7016,7 @@ export namespace Prisma {
     id?: string
     name: string
     email?: string | null
+    subscription?: string | null
     image?: string | null
     emailVerified?: string | null
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -7006,6 +7043,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -7016,6 +7054,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
+    subscription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput

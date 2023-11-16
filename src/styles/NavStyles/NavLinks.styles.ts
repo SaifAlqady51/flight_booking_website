@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const NavLinks = styled.ul<{ toggle: Boolean }>`
+export const NavLinks = styled.ul<{ toggle?: boolean }>`
     width: 50%;
     display: flex;
     align-items: center;

@@ -83,7 +83,7 @@ const Messages: FC = () => {
                             height={400}
                             widthMobileSmall='400px'
                             widthMobile='700px'
-                            widthTab='600px'
+                            widthtab='600px'
                             alt='purple-sky'
                         />
                     </GrandChildDivBottom>

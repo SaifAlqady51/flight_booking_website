@@ -2,15 +2,17 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const darkMode = {
-    body: '#10002b',
+    bodyColor: '#10002b',
     textColor: 'white',
     navColor: '#4e148c',
+    pricingCardText: 'black',
 };
 
 export const lightMode = {
-    body: '#c8b6ff',
+    bodyColor: '#c8b6ff',
     textColor: 'black',
     navColor: '#4e148c',
+	pricingCardText: 'white',
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -21,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
     body {
 		
 		scroll-behavior: smooth;
-        background-color: ${(props) => props.theme.body};
+        background-color: ${(props) => props.theme.bodyColor};
         color:${(props) => props.theme.textColor};
     }
 

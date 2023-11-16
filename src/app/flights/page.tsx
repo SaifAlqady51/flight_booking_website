@@ -19,7 +19,7 @@ interface props {}
 
 const Page: FC<props> = () => {
     // importing active alert state from redux that return true if there is an Alert
-    const { activeAlert } = useAppSelector((state) => state.toggleAlert);
+    const { activAlert } = useAppSelector((state) => state.toggleAlert);
 
     // importing status and message states from check flight date status returns false if there is an error with flight date and message returns that error if exists
     const { status, message } = useAppSelector(
@@ -27,7 +27,7 @@ const Page: FC<props> = () => {
     );
 
     // the condition that returns an alert
-    const conditionToDisplayAlert = activeAlert && !status;
+    const conditionToDisplayAlert = activAlert && !status;
 
     // import userId slice from redux
     const { userId } = useAppSelector((state) => state.userIdSlice);
@@ -55,7 +55,7 @@ const Page: FC<props> = () => {
         return (
             <>
                 {conditionToDisplayAlert && <Alert message={message} />}
-                <Container activeAlert={conditionToDisplayAlert}>
+                <Container activAlert={conditionToDisplayAlert}>
                     <FlightSearchForm />
                     <DisplaySearchResults
                         data={data?.getSearchResultsForSpecificUser}
@@ -66,7 +66,7 @@ const Page: FC<props> = () => {
         );
     } else {
         return (
-            <Container activeAlert={conditionToDisplayAlert}>
+            <Container activAlert={conditionToDisplayAlert}>
                 <FlightSearchForm />
             </Container>
         );

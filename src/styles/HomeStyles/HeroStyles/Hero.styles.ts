@@ -10,6 +10,6 @@ export const HeroStyles = styled(motion.h2)`
     }
 
     @media (max-width: 460px) {
-        font-size: 25px;
+        font-size: 20px;
     }
 `;

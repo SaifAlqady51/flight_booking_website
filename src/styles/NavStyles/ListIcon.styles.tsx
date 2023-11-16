@@ -33,3 +33,18 @@ export const SmallStyledIcon = styled(Provider)`
     color: white;
     padding-right: 10px;
 `;
+export const CheckIconProvider = styled(Provider)`
+    width: 25px;
+    height: 15px;
+    color: #55a630;
+`;
+
+export const DollarIconProvider = styled(Provider)<{$priceValue: number}>`
+    width: 30px;
+    height: inherit;
+	position:absolute;
+	left:${(props) => props.$priceValue < 9? '54px' : '45px'};
+	bottom:10px;
+
+
+`;

@@ -3,11 +3,12 @@ import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import {
     falsyIsLoading,
-    thruthyIsLoading,
+    truthyIsLoading,
 } from '@/redux/features/loading-slice';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { SignupButton } from '@/styles/NavStyles/SignupButton.styles';
 import { storeCurrentUserId } from '@/redux/features/userId-slice';
+import { storeCurrentUserSubscription } from '@/redux/features/userSubscription-slice';
 
 const Signup: FC = () => {
     const { data: session } = useSession();
@@ -16,11 +17,12 @@ const Signup: FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     if (session?.user) {
         dispatch(storeCurrentUserId(session?.user?.id));
+		dispatch(storeCurrentUserSubscription(session.user.subscription))
     }
     console.log('session: ' + JSON.stringify(session?.user));
 
     const signupWithGoogle = async () => {
-        dispatch(thruthyIsLoading());
+        dispatch(truthyIsLoading());
         try {
             await signIn('google');
             dispatch(falsyIsLoading());
@@ -30,7 +32,7 @@ const Signup: FC = () => {
     };
 
     const singoutFromGoogle = async () => {
-        dispatch(thruthyIsLoading());
+        dispatch(truthyIsLoading());
 
         try {
             await signOut();

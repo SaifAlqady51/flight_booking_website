@@ -33,25 +33,18 @@ export const authOptions: NextAuthOptions = {
     ],
 
     secret: process.env.NEXTAUTH_SECRET,
-    callbacks: {
-        async session({ session, token }) {
-            if (token && session?.user) {
-                session.user.id = token.id;
-                session.user.name = token.name;
-                session.user.email = token.email;
-            }
-            return session;
-        },
 
-        async jwt({ token, user }) {
+    callbacks: {
+        async jwt({ token,user}) {
             const dbUser = await prisma.user.findFirst({
                 where: {
                     email: token.email,
-                }
+                },
             });
 
             if (!dbUser) {
                 token.id = user!.id;
+				token.subscription = "Free"
                 return token;
             }
 
@@ -59,7 +52,20 @@ export const authOptions: NextAuthOptions = {
                 id: dbUser.id,
                 name: dbUser.name,
                 email: dbUser.email,
+                picture: dbUser.image,
+                subscription: dbUser.subscription,
             };
+        },
+
+        async session({ session, token }) {
+            if (token && session?.user) {
+                session.user.id = token.id;
+                session.user.name = token.name;
+                session.user.email = token.email;
+                session.user.image = token.picture;
+                session.user.subscription = token.subscription;
+            }
+            return session;
         },
     },
 };

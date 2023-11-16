@@ -1,8 +1,6 @@
 import {
     configureStore,
     combineReducers,
-    ThunkAction,
-    Action,
     Reducer,
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
@@ -18,6 +16,7 @@ import airlineLogo from './features/airlineLogo-slice';
 import userIdSlice from './features/userId-slice';
 import checkFlightDate from './features/checkFlightDate-slice';
 import toggleAlert from './features/toggleAlert-slice';
+import userSubscription from './features/userSubscription-slice';
 
 import flightData from './features/flightData-slice';
 import {
@@ -62,6 +61,7 @@ const reducer = combineReducers({
     userIdSlice,
     checkFlightDate,
     toggleAlert,
+	userSubscription,
 });
 
 const persistedReducer = persistReducer(

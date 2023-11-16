@@ -28,6 +28,8 @@ type Mutation {
   createSearchResult(distination: JSON, flightDate: String!, flights: JSON, location: JSON, logos: JSON, numberOfAdults: String!, travelClass: String!, user: UserInputType, userId: String!): SearchResult!
   deletSingleSearchResult(id: String!): SearchResult!
   deleteAllSearchResult(userId: String!): SearchResult!
+  deleteAllUsers(userId: String!): User!
+  updateUserSubscription(subscription: String!, userId: String!): User!
 }
 
 type Query {
@@ -64,13 +66,17 @@ type User {
   accounts: [Account]
   email: String
   id: String
+  image: String
   name: String
   searchResults: [SearchResult]
   sessions: [Session]
+  subscription: String
 }
 
 input UserInputType {
   email: String
   id: String
+  image: String
   name: String
+  subscription: String
 }

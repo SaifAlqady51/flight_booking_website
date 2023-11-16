@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ activeAlert: boolean }>`
-    filter: ${(props) => props.activeAlert && 'blur(3px) brightness(0.5)'};
+export const Container = styled.div<{ activAlert?: boolean }>`
+    filter: ${(props) => props.activAlert && 'blur(3px) brightness(0.5)'};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,3 +9,4 @@ export const Container = styled.div<{ activeAlert: boolean }>`
     margin-top: 80px;
     height: 3000px;
 `;
+

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type initialStateType = {
-    isLoading: boolean;
+	isLoading: boolean;
 };
 
 const initialState = {
@@ -13,7 +13,7 @@ export const loading = createSlice({
     initialState: initialState,
     reducers: {
         // set the isLoading property to true
-        thruthyIsLoading: (state: initialStateType) => {
+        truthyIsLoading: (state: initialStateType) => {
             state.isLoading = true;
         },
 
@@ -24,5 +24,5 @@ export const loading = createSlice({
     },
 });
 
-export const { thruthyIsLoading, falsyIsLoading } = loading.actions;
+export const { truthyIsLoading, falsyIsLoading } = loading.actions;
 export default loading.reducer;

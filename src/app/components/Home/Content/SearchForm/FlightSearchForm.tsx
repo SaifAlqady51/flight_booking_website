@@ -18,7 +18,7 @@ import {
 } from '@redux/features/flightFormInputValues-slice';
 import { fetchedFlightData } from '@/redux/features/flightData-slice';
 import {
-    thruthyIsLoading,
+    truthyIsLoading,
     falsyIsLoading,
 } from '@/redux/features/loading-slice';
 import { check } from '@/redux/features/checkFlightDate-slice';
@@ -106,9 +106,10 @@ export const FlightSearchForm = () => {
         );
         if (!hanldeFlightDate(flightDate).status) {
             flightDataFalseValidity();
+			dispatch(switchAlert())
 
         } else if (locationIATACode && distinationIATACode) {
-            dispatch(thruthyIsLoading());
+            dispatch(truthyIsLoading());
             dispatch(
                 fetchedFlightData({
                     location: {
@@ -143,9 +144,10 @@ export const FlightSearchForm = () => {
 
         if (!hanldeFlightDate(flightDate).status) {
             flightDataFalseValidity();
+			dispatch(switchAlert())
 
         } else if (locationIATACode && distinationIATACode) {
-            dispatch(thruthyIsLoading());
+            dispatch(truthyIsLoading());
             // waiting for flightsData response from amadeus api
             const flightsList = await getFlightOffers({
                 locationIATACode,
