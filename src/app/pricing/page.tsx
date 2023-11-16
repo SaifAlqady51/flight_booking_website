@@ -19,28 +19,20 @@ const Page = () => {
     const { isLoading } = useAppSelector((state) => state.loading);
     // state for prices from stripe api
     const [prices, setPrices] = useState<any[]>([]);
+	const subscriptionPlans = ['Free','Primium','Travel'] 
 
     // state of productNames array returned from prices object
-    const [subscriptionPlans, setSubscriptionPlans] = useState<string[]>([]);
     const { userSubscription } = useAppSelector(
         (state) => state.userSubscription,
     );
 
     const getPricesAndProducts = async () => {
         dispatch(truthyIsLoading());
-        let subPlans = [];
         // get all Prices that in stripe api storage
+		
         const allPrices = await getPrices();
 
-        // loop over allPrices
-        for (let price of allPrices) {
-            // get product by sending price.product = product id to getProductById
-            const subPlan = await getProductById(price.product);
-            // pushing product name to productsNames
-            subPlans.push(subPlan.name);
-        }
 
-        setSubscriptionPlans(subPlans);
         setPrices(allPrices);
 
         dispatch(falsyIsLoading());
@@ -48,8 +40,7 @@ const Page = () => {
 
     useEffect(() => {
         getPricesAndProducts();
-    }, [getPricesAndProducts]);
-    console.log('userSubscrption : ' + userSubscription);
+    }, []);
 
     if (isLoading) {
         return <LoadingPage />;
