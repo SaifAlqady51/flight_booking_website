@@ -11,12 +11,12 @@ import {
 import { AiOutlineCheck } from 'react-icons/ai';
 import axios from 'axios';
 import { changeClickedSubscription } from '@/redux/features/userSubscription-slice';
-import { AppDispatch} from '@/redux/store';
+import { AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 
 interface PricingCardProps {
-	id:string;
-	userSignedIn: boolean;
+    id: string;
+    userSignedIn: boolean;
     header: string;
     benifits: string[];
     subscribed: boolean;
@@ -24,27 +24,26 @@ interface PricingCardProps {
 }
 
 const PricingCard = ({
-	id,
-	userSignedIn,
+    id,
+    userSignedIn,
     header,
     benifits,
     subscribed,
     priceValue,
 }: PricingCardProps) => {
-
-	const dispatch = useDispatch<AppDispatch>()
+    const dispatch = useDispatch<AppDispatch>();
 
     const handleSubscribtion = async (
         e: React.MouseEvent<HTMLButtonElement>,
     ) => {
         e.preventDefault();
-		dispatch(changeClickedSubscription(header))
+        dispatch(changeClickedSubscription(header));
         const { data } = await axios.post(
             '/api/payment',
             { priceId: id },
             { headers: { 'Content-Type': 'application/json' } },
         );
-		window.location.assign(data)
+        window.location.assign(data);
     };
     return (
         <PricingCardStyles>
@@ -60,7 +59,12 @@ const PricingCard = ({
                     </PricingCardLI>
                 ))}
             </PricingCardUL>
-			<PricingButton $subscribed={subscribed} disabled={userSignedIn? false : true} onClick={handleSubscribtion}>
+            <PricingButton
+                $subscribed={subscribed}
+                $userSignedIn={userSignedIn}
+                disabled={userSignedIn ? false : true}
+                onClick={handleSubscribtion}
+            >
                 {subscribed ? 'subscribed' : 'subscribe'}
             </PricingButton>
         </PricingCardStyles>
