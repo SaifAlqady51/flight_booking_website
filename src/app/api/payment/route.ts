@@ -15,8 +15,8 @@ export async function POST(request: NextRequest) {
                 },
             ],
             mode: 'subscription',
-			success_url: `${process.env.URL}payment`,
-			cancel_url: `${process.env.URL}pricing`
+			success_url: `${process.env.URL}/payment`,
+			cancel_url: `${process.env.URL}/pricing`
         });
 
 		console.log(session.url)

@@ -76,8 +76,8 @@ export const PriceNumber = styled.div`
     justify-content: center;
     align-items: center;
 `;
-export const PricingButton = styled.button<{$subscribed: boolean}>`
-	cursor:pointer;
+export const PricingButton = styled.button<{$subscribed: boolean, $userSignedIn:boolean }>`
+cursor:${(props) => props.$userSignedIn? 'pointer' : 'disabled'};
     width: 70%;
     height: 50px;
 	background-color: ${(props) => props.$subscribed? 'gray': 'blue'};

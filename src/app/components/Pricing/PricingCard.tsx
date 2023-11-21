@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux';
 
 interface PricingCardProps {
 	id:string;
+	userSignedIn: boolean;
     header: string;
     benifits: string[];
     subscribed: boolean;
@@ -24,6 +25,7 @@ interface PricingCardProps {
 
 const PricingCard = ({
 	id,
+	userSignedIn,
     header,
     benifits,
     subscribed,
@@ -58,7 +60,7 @@ const PricingCard = ({
                     </PricingCardLI>
                 ))}
             </PricingCardUL>
-			<PricingButton $subscribed={subscribed} onClick={handleSubscribtion}>
+			<PricingButton $subscribed={subscribed} disabled={userSignedIn? false : true} onClick={handleSubscribtion}>
                 {subscribed ? 'subscribed' : 'subscribe'}
             </PricingButton>
         </PricingCardStyles>

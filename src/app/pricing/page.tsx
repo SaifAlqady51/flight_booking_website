@@ -13,8 +13,8 @@ import {
 import LoadingPage from '../../app/components/LoadingPage';
 
 const Page = () => {
-    console.log('pricing');
     const dispatch = useDispatch<AppDispatch>();
+	const {userId} = useAppSelector((state) => state.userIdSlice)		
     const { isLoading } = useAppSelector((state) => state.loading);
     // state for prices from stripe api
     const [prices, setPrices] = useState<any[]>([]);
@@ -41,7 +41,7 @@ const Page = () => {
         getPricesAndProducts();
     }, []);
 
-    if (isLoading || prices.length === 0) {
+	if (isLoading || prices.length < 3) {
         return <LoadingPage />;
     } else {
         return (
@@ -52,6 +52,7 @@ const Page = () => {
                             <PricingCard
                                 id={price.id}
                                 key={price.id}
+								userSignedIn={userId.length === 0? false: true}
                                 header={subscriptionPlans[index]}
                                 benifits={[
                                     'searching for three flights a week',
