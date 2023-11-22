@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 export const MainDiv = styled.div`
-    height: 800px;
+    height: 1000px;
     width: 80%;
     display: flex;
     margin: 200px auto;
@@ -11,6 +11,9 @@ export const MainDiv = styled.div`
     @media (max-width: 750px) {
         margin: 200px auto 50px;
     }
+	@media (max-width: 1200px){
+		height:1400px;
+	}
 `;
 export const ChildDiv = styled.div`
     height: 600px;

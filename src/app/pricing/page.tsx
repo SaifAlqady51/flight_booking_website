@@ -40,7 +40,7 @@ const Page = () => {
     useEffect(() => {
         getPricesAndProducts();
     }, []);
-
+	console.log(`prices : ${prices.length}`)
 	if (isLoading || prices.length < 3) {
         return <LoadingPage />;
     } else {

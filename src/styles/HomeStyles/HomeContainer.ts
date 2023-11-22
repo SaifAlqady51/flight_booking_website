@@ -7,6 +7,8 @@ export const Container = styled.div<{ activAlert?: boolean }>`
     align-items: center;
     justify-content: start;
     margin-top: 80px;
-    height: 3000px;
+    height: 100%;
+
+	
 `;
 

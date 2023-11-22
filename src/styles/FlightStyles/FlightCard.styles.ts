@@ -10,7 +10,17 @@ export const AllFlightCardsContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+	&::-webkit-scrollbar {
+		width:.3em;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: ${(props) => props.theme.bodyColor};
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color:  ;
+	}
 `;
 export const FlightCardContainer = styled.div`
     width: 70%;

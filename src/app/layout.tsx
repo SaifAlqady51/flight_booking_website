@@ -9,6 +9,7 @@ import { GlobalStyles } from '@/Theme/ThemeColors';
 import { AuthProvider } from '@components/AuthProvider';
 import NextTopLoader from 'nextjs-toploader';
 import { ApolloClientProvider } from '@graphql/ApolloClientProvider';
+import Footer from './components/Footer/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
