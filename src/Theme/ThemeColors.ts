@@ -9,18 +9,21 @@ export const darkMode = {
     bodyColor: '#10002b',
     textColor: 'white',
 	navColor: globalColors.navColor,
-    pricingCardText: 'black',
 	scrollTrackColor: '#10002b',
-	scrollThumbColor: '#3c096c'
+	scrollThumbColor: '#3c096c',
+	pricingCardColor: '#b8d0ff',
+	pricingCardText: 'black',
 };
 
 export const lightMode = {
     bodyColor: '#c8b6ff',
 	navColor: globalColors.navColor,
     textColor: 'black',
-    pricingCardText: 'white',
 	scrollTrackColor: '#c8b6ff',
-	scrollThumbColor: '#290628'
+	scrollThumbColor: '#290628',
+	pricingCardColor: '#140152',
+	pricingCardText: 'white',
+
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -28,8 +31,7 @@ export const GlobalStyles = createGlobalStyle`
 		
 		scroll-behavior: smooth;
 	}
-    body {
-			
+    body {	
 		scroll-behavior: smooth;
         background-color: ${(props) => props.theme.bodyColor};
         color:${(props) => props.theme.textColor};
@@ -40,7 +42,7 @@ export const GlobalStyles = createGlobalStyle`
 		background-color:white;
 	}
 	body::-webkit-scrollbar-track {
-		background-color:${(props) => props.theme.navColor};
+		background-color: #4e148c;
 	}
 	body::-webkit-scrollbar-thumb{
 		background-color: white;

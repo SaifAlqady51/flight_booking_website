@@ -2,28 +2,28 @@ import { styled } from 'styled-components';
 
 export const PricingCardsContainer = styled.div`
     display: flex;
-	width: 60%;
+    width: 60%;
     height: 500px;
     justify-content: space-between;
     margin-top: 100px;
 
-	@media (max-width:1600px){
-		width:70%;
-	}
-	@media (max-width:1380px){
-		width:80%;
-	}
-	@media (max-width:1200px){
-		width:90%;
-	}
-	@media (max-width:1060px){
-		width:95%;
-	}
-	
-	@media (max-width:1000px){
-		flex-direction:column;
-		align-items:center;
-	}
+    @media (max-width: 1600px) {
+        width: 70%;
+    }
+    @media (max-width: 1380px) {
+        width: 80%;
+    }
+    @media (max-width: 1200px) {
+        width: 90%;
+    }
+    @media (max-width: 1060px) {
+        width: 95%;
+    }
+
+    @media (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const PricingCardStyles = styled.div`
@@ -32,16 +32,16 @@ export const PricingCardStyles = styled.div`
     flex-direction: column;
     width: 300px;
     height: inherit;
-    background-color: #b8d0ff;
+    background-color: ${(props) => props.theme.pricingCardColor};
     position: relative;
-	flex-shrink:0;
+    flex-shrink: 0;
 
     color: ${(props) => props.theme.pricingCardText};
     border-radius: 40px;
 
-	@media (max-width:1000px){
-		margin-bottom:80px;
-	}
+    @media (max-width: 1000px) {
+        margin-bottom: 80px;
+    }
 `;
 export const PricingCardHeading = styled.h1`
     font-size: 2.4rem;
@@ -76,21 +76,23 @@ export const PriceNumber = styled.div`
     justify-content: center;
     align-items: center;
 `;
-export const PricingButton = styled.button<{$subscribed: boolean, $userSignedIn:boolean }>`
-cursor:${(props) => props.$userSignedIn? 'pointer' : 'disabled'};
+export const PricingButton = styled.button<{
+    $subscribed: boolean;
+    $userSignedIn: boolean;
+}>`
+    cursor: ${(props) => (props.$userSignedIn ? 'pointer' : 'disabled')};
     width: 70%;
     height: 50px;
-	background-color: ${(props) => props.$subscribed? 'gray': 'blue'};
-	color:${(props) => props.$subscribed? 'black': 'white'};
-	border:0;
-	font-size:1.4rem;
-	font-weight:bold;
+    background-color: ${(props) => (props.$subscribed ? 'gray' : 'blue')};
+    color: ${(props) => (props.$subscribed ? 'black' : 'white')};
+    border: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
     position: absolute;
-	bottom:30px;
-	border-radius:30px;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	text-decoration:none;
-
+    bottom: 30px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 `;

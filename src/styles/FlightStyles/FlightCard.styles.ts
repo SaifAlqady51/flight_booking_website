@@ -16,10 +16,10 @@ export const AllFlightCardsContainer = styled.div`
 		width:.3em;
 	}
 	&::-webkit-scrollbar-track {
-		background-color: ${(props) => props.theme.bodyColor};
+		background-color: ${(props) => props.theme.scrollTrackColor};
 	}
 	&::-webkit-scrollbar-thumb {
-		background-color:  ;
+		background-color: ${(props) => props.theme.scrollThumbColor} ;
 	}
 `;
 export const FlightCardContainer = styled.div`

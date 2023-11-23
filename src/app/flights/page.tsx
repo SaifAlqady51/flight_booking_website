@@ -62,6 +62,7 @@ const Page: FC<props> = () => {
                         dataWithoutUser={dataWithoutUser}
                     />
                 </Container>
+
             </>
         );
     } else {

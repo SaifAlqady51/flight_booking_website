@@ -48,3 +48,8 @@ export const DollarIconProvider = styled(Provider)<{$priceValue: number}>`
 
 
 `;
+
+export const GitHubIconProvider = styled(Provider)`
+	width:30px;
+	height:30px;
+`

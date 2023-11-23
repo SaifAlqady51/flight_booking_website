@@ -1,7 +1,6 @@
 'use client';
 import { useAppSelector } from '@/redux/store';
 import Hero from '@components/Home/Hero/Hero';
-import Footer from './components/Footer/Footer';
 import { Container } from '@/styles/HomeStyles/HomeContainer';
 import HeroImage from '@components/Home/Hero/HeroImage';
 import Messages from '@components/Home/Content/Messages';
@@ -26,7 +25,6 @@ export default function Home() {
                     <HeroImage />
                     <FlightSearchForm />
                     <Messages />
-                    <Footer />
                 </Container>
             </>
         );

@@ -3,13 +3,13 @@ import { Inter } from 'next/font/google';
 import React from 'react';
 import StyledComponentsRegistry from '@/lib/registery';
 import Navbar from '@components/Nav/Navbar';
+import Footer from './components/Footer/Footer';
 import { ReduxProvider } from '@/redux/ReduxProvider';
 import Theme from '../Theme/Theme';
 import { GlobalStyles } from '@/Theme/ThemeColors';
 import { AuthProvider } from '@components/AuthProvider';
 import NextTopLoader from 'nextjs-toploader';
 import { ApolloClientProvider } from '@graphql/ApolloClientProvider';
-import Footer from './components/Footer/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -37,6 +37,7 @@ export default function RootLayout({
                                 <ApolloClientProvider>
                                     <Navbar />
                                     {children}
+									<Footer />
                                 </ApolloClientProvider>
                             </AuthProvider>
                         </Theme>

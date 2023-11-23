@@ -2,12 +2,12 @@ import { gql } from '@apollo/client';
 
 export const CreateSearchResult = gql`
     mutation Mutation(
-        $location: JSON
-        $distination: JSON
+        $location: JSON!
+        $distination: JSON!
         $flightDate: String!
         $numberOfAdults: String!
         $travelClass: String!
-        $flights: JSON
+        $flights: JSON!
         $userId: String!
     ) {
         createSearchResult(

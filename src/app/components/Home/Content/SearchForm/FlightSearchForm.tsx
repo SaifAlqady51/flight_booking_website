@@ -106,8 +106,7 @@ export const FlightSearchForm = () => {
         );
         if (!hanldeFlightDate(flightDate).status) {
             flightDataFalseValidity();
-			dispatch(switchAlert())
-
+            dispatch(switchAlert());
         } else if (locationIATACode && distinationIATACode) {
             dispatch(truthyIsLoading());
             dispatch(
@@ -144,8 +143,7 @@ export const FlightSearchForm = () => {
 
         if (!hanldeFlightDate(flightDate).status) {
             flightDataFalseValidity();
-			dispatch(switchAlert())
-
+            dispatch(switchAlert());
         } else if (locationIATACode && distinationIATACode) {
             dispatch(truthyIsLoading());
             // waiting for flightsData response from amadeus api
@@ -156,7 +154,6 @@ export const FlightSearchForm = () => {
                 numberOfAdults,
                 travelClass,
             });
-
             // create new SearchResult query in the graphql database
             createSearchResult({
                 variables: {
@@ -175,9 +172,10 @@ export const FlightSearchForm = () => {
                     userId: userId,
                 },
             });
-            router.push('/flights');
             dispatch(falsyIsLoading());
         }
+
+        router.push('/flights');
     };
     const inputFields: FieldType[] = [
         { label: 'location', changeingFunction: changeLocationCityName },
