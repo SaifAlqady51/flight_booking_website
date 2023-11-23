@@ -40,6 +40,12 @@ export const SearchResultQuery = extendType({
                 });
             },
         });
+        t.nonNull.list.field('getAllSearchResults', {
+            type: 'SearchResult',
+            resolve(_parent, args, ctx) {
+                return ctx.prisma.searchResult.findMany({});
+            },
+        });
     },
 });
 
@@ -49,26 +55,26 @@ export const SearchResultMutation = extendType({
         t.nonNull.field('createSearchResult', {
             type: SearchResult,
             args: {
-                location: arg({
-                    type: 'JSON',
-                }),
+                location: nonNull(
+                    arg({
+                        type: 'JSON',
+                    }),
+                ),
 
-                distination: arg({
-                    type: 'JSON',
-                }),
+                distination: nonNull(
+                    arg({
+                        type: 'JSON',
+                    }),
+                ),
                 flightDate: nonNull(stringArg()),
                 numberOfAdults: nonNull(stringArg()),
                 travelClass: nonNull(stringArg()),
-                flights: arg({
-                    type: 'JSON',
-                }),
-                logos: arg({
-                    type: 'JSON',
-                }),
+                flights: nonNull(
+                    arg({
+                        type: 'JSON',
+                    }),
+                ),
                 userId: nonNull(stringArg()),
-                user: arg({
-                    type: 'UserInputType',
-                }),
             },
             async resolve(_root, args, ctx) {
                 return await ctx.prisma.searchResult.create({
@@ -79,7 +85,6 @@ export const SearchResultMutation = extendType({
                         numberOfAdults: args.numberOfAdults,
                         travelClass: args.travelClass,
                         flights: args.flights,
-                        logos: args.logos,
                         user: {
                             connect: { id: args.userId || undefined },
                         },
@@ -89,6 +94,13 @@ export const SearchResultMutation = extendType({
         });
 
         t.nonNull.field('deleteAllSearchResult', {
+            type: SearchResult,
+            resolve(_root, _args, ctx) {
+                return ctx.prisma.searchResult.deleteMany({});
+            },
+        });
+
+        t.nonNull.field('deleteAllSearchResultForSpecificUser', {
             type: SearchResult,
             args: {
                 userId: nonNull(stringArg()),

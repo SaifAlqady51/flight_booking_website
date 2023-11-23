@@ -25,14 +25,16 @@ scalar Date
 scalar JSON
 
 type Mutation {
-  createSearchResult(distination: JSON, flightDate: String!, flights: JSON, location: JSON, logos: JSON, numberOfAdults: String!, travelClass: String!, user: UserInputType, userId: String!): SearchResult!
+  createSearchResult(distination: JSON!, flightDate: String!, flights: JSON!, location: JSON!, numberOfAdults: String!, travelClass: String!, userId: String!): SearchResult!
   deletSingleSearchResult(id: String!): SearchResult!
-  deleteAllSearchResult(userId: String!): SearchResult!
+  deleteAllSearchResult: SearchResult!
+  deleteAllSearchResultForSpecificUser(userId: String!): SearchResult!
   deleteAllUsers(userId: String!): User!
   updateUserSubscription(subscription: String!, userId: String!): User!
 }
 
 type Query {
+  getAllSearchResults: [SearchResult]!
   getSearchResultsForSpecificUser(userId: String!): [SearchResult]!
   userById(id: String!): User!
   users: [User]!
