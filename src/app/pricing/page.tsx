@@ -18,7 +18,7 @@ const Page = () => {
     const { isLoading } = useAppSelector((state) => state.loading);
     // state for prices from stripe api
     const [prices, setPrices] = useState<any[]>([]);
-	const subscriptionPlans = ['Free','Primium','Travel'] 
+	const subscriptionPlans = ['Free','Primium','Traveler'] 
 
     // state of productNames array returned from prices object
     const { userSubscription } = useAppSelector(
@@ -46,7 +46,7 @@ const Page = () => {
     } else {
         return (
             <>
-                <Container>
+                <Container $pricing={true} >
                     <PricingCardsContainer>
                         {prices.map((price, index) => (
                             <PricingCard

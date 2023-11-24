@@ -28,10 +28,10 @@ export const lightMode = {
 
 export const GlobalStyles = createGlobalStyle`
 	html {
-		
 		scroll-behavior: smooth;
+
 	}
-    body {	
+	body {	
 		scroll-behavior: smooth;
         background-color: ${(props) => props.theme.bodyColor};
         color:${(props) => props.theme.textColor};

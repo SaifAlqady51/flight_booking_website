@@ -7,7 +7,8 @@ export const StyledFooter = styled.div`
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	margin-top:300px;
+	margin-top: 500px;
+
 `
 
 export const GitHubLink = styled.a`

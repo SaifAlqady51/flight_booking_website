@@ -62,13 +62,13 @@ const Page: FC<props> = () => {
                         dataWithoutUser={dataWithoutUser}
                     />
                 </Container>
-
             </>
         );
     } else {
         return (
             <Container activAlert={conditionToDisplayAlert}>
                 <FlightSearchForm />
+                <h1> You have no search results</h1>
             </Container>
         );
     }

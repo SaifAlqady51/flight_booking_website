@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 // styles for the flight search Form
 export const FlightSearchFormStyles = styled.form`
-    margin-top: 50px;
+    margin-top: 100px;
     width: 80%;
     height: 100px;
     display: flex;
