@@ -7,7 +7,7 @@ export const StyledFooter = styled.div`
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	margin-top: 500px;
+	margin-top: 520px;
 
 `
 
