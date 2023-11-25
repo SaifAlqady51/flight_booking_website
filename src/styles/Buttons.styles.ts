@@ -62,6 +62,7 @@ export const MoreButton = styled(Link)`
     ${GeneralButtons}
     background:#c25c44;
     height: 35px;
+    text-decoration: none;
 
     &:hover {
         background: #f25c24;
