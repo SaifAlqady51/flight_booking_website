@@ -3,6 +3,7 @@ import { FlightCard } from './FlightCard';
 interface AllFlightCardsPorps {
     flightsList: any[];
 }
+// this function takes list of all flightoffers and then return them in flights card
 const AllFlightCards = ({ flightsList }: AllFlightCardsPorps) => {
     return (
         <>

@@ -13,6 +13,9 @@ import {
 } from '@styles/FlightStyles/FlightCard.styles';
 import { FlightCardText } from '@/styles/Text.styles';
 import { MoreButton } from '@/styles/Buttons.styles';
+import LoadingPage from '../LoadingPage';
+import Skeleton from '@mui/material/Skeleton';
+
 interface FlightCardProps {
     flightData: FlightType;
     id: string;
@@ -33,8 +36,6 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData, id }) => {
         fetchData();
     }, [flightData]);
 
-	console.log(flightData)
-
     const router = useRouter();
 
     const handleMoreButton = () => {
@@ -44,7 +45,16 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData, id }) => {
     return (
         <FlightCardContainer>
             <LeftContainer>
-                <FlightCardImage src={img} alt='' />
+                {img ? (
+                    <FlightCardImage src={img} alt='' />
+                ) : (
+                    <Skeleton
+                        variant='rectangular'
+						sx={{ ml: 2}}
+                        width={'80%'}
+                        height={'80%'}
+                    />
+                )}
             </LeftContainer>
 
             <RightContainer>
@@ -63,7 +73,10 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData, id }) => {
 
                 <FlightCardButtonsArea>
                     <MoreButton
-						href={{ pathname: `/flights/${id}`, query: {object: JSON.stringify(flightData)} }}
+                        href={{
+                            pathname: `/flights/${id}`,
+                            query: { object: JSON.stringify(flightData) },
+                        }}
                         onClick={handleMoreButton}
                     >
                         More
