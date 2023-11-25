@@ -54,7 +54,7 @@ const FlightCardImageTemp = css`
     width: 80%;
     max-height: 95%;
     display: flex;
-    margin: 10px;
+    padding: 10px 10px 10px 25px;
 `;
 export const FlightCardImage = styled.img`
     ${FlightCardImageTemp}

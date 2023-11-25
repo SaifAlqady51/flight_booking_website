@@ -19,41 +19,51 @@ const DisplaySearchResults: FC<DisplaySearchResultsProps> = ({
     data,
     dataWithoutUser,
 }) => {
-    // console.log('first SearchResult : '  + JSON.stringify(data.getSearchResultsForSpecificUser[0]))
-    //
+	// get the userId to check if the user signed in or not
     const { userId } = useAppSelector((state) => state.userIdSlice);
     console.log('data : ' + data ? 'there is no data' : 'there is data');
     console.log('data without user : ' + JSON.stringify(dataWithoutUser));
-
+	
+	// invoking useDispatch 
     const dispatch = useDispatch<AppDispatch>();
+
+	// get listOfExpanded to check its length and then display data or not
     const { listOfExpanded } = useAppSelector(
         (state) => state.expandFlightCards,
     );
-
-    // console.log(
-    //     'data : ' + JSON.stringify(data),
-    // );
-
+	
     useEffect(() => {
+		// get Id for each search result
         const getIdsForSearchResults = () => {
+
+			// create an array to store search results ids
             let listOfIds: string[] = [];
-			let searchResults = userId? data : new Array(dataWithoutUser);
+
+			// get search results 
+            let searchResults = userId ? data : new Array(dataWithoutUser);
             console.log('search Result : ' + JSON.stringify(searchResults));
+
+			// get the id from each search result then add it to listOfIds
             for (let searchResult of searchResults) {
                 listOfIds.push(searchResult.id);
             }
             return listOfIds;
         };
+
+		// resetSearchResults is a functoin to clear the data store in listOfExpanded state
         dispatch(resetSearchResults());
         const listOfIds = getIdsForSearchResults();
         console.log('List of Ids' + getIdsForSearchResults());
+
+		// adding stored ids in listOfIds to the listOfExpanded state
         dispatch(
             pushSearchResult({
                 numberOfSearchResults: listOfIds.length,
                 listOfIds: listOfIds,
             }),
         );
-    }, [data,dispatch, dataWithoutUser, userId]);
+    }, [data, dispatch, dataWithoutUser, userId]);
+
     console.log(JSON.stringify(data));
 
     if (data && listOfExpanded.length == data.length && userId) {
@@ -80,14 +90,11 @@ const DisplaySearchResults: FC<DisplaySearchResultsProps> = ({
                 />
             </>
         );
-    } else if(!data && !dataWithoutUser){
+    } else if (!data && !dataWithoutUser) {
         return <h1>There is no Search Results for you</h1>;
+    } else {
+        return <LoadingPage />;
     }
-	else{
-		return (
-			<LoadingPage />
-		)
-	}
 };
 
 export default DisplaySearchResults;

@@ -79,16 +79,6 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
         const currentSearchResult = findSearchResultId();
         return currentSearchResult.expanded;
     };
-    // all the flights card that attached to current Search Result
-
-    // const AllFlightCards = (flightsList:any) =>
-    // flightsList.map((flight: any) => (
-    // <FlightCard
-    // key={flight.id}
-    // id={flight.id}
-    // flightData={flight}
-    // ></FlightCard>
-    // ));
     console.log(searchResult);
 
     return (
