@@ -1,4 +1,4 @@
-import { FC } from 'react';
+'use client' 
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import {
@@ -10,7 +10,8 @@ import { SignupButton } from '@/styles/NavStyles/SignupButton.styles';
 import { storeCurrentUserId } from '@/redux/features/userId-slice';
 import { storeCurrentUserSubscription } from '@/redux/features/userSubscription-slice';
 
-const Signup: FC = () => {
+const Signup = () => {
+	
     const { data: session } = useSession();
     const isLoading = useAppSelector((state) => state.loading.isLoading);
 

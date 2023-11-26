@@ -13,7 +13,6 @@ import {
 } from '@styles/FlightStyles/FlightCard.styles';
 import { FlightCardText } from '@/styles/Text.styles';
 import { MoreButton } from '@/styles/Buttons.styles';
-import LoadingPage from '../LoadingPage';
 import Skeleton from '@mui/material/Skeleton';
 
 interface FlightCardProps {
