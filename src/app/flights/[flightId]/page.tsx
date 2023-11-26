@@ -1,7 +1,7 @@
 'use client';
 
 import { Container } from '@/styles/HomeStyles/HomeContainer';
-import { SeatsContainer, SeatStyles } from '@/styles/FlightStyles/Seats.styles';
+import { SeatsContainer } from '@/styles/FlightStyles/Seats.styles';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, useMemo } from 'react';
 import { getSeatsMap } from '@/utils/externalAPI/amadeus/getSeatsMap';
