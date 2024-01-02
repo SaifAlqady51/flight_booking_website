@@ -13,6 +13,7 @@ import { getCityNameFromCityCode } from '@/utils/externalAPI/IATACode/makeIATACo
 
 const Page = () => {
     // creating state to store seatsMap data
+    // eslint-disable-next-line no-use-before-define
     const [seatsMap, setSeatsMap] = useState({});
     const [allVisitedCities, setAllVisitedCities] = useState<String[]>([]);
 
@@ -39,22 +40,20 @@ const Page = () => {
     useEffect(() => {
         async function getIATACode() {
             const departure = await getCityNameFromCityCode(
-                flightData.itineraries[0].segments[0].departure.iataCode,
+                flightData.itineraries[0].segments[0].departure.iataCode
             );
             setAllVisitedCities((prevList) => [...prevList, departure]);
             for (let element of flightData.itineraries[0].segments) {
                 const cityName = await getCityNameFromCityCode(
-                    element.arrival.iataCode,
+                    element.arrival.iataCode
                 );
                 setAllVisitedCities((prevList) => [...prevList, cityName]);
             }
         }
-		getIATACode()
-		// return () => {
-		// 	setAllVisitedCities([])	
-		// }		
+        getIATACode();
     }, []);
-	console.log(allVisitedCities)
+    console.log(allVisitedCities);
+    console.log(seatsMap);
 
     return (
         <Container>
