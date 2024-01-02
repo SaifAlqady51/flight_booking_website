@@ -52,7 +52,9 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
 
     // dispatch is a method to update redux states
     const dispatch = useDispatch<AppDispatch>();
+
     const { flights } = useAppSelector((state) => state.flightData);
+
     // find This current Search Result ID from listOfExpanded redux state
     const findSearchResultId = () => {
         const currentSearchResult = listOfExpanded.filter(

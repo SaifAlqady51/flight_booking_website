@@ -18,7 +18,7 @@ export const SelectField: FC<SelectFieldProps> = ({
 }) => {
     // creating scope and animate from framer-motion package
     const [scope, animate] = useAnimate();
-
+	console.log('SearchField')
     // function that change field Label when click on it
     const onFieldInputFocus = () => {
         animate(

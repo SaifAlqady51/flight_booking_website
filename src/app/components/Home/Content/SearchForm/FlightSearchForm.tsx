@@ -39,7 +39,7 @@ import { SelectField } from './SelectField';
 //utils
 import { capitalizeString } from '@utils/capitalizeString';
 import { getFlightOffers } from '@/utils/externalAPI/amadeus/getFlightOffers';
-import { getCityCodeFromCityName } from '@utils/externalAPI/airLabs/makeIATACode';
+import { getCityCodeFromCityName } from '@utils/externalAPI/IATACode/makeIATACode';
 import { hanldeFlightDate } from '@/utils/handleFlightDateLogic';
 
 // types

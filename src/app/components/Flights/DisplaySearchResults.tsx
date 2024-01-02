@@ -19,43 +19,49 @@ const DisplaySearchResults: FC<DisplaySearchResultsProps> = ({
     data,
     dataWithoutUser,
 }) => {
-	// get the userId to check if the user signed in or not
+    // get the userId to check if the user signed in or not
     const { userId } = useAppSelector((state) => state.userIdSlice);
     console.log('data : ' + data ? 'there is no data' : 'there is data');
     console.log('data without user : ' + JSON.stringify(dataWithoutUser));
-	
-	// invoking useDispatch 
+
+    // invoking useDispatch
     const dispatch = useDispatch<AppDispatch>();
 
-	// get listOfExpanded to check its length and then display data or not
+    const checkIfTheUserEnterData =
+        dataWithoutUser.location.cityName.length !== 0 &&
+        dataWithoutUser.destination.cityName.length !== 0 &&
+        dataWithoutUser.fligthData.length !== 0 &&
+        dataWithoutUser.travelClass.length !== 0 &&
+        dataWithoutUser.numberOfAdults.length !== 0;
+
+    // get listOfExpanded to check its length and then display data or not
     const { listOfExpanded } = useAppSelector(
         (state) => state.expandFlightCards,
     );
-	
-    useEffect(() => {
-		// get Id for each search result
-        const getIdsForSearchResults = () => {
 
-			// create an array to store search results ids
+    useEffect(() => {
+        // get Id for each search result
+        const getIdsForSearchResults = () => {
+            // create an array to store search results ids
             let listOfIds: string[] = [];
 
-			// get search results 
+            // get search results
             let searchResults = userId ? data : new Array(dataWithoutUser);
             console.log('search Result : ' + JSON.stringify(searchResults));
 
-			// get the id from each search result then add it to listOfIds
+            // get the id from each search result then add it to listOfIds
             for (let searchResult of searchResults) {
                 listOfIds.push(searchResult.id);
             }
             return listOfIds;
         };
 
-		// resetSearchResults is a functoin to clear the data store in listOfExpanded state
+        // resetSearchResults is a functoin to clear the data store in listOfExpanded state
         dispatch(resetSearchResults());
         const listOfIds = getIdsForSearchResults();
         console.log('List of Ids' + getIdsForSearchResults());
 
-		// adding stored ids in listOfIds to the listOfExpanded state
+        // adding stored ids in listOfIds to the listOfExpanded state
         dispatch(
             pushSearchResult({
                 numberOfSearchResults: listOfIds.length,
@@ -80,7 +86,8 @@ const DisplaySearchResults: FC<DisplaySearchResultsProps> = ({
         return <AllSearchResults />;
     } else if (
         !userId &&
-        listOfExpanded.length == new Array(dataWithoutUser).length
+        listOfExpanded.length == new Array(dataWithoutUser).length &&
+        checkIfTheUserEnterData
     ) {
         return (
             <>

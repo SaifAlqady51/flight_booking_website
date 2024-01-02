@@ -29,11 +29,6 @@ export const getFlightOffers = async ({
         };
         const flights = await axios.get(URL, config);
 
-        // const allFlightOffers = await addLogoToFlightsData(flights.data.data);
-        // console.log(
-        //     'allFlights after addLogoToFlightsData function: ' +
-        //         allFlightOffers[1].airlineLogo,
-        // );
         return flights.data.data;
     } catch (error) {
         console.error(`Error : ${error}`);
