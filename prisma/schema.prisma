@@ -3,7 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output = "./generated/client"
+  output   = "./generated/client"
 }
 
 datasource db {
@@ -15,9 +15,9 @@ datasource db {
 
 model User {
   id            String         @id @default(cuid())
-  name          String
+  name          String?
   email         String?        @unique
-  subscription  String?		   @default("Free")
+  subscription  String?        @default("Free")
   image         String?
   emailVerified String?
   searchResults SearchResult[]
