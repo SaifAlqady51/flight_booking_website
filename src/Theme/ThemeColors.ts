@@ -2,28 +2,27 @@
 import { createGlobalStyle } from 'styled-components';
 
 const globalColors = {
-	navColor: '#4e148c' 
-}
+    navColor: '#4e148c',
+};
 
 export const darkMode = {
     bodyColor: '#10002b',
     textColor: 'white',
-	navColor: globalColors.navColor,
-	scrollTrackColor: '#10002b',
-	scrollThumbColor: '#3c096c',
-	pricingCardColor: '#b8d0ff',
-	pricingCardText: 'black',
+    navColor: globalColors.navColor,
+    scrollTrackColor: '#10002b',
+    scrollThumbColor: '#3c096c',
+    pricingCardColor: '#b8d0ff',
+    pricingCardText: 'black',
 };
 
 export const lightMode = {
     bodyColor: '#c8b6ff',
-	navColor: globalColors.navColor,
+    navColor: globalColors.navColor,
     textColor: 'black',
-	scrollTrackColor: '#c8b6ff',
-	scrollThumbColor: '#290628',
-	pricingCardColor: '#140152',
-	pricingCardText: 'white',
-
+    scrollTrackColor: '#c8b6ff',
+    scrollThumbColor: '#290628',
+    pricingCardColor: '#140152',
+    pricingCardText: 'white',
 };
 
 export const GlobalStyles = createGlobalStyle`

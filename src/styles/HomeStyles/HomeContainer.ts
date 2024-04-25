@@ -13,6 +13,6 @@ export const Container = styled.div<{
     height: 100%;
 
     @media (max-width: 1000px) {
-		height: ${(props) => (props.$pricing ? '1500px' : '100%')};
+        height: ${(props) => (props.$pricing ? '1500px' : '100%')};
     }
 `;

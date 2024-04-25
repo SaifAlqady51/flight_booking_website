@@ -10,7 +10,6 @@ export const NavContainer = styled.div`
     width: 100%;
     top: 0;
     z-index: 10;
-
 `;
 
 export const LeftNavbar = styled.div`

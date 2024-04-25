@@ -1,6 +1,6 @@
-import { FC} from 'react';
+import { FC } from 'react';
 import { HeroStyles } from '@/styles/HomeStyles/HeroStyles/Hero.styles';
-import { motion,  } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface HeroProps {}
 

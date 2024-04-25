@@ -1,7 +1,7 @@
 import { AlertStyles, AlertText } from '@/styles/Alert.styles';
 import { AiOutlineClose } from 'react-icons/ai';
 import { SmallStyledIcon } from '@/styles/NavStyles/ListIcon.styles';
-import {AppDispatch } from '@/redux/store';
+import { AppDispatch } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import { switchAlert } from '@/redux/features/toggleAlert-slice';
 interface AlertProps {

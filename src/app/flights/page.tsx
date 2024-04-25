@@ -23,7 +23,7 @@ const Page: FC<props> = () => {
 
     // importing status and message states from check flight date status returns false if there is an error with flight date and message returns that error if exists
     const { status, message } = useAppSelector(
-        (state) => state.checkFlightDate
+        (state) => state.checkFlightDate,
     );
 
     // the condition that returns an alert
@@ -39,7 +39,7 @@ const Page: FC<props> = () => {
     });
 
     const dataWithoutUser = useAppSelector(
-        (state) => state.flightFormInputValues
+        (state) => state.flightFormInputValues,
     );
     if (error) {
         console.error(error);

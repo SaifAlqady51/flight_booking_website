@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type initialStateType = {
-	isLoading: boolean;
+    isLoading: boolean;
 };
 
 const initialState = {

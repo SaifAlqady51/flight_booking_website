@@ -40,12 +40,12 @@ const Page = () => {
     useEffect(() => {
         async function getIATACode() {
             const departure = await getCityNameFromCityCode(
-                flightData.itineraries[0].segments[0].departure.iataCode
+                flightData.itineraries[0].segments[0].departure.iataCode,
             );
             setAllVisitedCities((prevList) => [...prevList, departure]);
             for (let element of flightData.itineraries[0].segments) {
                 const cityName = await getCityNameFromCityCode(
-                    element.arrival.iataCode
+                    element.arrival.iataCode,
                 );
                 setAllVisitedCities((prevList) => [...prevList, cityName]);
             }

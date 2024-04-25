@@ -11,9 +11,9 @@ export const MainDiv = styled.div`
     @media (max-width: 750px) {
         margin: 200px auto 50px;
     }
-	@media (max-width: 1200px){
-		height:1400px;
-	}
+    @media (max-width: 1200px) {
+        height: 1400px;
+    }
 `;
 export const ChildDiv = styled.div`
     height: 600px;

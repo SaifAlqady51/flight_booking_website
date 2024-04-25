@@ -6,6 +6,6 @@ export const metadata: Metadata = {
     description: 'flight Booking website',
 };
 
-export default function layout({children}:{children:React.ReactNode}) {
-	return <div>{children}</div>
+export default function layout({ children }: { children: React.ReactNode }) {
+    return <div>{children}</div>;
 }

@@ -1,4 +1,3 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
@@ -6,7 +5,7 @@ import Stripe from 'stripe';
 export async function GET(request: NextRequest) {
     if (process.env.STRIPE_SECRET_KEY) {
         const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-		const prices = await stripe.prices.list({active:true});
+        const prices = await stripe.prices.list({ active: true });
 
         return NextResponse.json(prices.data.reverse());
     }

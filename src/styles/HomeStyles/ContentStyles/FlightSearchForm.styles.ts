@@ -11,7 +11,7 @@ export const FlightSearchFormStyles = styled.form`
     border-radius: 15px;
     align-items: center;
     justify-content: space-around;
-	flex-shrink:0;
+    flex-shrink: 0;
     background: ${(props) => props.theme.navColor};
 
     @media (max-width: 1700px) {

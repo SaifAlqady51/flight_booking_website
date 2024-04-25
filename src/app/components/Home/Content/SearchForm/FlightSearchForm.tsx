@@ -179,13 +179,19 @@ export const FlightSearchForm = () => {
     };
     const inputFields: FieldType[] = [
         { label: 'location', changeingFunction: changeLocationCityName },
-        { label: 'distination', changeingFunction: changeDistinationCityName },
+        {
+            label: 'distination',
+            changeingFunction: changeDistinationCityName,
+        },
         {
             label: 'flight date',
             placeholder: '2023-12-12',
             changeingFunction: changeFlightDate,
         },
-        { label: 'number of adults', changeingFunction: changeNumberOfAdults },
+        {
+            label: 'number of adults',
+            changeingFunction: changeNumberOfAdults,
+        },
     ];
 
     return (

@@ -1,24 +1,20 @@
 'use client';
 import { FC } from 'react';
 import { StopsLineContainer } from '@styles/FlightDetailedStyles/StopsLine.styles';
-import {  useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 interface FlightStopsLineProps {
-	flightData: any
+    flightData: any;
 }
 
 export const FlightStopsLine: FC<FlightStopsLineProps> = () => {
-
-	const searchParams = useSearchParams()
-	/* eslint-disable */
-	const object = searchParams?.get('object')
-	
-
-
+    const searchParams = useSearchParams();
+    /* eslint-disable */
+    const object = searchParams?.get('object');
 
     return (
         <StopsLineContainer>
-             {/* <AllStops stops={flight.itineraries[0].segmant} /> */}
+            {/* <AllStops stops={flight.itineraries[0].segmant} /> */}
         </StopsLineContainer>
     );
 };

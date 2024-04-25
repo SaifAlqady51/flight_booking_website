@@ -1,10 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
-
-const getPrices = async() =>  {
-
-	const response  = await axios.get('/api/getPrices')
-	return response.data
-}
+const getPrices = async () => {
+    const response = await axios.get('/api/getPrices');
+    return response.data;
+};
 
 export default getPrices;

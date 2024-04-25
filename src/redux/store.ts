@@ -1,8 +1,4 @@
-import {
-    configureStore,
-    combineReducers,
-    Reducer,
-} from '@reduxjs/toolkit';
+import { configureStore, combineReducers, Reducer } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 // slices
@@ -61,13 +57,10 @@ const reducer = combineReducers({
     userIdSlice,
     checkFlightDate,
     toggleAlert,
-	userSubscription,
+    userSubscription,
 });
 
-const persistedReducer = persistReducer(
-    persistConfig,
-    reducer as Reducer,
-);
+const persistedReducer = persistReducer(persistConfig, reducer as Reducer);
 
 export const store = configureStore({
     reducer: persistedReducer,
@@ -89,4 +82,3 @@ export const store = configureStore({
 type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
