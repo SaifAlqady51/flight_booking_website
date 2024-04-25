@@ -1,4 +1,4 @@
-'use client' 
+'use client';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import {
@@ -11,14 +11,13 @@ import { storeCurrentUserId } from '@/redux/features/userId-slice';
 import { storeCurrentUserSubscription } from '@/redux/features/userSubscription-slice';
 
 const Signup = () => {
-	
     const { data: session } = useSession();
     const isLoading = useAppSelector((state) => state.loading.isLoading);
 
     const dispatch = useDispatch<AppDispatch>();
     if (session?.user) {
         dispatch(storeCurrentUserId(session?.user?.id));
-		dispatch(storeCurrentUserSubscription(session.user.subscription))
+        dispatch(storeCurrentUserSubscription(session.user.subscription));
     }
     console.log('session: ' + JSON.stringify(session?.user));
 

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import {
     PriceContainer,
     PriceNumber,
@@ -8,10 +8,10 @@ import { BiDollar } from 'react-icons/bi';
 import { DollarIconProvider } from '@/styles/NavStyles/ListIcon.styles';
 
 interface PricingValueProps {
-	priceValue:number;
+    priceValue: number;
 }
 
-const PricingValue = ({priceValue}: PricingValueProps) => {
+const PricingValue = ({ priceValue }: PricingValueProps) => {
     return (
         <PriceContainer>
             <DollarIconProvider $priceValue={priceValue}>

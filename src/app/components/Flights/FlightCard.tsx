@@ -49,7 +49,7 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData, id }) => {
                 ) : (
                     <Skeleton
                         variant='rectangular'
-						sx={{ ml: 2}}
+                        sx={{ ml: 2 }}
                         width={'80%'}
                         height={'80%'}
                     />
@@ -74,7 +74,9 @@ export const FlightCard: FC<FlightCardProps> = ({ flightData, id }) => {
                     <MoreButton
                         href={{
                             pathname: `/flights/${id}`,
-                            query: { object: JSON.stringify(flightData) },
+                            query: {
+                                object: JSON.stringify(flightData),
+                            },
                         }}
                         onClick={handleMoreButton}
                     >

@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
 
     callbacks: {
-        async jwt({ token,user}) {
+        async jwt({ token, user }) {
             const dbUser = await prisma.user.findFirst({
                 where: {
                     email: token.email,
@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
 
             if (!dbUser) {
                 token.id = user!.id;
-				token.subscription = "Free"
+                token.subscription = 'Free';
                 return token;
             }
 

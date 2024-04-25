@@ -20,4 +20,4 @@ const AllFlightCards = ({ flightsList }: AllFlightCardsPorps) => {
     );
 };
 
-export default AllFlightCards
+export default AllFlightCards;

@@ -67,17 +67,19 @@ export const flightFormInputValues = createSlice({
         },
         changeTravelClass: (
             state: FlightFormInputValuesinitialStateType,
-			action: PayloadAction<{travelClass:string,userId:string}>,
+            action: PayloadAction<{
+                travelClass: string;
+                userId: string;
+            }>,
         ) => {
             state.travelClass = action.payload.travelClass;
             if (!action.payload.userId.length) {
-
                 state.id = `${Date.now()}`;
             }
         },
         deleteSearchResult: (state: FlightFormInputValuesinitialStateType) => {
             /*eslint-disable*/
-            state = initialState ;
+            state = initialState;
         },
     },
 });

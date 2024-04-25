@@ -5,7 +5,6 @@ import { lightMode, darkMode } from './ThemeColors';
 import { useAppSelector } from '@/redux/store';
 import { ReactNode } from 'react';
 
-
 const Theme = ({ children }: { children: ReactNode }) => {
     const theme = useAppSelector((state) => state.toggleTheme.theme);
 

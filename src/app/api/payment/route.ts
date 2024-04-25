@@ -10,17 +10,17 @@ export async function POST(request: NextRequest) {
         const session = await stripe.checkout.sessions.create({
             line_items: [
                 {
-					quantity:1,
+                    quantity: 1,
                     price: priceId,
                 },
             ],
             mode: 'subscription',
-			success_url: `${process.env.URL}/payment`,
-			cancel_url: `${process.env.URL}/pricing`
+            success_url: `${process.env.URL}/payment`,
+            cancel_url: `${process.env.URL}/pricing`,
         });
 
-		console.log(session.url)
-		return NextResponse.json(session.url)
+        console.log(session.url);
+        return NextResponse.json(session.url);
     }
 
     return NextResponse.json({ message: 'cannot find your stripe data' });

@@ -12,7 +12,7 @@ export const MessageImage = styled(Image)<MessageImageProps>`
 
     @media (max-width: 1420px) {
         width: ${(props) => props.widthtab};
-	}
+    }
 
     @media (max-width: 1200px) {
         width: ${(props) => props.widthMobile};

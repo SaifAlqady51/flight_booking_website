@@ -37,7 +37,7 @@ export default function RootLayout({
                                 <ApolloClientProvider>
                                     <Navbar />
                                     {children}
-									<Footer />
+                                    <Footer />
                                 </ApolloClientProvider>
                             </AuthProvider>
                         </Theme>

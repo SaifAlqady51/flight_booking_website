@@ -2,11 +2,13 @@ import { PrismaClient } from '../../prisma/generated/client';
 import { withAccelerate } from '@prisma/extension-accelerate';
 
 declare global {
-	/* eslint-disable */
-	var prismaGlobal : any | undefined;
+    /* eslint-disable */
+    var prismaGlobal: any | undefined;
 }
 
-const prisma = global.prismaGlobal?.$extends(withAccelerate()) || new PrismaClient({ log: ['info'] }).$extends(withAccelerate());
+const prisma =
+    global.prismaGlobal?.$extends(withAccelerate()) ||
+    new PrismaClient({ log: ['info'] }).$extends(withAccelerate());
 if (process.env.NODE_ENV !== 'production') global.prismaGlobal = prisma;
 
 export default prisma;
@@ -30,4 +32,3 @@ export default prisma;
 // export default prisma
 
 // if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
-

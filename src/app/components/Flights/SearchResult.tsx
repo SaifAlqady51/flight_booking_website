@@ -46,7 +46,10 @@ const SearchResult: FC<SearchResultProps> = ({ id, searchResult }) => {
     // mutation for deleting single search result
     const [deleteSingleSearchResult] = useMutation(DeleteSingleSearchResult, {
         refetchQueries: [
-            { query: getSearchResultsForCurrentUser, variables: { userId } },
+            {
+                query: getSearchResultsForCurrentUser,
+                variables: { userId },
+            },
         ],
     });
 

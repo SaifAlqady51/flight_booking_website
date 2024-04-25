@@ -16,7 +16,7 @@ export const getCityCodeFromCityName = async (cityName: string) => {
 export const getCityNameFromCityCode = async (cityCode: string) => {
     try {
         const URL = `https://airlabs.co/api/v9/airports?iata_code=${cityCode}&api_key=a202cae8-7c61-460d-87f6-9ca55ac159e3`;
-        const response = await axios.get(URL) as any[];
+        const response = (await axios.get(URL)) as any[];
         return response[0].name;
     } catch (error) {
         console.error(`Error : ${error}`);

@@ -12,15 +12,15 @@ export const AllFlightCardsContainer = styled.div`
     align-items: center;
     overflow-x: hidden;
     overflow-y: scroll;
-	&::-webkit-scrollbar {
-		width:.3em;
-	}
-	&::-webkit-scrollbar-track {
-		background-color: ${(props) => props.theme.scrollTrackColor};
-	}
-	&::-webkit-scrollbar-thumb {
-		background-color: ${(props) => props.theme.scrollThumbColor} ;
-	}
+    &::-webkit-scrollbar {
+        width: 0.3em;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: ${(props) => props.theme.scrollTrackColor};
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: ${(props) => props.theme.scrollThumbColor};
+    }
 `;
 export const FlightCardContainer = styled.div`
     width: 70%;

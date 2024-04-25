@@ -39,17 +39,15 @@ export const CheckIconProvider = styled(Provider)`
     color: #55a630;
 `;
 
-export const DollarIconProvider = styled(Provider)<{$priceValue: number}>`
+export const DollarIconProvider = styled(Provider)<{ $priceValue: number }>`
     width: 30px;
     height: inherit;
-	position:absolute;
-	left:${(props) => props.$priceValue < 9? '54px' : '45px'};
-	bottom:10px;
-
-
+    position: absolute;
+    left: ${(props) => (props.$priceValue < 9 ? '54px' : '45px')};
+    bottom: 10px;
 `;
 
 export const GitHubIconProvider = styled(Provider)`
-	width:30px;
-	height:30px;
-`
+    width: 30px;
+    height: 30px;
+`;

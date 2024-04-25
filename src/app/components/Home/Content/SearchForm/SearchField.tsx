@@ -11,10 +11,9 @@ import CitiesList from '../../Content/SearchForm/CitiesList';
 import { filterCitiesList } from '@utils/filterCitiesList';
 import { useAppSelector } from '@/redux/store';
 
-
 interface SearchFieldProps {
     labelOfInputField: string;
-	handleChange?: any;
+    handleChange?: any;
     placeholder?: string;
 }
 
