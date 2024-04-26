@@ -15,7 +15,10 @@ const Alert = ({ message }: AlertProps) => {
         <AlertStyles open>
             <AlertText>{message}</AlertText>
             <SmallStyledIcon>
-                <AiOutlineClose onClick={() => dispatch(switchAlert())} />
+                <AiOutlineClose
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => dispatch(switchAlert())}
+                />
             </SmallStyledIcon>
         </AlertStyles>
     );

@@ -80,7 +80,7 @@ export const PricingButton = styled.button<{
     $subscribed: boolean;
     $userSignedIn: boolean;
 }>`
-    cursor: ${(props) => (props.$userSignedIn ? 'pointer' : 'disabled')};
+    cursor: pointer;
     width: 70%;
     height: 50px;
     background-color: ${(props) => (props.$subscribed ? 'gray' : 'blue')};
