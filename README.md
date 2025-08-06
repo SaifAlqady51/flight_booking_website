@@ -2,31 +2,34 @@
 
 ![Project Home page](https://raw.githubusercontent.com/SaifAlqady51/flight_booking_website/main/public/static/images/Tayara_home_page.png)
 
-![Tayara](https://flight-booking-website-sandy.vercel.app/) is a Flight booking website whick takes your flight data and returns flight offers to you based on your data,
+A modern flight booking web application built with Next.js, Styled Components, GraphQL, Prisma ORM, and Redux. Integrates with Amadeus Travel API for flight data and IATA standards for airport/city codes.
 
-# Details
+## Features
 
-This project build with modern technologies like:
+-   **Flight Search & Booking**: Powered by Amadeus Travel API
+-   **Airport/City Codes**: Standardized IATA codes integration
+-   **Responsive Design**: Works on all device sizes
+-   **Modern Stack**: Built with latest web technologies
+-   **State Management**: Redux for global state
+-   **Database**: Prisma ORM with PostgreSQL
+-   **API**: GraphQL with Apollo Server
 
-1. Front-End
+## Tech Stack
 
--   ![NextJS 13](https://nextjs.org/blog/next-13)
--   ![Styled-Components](https://styled-components.com)
--   ![Redux-toolkit](https://redux-toolkit.js.org/)
--   ![Framer motion](https://www.framer.com/motion/)
--   ![Material UI](https://mui.com/)
+**Frontend:**
 
-2. Back-End
+-   Next.js
+-   Styled Components
+-   Redux
+-   Apollo Client
 
--   ![GraphQL](https://graphql.org/)
--   ![NexusJS](https://nexusjs.org/)
--   ![Apollo Server](https://www.apollographql.com/docs/apollo-server/)
--   ![Prisma](https://www.prisma.io/)
--   ![MySQL](https://www.mysql.com/)
--   ![PlanetScale](https://planetscale.com/)
+**Backend:**
 
-3. Maintanance and Styling dependencies
+-   Apollo Server
+-   Prisma
+-   PostgreSQL
 
--   ![Eslint](https://eslint.org/)
--   ![Prettier](https://prettier.io/)
--   ![ts-prune](https://github.com/nadeesha/ts-prune)
+**External APIs:**
+
+-   [Amadeus Travel API](https://developers.amadeus.com/) - Flight search, booking, and pricing
+-   IATA Standards - Airport/city codes and standards
